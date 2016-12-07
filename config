@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+#Sets Windows Key/Mod 4 as $mod. Using Alt as $mod is very annoying.
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -37,12 +38,14 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
+# dmenu is cool!
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
+# change focus - MODIFIED TO VIM KEYS; IMPORTANT!!!
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -68,17 +71,22 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+semicolon split h
+# default for this was $mod+h but h is for left movement now. The only drawback to vim keys.
 
 # split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+#so easy; so fast
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
+# so good for getting an overview of all the window titles for browser windows
 bindsym $mod+w layout tabbed
+# my favourite layout
 bindsym $mod+e layout toggle split
+# sometimes handy. I usually don't need this as I can $mod+shift+L a window out to the side to get tiling
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -88,10 +96,12 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+# useful when dealing across tiled windows with tabs
 bindsym $mod+Shift+a focus child
+# good for escaping from $mod+a
 
 # focus the child container
-#bindsym $mod+d focus child
+#bindsym $mod+d focus child # this is already binded to dmenu. dmenu is good and fast.
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -121,10 +131,12 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# this button is amazing fast
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# resize window (you can also use the mouse for that) - mod+right click and drag *vaguely near* window border to resize!
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -133,7 +145,9 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
+        #vim keys again
         bindsym k resize grow height 10 px or 10 ppt
+        #default might be swapped
         bindsym j resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
@@ -141,7 +155,9 @@ mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize shrink height 10 px or 10 ppt
         bindsym Up resize grow height 10 px or 10 ppt
+        #default might be swapped again
         bindsym Right resize grow width 10 px or 10 ppt
+        #but this makes more sense
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -162,10 +178,13 @@ bar {
 # CUSTOM COMMANDS
 
 exec_always ~/keyboardmouse.sh
+#setting mouse acceleration off and keyboard repeat delay fast.
 exec ~/.fehbg
+#background wallpaper
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
 assign [class="Rhythmbox"] 10
+#place rhythmbox on window 10 on open
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
@@ -186,8 +205,11 @@ mode "$mode_launcher" {
 }
 
 bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
+#lock machine before suspending
 bindsym $mod+Pause exec i3lock -f -c 1a0000
+#lock machine
 bindsym Print exec gnome-screenshot -i
+#screenshot dialog via the same dialog as Ubuntu.
 
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
@@ -195,10 +217,10 @@ bindsym Print exec gnome-screenshot -i
 # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
 bindsym $mod+F11 exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100%
+bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100% #helps me not go above 100%
 bindsym $mod+F10 exec pactl set-sink-mute 0 toggle # mute sound
 
-force_focus_wrapping yes
+force_focus_wrapping yes #tiled window with tabs; keep alt-tab to the same window
 
 
 # Resizing windows in i3 using keyboard only
@@ -222,7 +244,7 @@ bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-# Switch window/workspace with mod+scroll and mod+shift scroll
+# Switch window/workspace with mod+scroll and mod+shift scroll #thanks reddit.com/r/i3wm
 bindsym --whole-window --border $mod+button4 focus left
 bindsym --whole-window --border $mod+button5 focus right
 bindsym --whole-window --border $mod+shift+button4 workspace prev
