@@ -158,7 +158,7 @@ packadd matchit
 " try to quit without saving, and swap files will keep you safe if your computer
 " crashes.
 ""This option is confusing when executing :q on :new / :vnew windows
-" set hidden
+"set hidden
  
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
