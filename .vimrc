@@ -157,7 +157,8 @@ packadd matchit
 " for keeping undo history after closing Vim entirely. Vim will complain if you
 " try to quit without saving, and swap files will keep you safe if your computer
 " crashes.
-set hidden
+""This option is confusing when executing :q on :new / :vnew windows
+"set hidden
  
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
@@ -223,7 +224,7 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
-set clipboard=unnamed
+set clipboard=autoselectplus
  
 " Enable use of the mouse for all modes
 set mouse=a
@@ -271,10 +272,9 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
+" Enter is snappier and better:
 nnoremap <silent> <CR> :nohls<CR>
  
-"------------------------------------------------------------
-
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -286,17 +286,36 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
+set wrap linebreak nolist
+" Linebreak break at end of word
+" nolist vs list mode to show tabs and end of lines
+
+so $HOME/.vim/myfiletypes.vim
+
+"------------------------------------------------------------
+" Spell Checking
+nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
+" Trailing <Esc> because <CR> sets :nohls in previous section
+inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
+" a to maintain insert mode.
+nnoremap <S-F7> :set nospell<CR>
+
+"------------------------------------------------------------
+" Colorschemes
 "set background=dark
+" https://github.com/altercation/vim-colors-solarized
 let g:solarized_termcolors=256
 "colorscheme solarized
 
+" https://github.com/jonathanfilip/vim-lucius
 colorscheme lucius
 LuciusDark
 "LuciusLight
 
+" https://github.com/zeis/vim-kolor.git
+let g:kolor_italic=1                    " Enable italic. Default: 1
+let g:kolor_bold=1                      " Enable bold. Default: 1
+let g:kolor_underlined=0                " Enable underline. Default: 0
+let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
-set wrap linebreak nolist
-" linebreak break at end of word
-" vs list mode to show tabs and end of lines
-
-au BufRead,BufNewFile *.jy set filetype=python
+"------------------------------------------------------------
