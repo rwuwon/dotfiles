@@ -304,12 +304,12 @@ nnoremap <S-F7> :set nospell<CR>
 " Colorschemes
 "set background=dark
 " https://github.com/altercation/vim-colors-solarized
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 "colorscheme solarized
 
 " https://github.com/jonathanfilip/vim-lucius
-colorscheme lucius
-LuciusDark
+"colorscheme lucius
+"LuciusDarkHighContrast
 "LuciusLight
 
 " https://github.com/zeis/vim-kolor.git
@@ -317,5 +317,8 @@ let g:kolor_italic=1                    " Enable italic. Default: 1
 let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
+
+" https://github.com/chriskempson/tomorrow-theme
+colorscheme Tomorrow-Night-Bright
 
 "------------------------------------------------------------
