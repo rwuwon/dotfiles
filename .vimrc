@@ -157,8 +157,8 @@ packadd matchit
 " for keeping undo history after closing Vim entirely. Vim will complain if you
 " try to quit without saving, and swap files will keep you safe if your computer
 " crashes.
-""This option is confusing when executing :q on :new / :vnew windows
-"set hidden
+" Read :h 22.4
+set hidden
  
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
@@ -224,7 +224,8 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
-set clipboard=autoselectplus
+set clipboard=unnamedplus
+" unnamed unnamedplus autoselect autoselectplus
  
 " Enable use of the mouse for all modes
 set mouse=a
@@ -291,6 +292,24 @@ set wrap linebreak nolist
 " nolist vs list mode to show tabs and end of lines
 
 so $HOME/.vim/myfiletypes.vim
+
+"nmap <C-i> <C-^>
+nmap <Tab> :bn<CR>
+nmap <S-Tab> :bp<CR>
+"nmap <M-w> :bd<CR>
+
+nmap <Left> <C-W>h
+nmap <Down> <C-W>j
+nmap <Up> <C-W>k
+nmap <Right> <C-W>l
+nmap <S-Left> <C-W><
+nmap <S-Down> <C-W>-
+nmap <S-Up> <C-W>+
+nmap <S-Right> <C-W>>
+
+"spacebar=page down; shift+spacebar=page up
+"nnoremap <Space> <C-d>
+"nnoremap <S-Space> <C-u>
 
 "------------------------------------------------------------
 " Spell Checking
