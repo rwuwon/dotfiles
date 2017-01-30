@@ -224,7 +224,7 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
-set clipboard=unnamedplus
+set clipboard=unnamed
 " unnamed unnamedplus autoselect autoselectplus
  
 " Enable use of the mouse for all modes
@@ -312,6 +312,8 @@ nmap <S-Right> <C-W>>
 "nnoremap <S-Space> <C-u>
 
 "------------------------------------------------------------
+map <F2> <Esc>:read !date<CR>
+
 " Spell Checking
 nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
 " Trailing <Esc> because <CR> sets :nohls in previous section
