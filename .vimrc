@@ -343,3 +343,4 @@ let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 colorscheme Tomorrow-Night-Bright
 
 "------------------------------------------------------------
+nmap <F12> :set syntax=python<CR>
