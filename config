@@ -195,15 +195,16 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [c]alc [f]irefox [g]oogle-chrome [n]autilus [r]hythmbox [v]ivaldi vo[l]ume
+set $mode_launcher Launch: [c]alc [e]clipse [f]irefox [g]oogle-chrome [n]autilus [r]hythmbox [v]ivaldi vo[l]ume
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
+    bindsym c exec gnome-calculator
+    bindsym e exec /home/io/eclipse/java-neon/eclipse/eclipse
     bindsym f exec firefox
     bindsym g exec google-chrome
-    bindsym c exec gnome-calculator
-    bindsym n exec nautilus
     bindsym l exec pavucontrol
+    bindsym n exec nautilus
     bindsym r exec rhythmbox
     bindsym v exec vivaldi
 #    bindsym Scroll_Lock exec systemctl suspend
