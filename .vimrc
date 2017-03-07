@@ -274,7 +274,7 @@ map Y y$
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
 " Enter is snappier and better:
-nnoremap <silent> <CR> :nohls<CR>
+nnoremap <silent> <Backspace> :nohls<CR>
  
 nnoremap j gj
 nnoremap k gk
@@ -287,7 +287,7 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-set wrap linebreak nolist
+"set wrap linebreak nolist
 " Linebreak break at end of word
 " nolist vs list mode to show tabs and end of lines
 
@@ -312,8 +312,6 @@ nmap <S-Right> <C-W>>
 "nnoremap <S-Space> <C-u>
 
 "------------------------------------------------------------
-map <F2> <Esc>:read !date<CR>
-
 " Spell Checking
 nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
 " Trailing <Esc> because <CR> sets :nohls in previous section
@@ -340,7 +338,12 @@ let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
-colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow
+"colorscheme Tomorrow-Night-Bright
 
 "------------------------------------------------------------
 nmap <F12> :set syntax=python<CR>
+"nnoremap <F5> "=strftime("%c")<CR>P
+"inoremap <F5> <C-R>=strftime("%c")<CR>
+nnoremap <F5> "=strftime("%FT%T%z")<CR>P
+inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
