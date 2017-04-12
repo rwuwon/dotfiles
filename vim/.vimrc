@@ -347,3 +347,7 @@ nmap <F12> :set syntax=python<CR>
 "inoremap <F5> <C-R>=strftime("%c")<CR>
 nnoremap <F5> "=strftime("%FT%T%z")<CR>P
 inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
+
+"------------------------------------------------------------
+" Set title caps for line - see :h gu
+map <F10> :s/\v<(.)(\w*)/\u\1\L\2/g
