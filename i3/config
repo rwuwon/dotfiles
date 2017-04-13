@@ -78,6 +78,8 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+bindsym $mod+p split toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 #so easy; so fast
@@ -95,6 +97,9 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -190,6 +195,8 @@ exec ~/.fehbg
 #background wallpaper
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
+assign [class="Vivaldi-stable"] 1
+assign [class="Google-chrome"] 2
 assign [class="Rhythmbox"] 10
 #place rhythmbox on window 10 on open
 
@@ -218,18 +225,22 @@ focus_on_window_activation urgent
 
 bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 #lock machine before suspending
-bindsym $mod+Pause exec i3lock -f -c 1a0000
+bindsym $mod+Ctrl+Scroll_Lock exec systemctl suspend
+#suspend without lock
+
 #lock machine
+bindsym $mod+Pause exec i3lock -f -c 1a0000
+
 bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
 
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
-bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym $mod+F11 exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100% #helps me not go above 100%
-bindsym $mod+F10 exec pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
+bindsym $mod+F10 exec pactl set-sink-mute 1 toggle # mute sound
 
 #force_focus_wrapping yes #tiled window with tabs; keep alt-tab to the same window
 
