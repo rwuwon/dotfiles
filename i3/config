@@ -216,10 +216,10 @@ bar {
 
 #exec_always --no-startup-id nm-applet      # Use exec_always followed by $mod+shift+r
 exec --no-startup-id nm-applet
+#setting mouse acceleration off and keyboard repeat delay fast.
 exec ~/scripts/keyboardmouse.sh
 exec /usr/bin/parcellite
 exec redshift-gtk
-#setting mouse acceleration off and keyboard repeat delay fast.
 exec ~/.fehbg
 #background wallpaper
 
@@ -243,7 +243,6 @@ mode "$mode_launcher" {
     bindsym n exec nautilus
     bindsym r exec rhythmbox
     bindsym v exec vivaldi
-#    bindsym Scroll_Lock exec systemctl suspend
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -252,10 +251,8 @@ mode "$mode_launcher" {
 # 4.28. Focus on window activation: smart|urgent|focus|none
 focus_on_window_activation smart
 
-bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 #lock machine before suspending
-bindsym $mod+Ctrl+Scroll_Lock exec systemctl suspend
-#suspend without lock
+bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 
 #lock machine
 bindsym $mod+Pause exec i3lock -f -c 1a0000
