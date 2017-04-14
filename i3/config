@@ -27,6 +27,18 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 1
+new_float normal
+
+# Hide borders
+hide_edge_borders none
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -78,11 +90,14 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-bindsym $mod+p split toggle
+bindsym $mod+q split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 #so easy; so fast
+
+# popup_during_fullscreen smart|ignore|leave_fullscreen
+popup_during_fullscreen smart
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -109,6 +124,18 @@ bindsym $mod+Shift+a focus child
 
 # focus the child container
 #bindsym $mod+d focus child # this is already binded to dmenu. dmenu is good and fast.
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Show the Rhythmbox scratchpad window with Alt+s, if present.
+bindsym mod1+F8 [class="Rhythmbox"] scratchpad show
+
+# move all floating windows to the scratchpad
+bindsym $mod+x [floating] move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -178,6 +205,8 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         tray_output primary
+        # Obey Fitts's law
+        tray_padding 0
 }
 
 # CUSTOM COMMANDS
@@ -197,8 +226,8 @@ exec ~/.fehbg
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
 assign [class="Vivaldi-stable"] 1
 assign [class="Google-chrome"] 2
-assign [class="Rhythmbox"] 10
 #place rhythmbox on window 10 on open
+assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
@@ -221,7 +250,7 @@ mode "$mode_launcher" {
 }
 
 # 4.28. Focus on window activation: smart|urgent|focus|none
-focus_on_window_activation urgent
+focus_on_window_activation smart
 
 bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 #lock machine before suspending
@@ -266,11 +295,11 @@ bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 
-# Switch between the current and the previously focused one
-# Doesn't work!
-#workspace_auto_back_and_forth yes
-#bindsym $mod+` workspace back_and_forth
-#bindsym Mod1+` focus back_and_forth
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+grave workspace back_and_forth
+bindsym $mod+Shift+grave move container to workspace back_and_forth; workspace back_and_forth
+#bindsym Mod1+grave focus container back_and_forth
 
 # Switch window/workspace with mod+scroll and mod+shift scroll #thanks reddit.com/r/i3wm
 bindsym --whole-window --border $mod+button4 focus left
@@ -291,3 +320,6 @@ bindsym button3 floating toggle
 # # The side buttons move the window around
 bindsym button9 move right
 bindsym button8 move left
+
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
