@@ -287,7 +287,7 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-"set wrap linebreak nolist
+set wrap linebreak nolist
 " Linebreak break at end of word
 " nolist vs list mode to show tabs and end of lines
 
@@ -338,8 +338,8 @@ let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
-colorscheme Tomorrow
-"colorscheme Tomorrow-Night-Bright
+"colorscheme Tomorrow
+colorscheme Tomorrow-Night-Bright
 
 "------------------------------------------------------------
 nmap <F12> :set syntax=python<CR>
