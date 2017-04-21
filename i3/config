@@ -28,11 +28,11 @@ font pango:monospace 8
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
+new_window normal
 new_float normal
 
 # Hide borders
-hide_edge_borders none
+#hide_edge_borders none
 
 # change borders
 bindsym $mod+u border none
@@ -221,6 +221,7 @@ exec ~/scripts/keyboardmouse.sh
 exec /usr/bin/parcellite
 exec redshift-gtk
 exec ~/.fehbg
+exec dropbox start
 #background wallpaper
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
