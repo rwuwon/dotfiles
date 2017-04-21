@@ -224,7 +224,7 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
-set clipboard=unnamed
+set clipboard=unnamedplus
 " unnamed unnamedplus autoselect autoselectplus
  
 " Enable use of the mouse for all modes
@@ -338,8 +338,8 @@ let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
-"colorscheme Tomorrow
-colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow
+"colorscheme Tomorrow-Night-Bright
 
 "------------------------------------------------------------
 nmap <F12> :set syntax=python<CR>
