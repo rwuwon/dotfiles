@@ -351,3 +351,4 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 "------------------------------------------------------------
 " Set title caps for line - see :h gu
 map <F10> :s/\v<(.)(\w*)/\u\1\L\2/g
+set scrolloff=3                         " Keep 3 lines below and above the cursor
