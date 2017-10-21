@@ -7,7 +7,11 @@
 
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+
+# https://fedoramagazine.org/getting-started-i3-window-manager/
+
 
 set $mod Mod4
 #Sets Windows Key/Mod 4 as $mod. Using Alt as $mod is very annoying.
@@ -43,15 +47,19 @@ bindsym $mod+n border normal
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-bindsym $mod+BackSpace kill
+#bindsym $mod+BackSpace kill
 bindsym $mod+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
+
+# Set up dmenu to only show apps with graphical interface
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # dmenu is cool!
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -204,9 +212,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        tray_output primary
+#        tray_output primary
         # Obey Fitts's law
-        tray_padding 0
+#        tray_padding 0
 }
 
 # CUSTOM COMMANDS
@@ -220,13 +228,14 @@ exec --no-startup-id nm-applet
 exec ~/scripts/keyboardmouse.sh
 exec /usr/bin/parcellite
 exec redshift-gtk
+#background wallpaper
 exec ~/.fehbg
 exec dropbox start
-#background wallpaper
+exec --no-startup-id conky -c ~/.conkyrc
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
 assign [class="Vivaldi-stable"] 1
-assign [class="Google-chrome"] 2
+#assign [class="Google-chrome"] 2
 #place rhythmbox on window 10 on open
 assign [class="Rhythmbox"] 10
 
@@ -258,16 +267,24 @@ bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 #lock machine
 bindsym $mod+Pause exec i3lock -f -c 1a0000
 
-bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
+#bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
+# https://www.reddit.com/r/i3wm/comments/5a9304/problems_with_hotkeying_gnomescreenshot_a/
+bindsym --release Print exec gnome-screenshot
+bindsym --release Mod1+Sys_Req exec gnome-screenshot -w
+bindsym --release Shift+Print exec gnome-screenshot -a
+bindsym --release Ctrl+Print exec gnome-screenshot -c
+bindsym --release Ctrl+Mod1+Sys_Req exec gnome-screenshot -cw
+bindsym --release Ctrl+Shift+Print exec gnome-screenshot -ca
+bindsym --release Ctrl+Shift+$mod+Print exec gnome-screenshot -i
 
 # Pulse Audio controls
 # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
-bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
-bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
-bindsym $mod+F10 exec pactl set-sink-mute 1 toggle # mute sound
+bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
+bindsym $mod+F11 exec pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100% #helps me not go above 100%
+bindsym $mod+F10 exec pactl set-sink-mute 0 toggle # mute sound
 
 #force_focus_wrapping yes #tiled window with tabs; keep alt-tab to the same window
 
