@@ -8,7 +8,8 @@ xset s off
 # This will change if the USB legacy support setting is changed in BIOS
 # type "xinput list" to set the right mouse prop and then:
 # xinput list-props 'Kingsis Peripherals ZOWIE Gaming mouse'|grep Coordinate
-# 9 is id for mouse, 173 is Coordinate Transformation Matrix for mouse
+# 9 is id for mouse, 154 is Coordinate Transformation Matrix for mouse
 # 2 is double speed for 400 dpi mouse setting. Works well at 1080p.
-xinput set-prop 9 173 2 0 0 0 2 0 0 0 1
+#xinput set-prop 9 154 2 0 0 0 2 0 0 0 1 # speed for red light
+#xinput set-prop 9 154 0 0 0 0 0 0 0 0 1 # speed for pink light
 # source: https://wiki.ubuntu.com/X/InputCoordinateTransformation
