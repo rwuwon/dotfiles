@@ -338,8 +338,10 @@ let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
-colorscheme Tomorrow
+"colorscheme Tomorrow
 "colorscheme Tomorrow-Night-Bright
+set background=light
+colorscheme PaperColor
 
 "------------------------------------------------------------
 nmap <F12> :set syntax=python<CR>
@@ -352,3 +354,4 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 " Set title caps for line - see :h gu
 map <F10> :s/\v<(.)(\w*)/\u\1\L\2/g
 set scrolloff=3                         " Keep 3 lines below and above the cursor
+set t_Co=256
