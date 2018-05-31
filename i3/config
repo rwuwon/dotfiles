@@ -247,11 +247,13 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [c]alc [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
+set $mode_launcher Launch: gnome-[a]brt [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
+    bindsym a exec gnome-abrt
     bindsym c exec gnome-calculator
+    bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec --no-startup-id firefox
     bindsym g exec google-chrome
     bindsym k exec keepassxc
@@ -279,6 +281,7 @@ bindsym ctrl+$mod+0 exec rhythmbox
 
 for_window [class="keepassxc"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Gnome-calculator"] floating enable
 
 # 4.28. Focus on window activation: smart|urgent|focus|none
 focus_on_window_activation smart
