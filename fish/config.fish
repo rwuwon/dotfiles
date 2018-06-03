@@ -9,3 +9,5 @@ set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
 # x11-vim for +clipboard
 alias vi='vimx'
 alias vim='vimx'
+# bash version: export GPG_TTY=(tty)
+export GPG_TTY=(tty)
