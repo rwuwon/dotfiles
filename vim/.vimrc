@@ -287,9 +287,10 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
-set wrap linebreak nolist
-" Linebreak break at end of word
-" nolist vs list mode to show tabs and end of lines
+" Use list mode to show spaces, tabs and carriage returns  and end of lines
+"set wrap linebreak nolist
+" Keep words together
+set linebreak
 
 so $HOME/.vim/myfiletypes.vim
 
