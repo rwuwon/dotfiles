@@ -1,7 +1,8 @@
 set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
 
 #alias -='cd -'     # deprecated
-abbr -a -- - 'cd -' # Use this one from version 2.5.0 onwards
+# Run this once in fish and it should set.
+abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 
 # bash version: export GPG_TTY=$(tty)
 export GPG_TTY=(tty)
