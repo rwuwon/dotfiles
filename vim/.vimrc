@@ -224,8 +224,10 @@ set visualbell
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
 set t_vb=
-set clipboard=unnamedplus
+
 " unnamed unnamedplus autoselect autoselectplus
+" unnamed for mac, unnamedplus for linux
+set clipboard=unnamedplus
  
 " Enable use of the mouse for all modes
 set mouse=a
