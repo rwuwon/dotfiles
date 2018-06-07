@@ -7,10 +7,7 @@ set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
 # bash version: export GPG_TTY=$(tty)
 export GPG_TTY=(tty)
 export GPGKEY=10F5EEB0
-<<<<<<< Updated upstream
-=======
 #alias gpg='gpg2'
->>>>>>> Stashed changes
 
 # x11-vim for +clipboard
 alias vi='vimx'
