@@ -6,7 +6,7 @@ set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
 
 # bash version: export GPG_TTY=$(tty)
 export GPG_TTY=(tty)
-export GPGKEY=10F5EEB0
+#export GPGKEY=10F5EEB0
 #alias gpg='gpg2'
 
 # x11-vim for +clipboard
