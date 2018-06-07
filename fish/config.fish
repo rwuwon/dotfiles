@@ -4,9 +4,15 @@ set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
 # Run this once in fish and it should set.
 # abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 
+# This is necessary for pinentry cli to send password box properly; maybe
 # bash version: export GPG_TTY=$(tty)
+
+# https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
+#
 export GPG_TTY=(tty)
-#export GPGKEY=10F5EEB0
+export GPGKEY=10F5EEB0
+
+# GNU is weird
 #alias gpg='gpg2'
 
 # x11-vim for +clipboard
