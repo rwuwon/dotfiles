@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /home/io/.gitignore
+	excludesfile = ~/.gitignore
 	editor = vim
 [alias]
         p = pull
