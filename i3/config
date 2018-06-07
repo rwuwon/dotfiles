@@ -282,6 +282,9 @@ bindsym ctrl+$mod+0 exec rhythmbox
 for_window [class="keepassxc"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="Nvidia-settings"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Firefox" instance="Places"] floating enable
 
 # 4.28. Focus on window activation: smart|urgent|focus|none
 focus_on_window_activation smart
@@ -306,10 +309,10 @@ bindsym --release $mod+Print exec gnome-screenshot
 # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
 # bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
 # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
-bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
-bindsym $mod+F11 exec pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100% #helps me not go above 100%
-bindsym $mod+F10 exec pactl set-sink-mute 0 toggle # mute sound
+bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
+bindsym $mod+F10 exec pactl set-sink-mute 1 toggle # mute sound
 
 #force_focus_wrapping yes #tiled window with tabs; keep alt-tab to the same window
 
