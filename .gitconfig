@@ -9,9 +9,10 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
-	editor = vim
+        editor = vim
 [alias]
         p = pull
+        pu = push
         ps = push
 	s = status
 	st = status
