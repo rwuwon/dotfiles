@@ -8,10 +8,11 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /home/io/.gitignore
-	editor = vim
+	excludesfile = ~/.gitignore
+        editor = vim
 [alias]
         p = pull
+        pu = push
         ps = push
 	s = status
 	st = status

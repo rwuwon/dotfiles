@@ -19,9 +19,9 @@ export GPGKEY=10F5EEB0
 alias vi='vimx'
 alias vim='vimx'
 
-alias l='ls -lah --time-style=long-iso --group-directories-first $argv'
-alias ll='ls -lh --time-style=long-iso --group-directories-first $argv'
-alias lll='ls -lahrt --time-style=long-iso $argv'
+alias l='ls -lah --time-style=long-iso --group-directories-first'
+alias ll='ls -lh --time-style=long-iso --group-directories-first'
+alias lll='ls -lahrt --time-style=long-iso'
 alias l.='ls -d .* --time-style=long-iso'
 
 alias mv='mv -i'
