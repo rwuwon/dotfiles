@@ -213,8 +213,8 @@ set nostartofline
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
-" Always display full path: 
-" This interferes with git-commit. Do not use.
+" Always display full path
+" This interferes with row/col display. Do not use.
 "set statusline+=%F
  
 " Instead of failing a command because of unsaved changes, instead raise a
@@ -231,6 +231,7 @@ set t_vb=
 
 " unnamed unnamedplus autoselect autoselectplus
 " unnamed for mac, unnamedplus for linux
+"set clipboard=unnamed
 set clipboard=unnamedplus
  
 " Enable use of the mouse for all modes
