@@ -52,3 +52,5 @@ Thumbs.db
 .metadata
 *.iml
 *.ipr
+
+.htaccess
