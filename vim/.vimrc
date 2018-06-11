@@ -369,3 +369,6 @@ set smartindent
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
+
+" I always forget: Ctrl+a for increment (ADD), Ctrl+x for subtract (X).
+" The help file will not say increment!
