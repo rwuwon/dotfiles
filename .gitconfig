@@ -2,7 +2,7 @@
 	name = Raymond Wu Won
 	email = rwuwon@gmail.com
 [commit]
-	gpgSign = false
+	gpgSign = true
 [gpg]
         program = gpg2
 [color]
