@@ -330,11 +330,6 @@ nnoremap <F8> :set nospell<CR>
 
 "------------------------------------------------------------
 " Colorschemes
-"set background=dark
-" https://github.com/altercation/vim-colors-solarized
-"let g:solarized_termcolors=256
-"colorscheme solarized
-
 " https://github.com/jonathanfilip/vim-lucius
 "colorscheme lucius
 "LuciusDarkHighContrast
@@ -348,6 +343,7 @@ let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
 "colorscheme Tomorrow
+set background=dark
 colorscheme Tomorrow-Night-Bright
 "set background=light
 "colorscheme PaperColor
