@@ -343,10 +343,10 @@ let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
 " https://github.com/chriskempson/tomorrow-theme
 "colorscheme Tomorrow
-set background=dark
-colorscheme Tomorrow-Night-Bright
-"set background=light
-"colorscheme PaperColor
+"set background=dark
+"colorscheme Tomorrow-Night-Bright
+set background=light
+colorscheme PaperColor
 
 "------------------------------------------------------------
 nmap <F12> :set syntax=python<CR>
@@ -368,3 +368,5 @@ inoremap <C-S> <C-O>:update<CR>
 
 " I always forget: Ctrl+a for increment (ADD), Ctrl+x for subtract (X).
 " The help file will not say increment!
+
+set colorcolumn=+1
