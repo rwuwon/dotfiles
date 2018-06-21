@@ -366,3 +366,7 @@ bindsym button8 move left
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
+
+# Stop mouse pointer jumping when screens are switched
+# https://i3wm.org/docs/userguide.html#_mouse_warping
+mouse_warping none
