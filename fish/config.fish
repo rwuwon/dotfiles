@@ -31,6 +31,7 @@ alias mv='mv -i'
 # https://news.ycombinator.com/item?id=11071754
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+alias a='alias'
 alias g='git'
 
 # oh-mh-zsh git aliases
