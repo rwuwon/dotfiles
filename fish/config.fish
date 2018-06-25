@@ -34,6 +34,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias a='alias'
 alias g='git'
+alias det='tmux detach'
+alias att='tmux attach'
 
 # oh-mh-zsh git aliases
 alias ...='cd ../..'
