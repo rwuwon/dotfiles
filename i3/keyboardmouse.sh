@@ -1,7 +1,11 @@
 #!/bin/sh
 
+# Mouse accel under Fedora/Gnome is handled via Gnome conf
 #xset m 0 0
-xset r rate 250 30
+
+# Previous default of 250 30 was fine; 40 is faster
+xset r rate 250 40
+
 xset dpms 2400 2460 2520
 xset s off
 
