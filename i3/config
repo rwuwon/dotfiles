@@ -370,3 +370,7 @@ bindsym $mod+m bar mode toggle
 # Stop mouse pointer jumping when screens are switched
 # https://i3wm.org/docs/userguide.html#_mouse_warping
 mouse_warping none
+
+# Swap alt & cmd keys on MBP
+# https://www.reddit.com/r/i3wm/comments/552ylr/what_is_your_lappy_mod_key/d87cmo6/
+#setxkbmap -option 'altwin:swap_alt_win'
