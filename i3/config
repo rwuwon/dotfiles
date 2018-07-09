@@ -227,10 +227,10 @@ bar {
 #exec --no-startup-id nm-applet
 exec nm-applet
 #setting mouse acceleration off and keyboard repeat delay fast.
-exec ~/scripts/keyboardmouse.sh
+exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
 exec clipit
-exec redshift-gtk
+#exec redshift-gtk
 #background wallpaper
 exec ~/.fehbg
 exec dropbox start
@@ -268,8 +268,8 @@ mode "$mode_launcher" {
 }
 
 # Faster:
-bindsym ctrl+$mod+1 exec --no-startup-id vivaldi
-bindsym ctrl+$mod+2 exec --no-startup-id firefox
+bindsym ctrl+$mod+1 exec --no-startup-id firefox
+bindsym ctrl+$mod+2 exec --no-startup-id firefoxdev
 bindsym ctrl+$mod+3 exec google-chrome
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
@@ -373,8 +373,14 @@ mouse_warping none
 
 # Swap alt & cmd keys on MBP
 # https://www.reddit.com/r/i3wm/comments/552ylr/what_is_your_lappy_mod_key/d87cmo6/
-exec setxkbmap -option 'altwin:swap_alt_win'
+#exec setxkbmap -option 'altwin:swap_alt_win'
 
 # MBP 13,1 sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+#bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+#bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+# https://wiki.archlinux.org/index.php/Keyboard_backlight
+#bindsym XF86KbdBrightnessUp exec kblight.py + 1
+#bindsym XF86KbdBrightnessDown exec kblight.py - 10
