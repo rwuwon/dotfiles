@@ -373,4 +373,8 @@ mouse_warping none
 
 # Swap alt & cmd keys on MBP
 # https://www.reddit.com/r/i3wm/comments/552ylr/what_is_your_lappy_mod_key/d87cmo6/
-#setxkbmap -option 'altwin:swap_alt_win'
+exec setxkbmap -option 'altwin:swap_alt_win'
+
+# MBP 13,1 sreen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
