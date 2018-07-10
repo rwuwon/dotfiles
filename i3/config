@@ -384,6 +384,3 @@ mouse_warping none
 # https://wiki.archlinux.org/index.php/Keyboard_backlight
 #bindsym XF86KbdBrightnessUp exec kblight.py + 1
 #bindsym XF86KbdBrightnessDown exec kblight.py - 10
-
-# Power key ignored via logind.conf
-#bindcode 124 bar mode toggle
