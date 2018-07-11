@@ -226,6 +226,7 @@ bar {
 #exec_always --no-startup-id nm-applet      # Use exec_always followed by $mod+shift+r
 #exec --no-startup-id nm-applet
 exec nm-applet
+#exec blueman-applet
 #setting mouse acceleration off and keyboard repeat delay fast.
 exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
