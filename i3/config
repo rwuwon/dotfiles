@@ -223,10 +223,10 @@ bar {
 # Startup/boot commands:
 # https://i3wm.org/docs/userguide.html#exec
 
+#exec rfkill block bluetooth
 #exec_always --no-startup-id nm-applet      # Use exec_always followed by $mod+shift+r
 #exec --no-startup-id nm-applet
 exec nm-applet
-#exec blueman-applet
 #setting mouse acceleration off and keyboard repeat delay fast.
 exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
@@ -236,8 +236,8 @@ exec clipit
 exec ~/.fehbg
 exec dropbox start
 #exec --no-startup-id conky -c ~/.conkyrc
-exec conky -c ~/.conkyrc
-exec_always "sleep 15 && ibus-daemon"
+exec --no-startup-id conky -c ~/.conkyrc
+exec "sleep 15; ibus-daemon"
 exec nvidia-settings --load-config-only
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
@@ -248,14 +248,15 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: gnome-[a]brt [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
+set $mode_launcher Launch: gnome-[a]brt [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym a exec gnome-abrt
+    #bindsym b exec blueman-applet
     bindsym c exec gnome-calculator
     bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
-    bindsym f exec --no-startup-id firefox
+    bindsym f exec firefox
     bindsym g exec google-chrome
     bindsym k exec keepassxc
     bindsym l exec pavucontrol
@@ -293,11 +294,13 @@ focus_on_window_activation smart
 #lock machine before suspending
 bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 
-#lock machine
-bindsym $mod+Pause exec i3lock -f -c 1a0000
+# Lock machine - use dark brown colour to show that screen is not off
+bindsym Ctrl+Mod1+$mod+L exec i3lock -f -c 1a0000
 
 #bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
 # https://www.reddit.com/r/i3wm/comments/5a9304/problems_with_hotkeying_gnomescreenshot_a/
+#bindsym Mod1+Shift+3 exec gnome-screenshot -i
+#bindsym Mod1+Shift+4 exec gnome-screenshot -i
 bindsym --release Print exec gnome-screenshot -i
 bindsym --release Mod1+Sys_Req exec gnome-screenshot -w
 bindsym --release Shift+Print exec gnome-screenshot -a
@@ -307,9 +310,12 @@ bindsym --release Ctrl+Shift+Print exec gnome-screenshot -c -a
 bindsym --release $mod+Print exec gnome-screenshot
 
 # Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+# Use pactl list sinks to show sinks
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
+#bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
+#bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+
 bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
 bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
