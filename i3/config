@@ -212,8 +212,12 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        tray_output primary
         status_command i3status
-#        tray_output primary
+        # primary display
+        output DP-1
+        # secondary display
+        output HDMI-0
         # Obey Fitts's law
         tray_padding 0
 }
@@ -223,11 +227,12 @@ bar {
 # Startup/boot commands:
 # https://i3wm.org/docs/userguide.html#exec
 
+#exec rfkill block bluetooth
 #exec_always --no-startup-id nm-applet      # Use exec_always followed by $mod+shift+r
 #exec --no-startup-id nm-applet
 exec nm-applet
 #setting mouse acceleration off and keyboard repeat delay fast.
-exec ~/scripts/keyboardmouse.sh
+exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
 exec clipit
 #exec redshift-gtk
@@ -293,7 +298,7 @@ focus_on_window_activation smart
 #lock machine before suspending
 bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
 
-#lock machine
+# Lock machine - use dark brown colour to show that screen is not off
 bindsym $mod+Pause exec i3lock -f -c 1a0000
 
 #bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
@@ -384,4 +389,14 @@ mouse_warping none
 
 # Swap alt & cmd keys on MBP
 # https://www.reddit.com/r/i3wm/comments/552ylr/what_is_your_lappy_mod_key/d87cmo6/
-#setxkbmap -option 'altwin:swap_alt_win'
+#exec setxkbmap -option 'altwin:swap_alt_win'
+
+# MBP 13,1 sreen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+#bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+#bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+
+# https://wiki.archlinux.org/index.php/Keyboard_backlight
+#bindsym XF86KbdBrightnessUp exec kblight.py + 1
+#bindsym XF86KbdBrightnessDown exec kblight.py - 10
