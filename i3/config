@@ -230,7 +230,7 @@ exec nm-applet
 exec ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
 exec clipit
-exec redshift-gtk
+#exec redshift-gtk
 #background wallpaper
 exec ~/.fehbg
 exec dropbox start
@@ -247,11 +247,12 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: gnome-[a]brt [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
+set $mode_launcher Launch: gnome-[a]brt [b]lueman [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym a exec gnome-abrt
+    bindsym b exec blueman-tray
     bindsym c exec gnome-calculator
     bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec --no-startup-id firefox
@@ -304,15 +305,25 @@ bindsym --release Ctrl+Print exec gnome-screenshot -c
 bindsym --release Ctrl+Mod1+Sys_Req exec gnome-screenshot -c -w
 bindsym --release Ctrl+Shift+Print exec gnome-screenshot -c -a
 bindsym --release $mod+Print exec gnome-screenshot
+bindsym $mod+Mod1+Shift+4 exec gnome-screenshot -i
+bindsym $mod+Mod1+Shift+3 exec gnome-screenshot -i
 
 # Pulse Audio controls
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 2 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 2 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 2 toggle # mute sound
+
+# Dual monitor setup:
 bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
 bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
 bindsym $mod+F10 exec pactl set-sink-mute 1 toggle # mute sound
+
+# Single monitor setup:
+#bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym $mod+F11 exec pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 0 100% # volume 100% #helps me not go above 100%
+#bindsym $mod+F10 exec pactl set-sink-mute 0 toggle # mute sound
 
 #force_focus_wrapping yes #tiled window with tabs; keep alt-tab to the same window
 
