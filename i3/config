@@ -260,22 +260,22 @@ mode "$mode_launcher" {
     bindsym b exec blueman-tray
     bindsym c exec gnome-calculator
     bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
-    bindsym f exec --no-startup-id firefox
+    bindsym f exec firefox
     bindsym g exec google-chrome
     bindsym k exec keepassxc
     bindsym l exec pavucontrol
     bindsym n exec nautilus
     bindsym r exec rhythmbox
-    bindsym v exec --no-startup-id vivaldi
-    bindsym x exec --no-startup-id /home/io/X-Plane\ 11/X-Plane-x86_64
+    bindsym v exec vivaldi
+    bindsym x exec /home/io/X-Plane\ 11/X-Plane-x86_64
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
 }
 
 # Faster:
-bindsym ctrl+$mod+1 exec --no-startup-id vivaldi
-bindsym ctrl+$mod+2 exec --no-startup-id firefox
+bindsym ctrl+$mod+1 exec firefox
+bindsym ctrl+$mod+2 exec google-chrome
 bindsym ctrl+$mod+3 exec google-chrome
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
@@ -291,6 +291,7 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Firefox" instance="Places"] floating enable
+#for_window [class="Ibus-extension-gtk3"] floating enable
 
 # 4.28. Focus on window activation: smart|urgent|focus|none
 focus_on_window_activation smart
