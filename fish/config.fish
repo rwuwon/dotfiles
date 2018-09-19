@@ -14,6 +14,7 @@ export GPG_TTY=(tty)
 export GPGKEY=10F5EEB0
 
 alias bc='bc -ql'
+alias bmon='bmon -b'
 
 # GNU is weird
 #alias gpg='gpg2'
