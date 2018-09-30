@@ -13,7 +13,7 @@ export EDITOR=vim
 export GPG_TTY=(tty)
 export GPGKEY=10F5EEB0
 
-alias bc='bc -ql'
+alias bc='bc -l'
 alias bmon='bmon -b'
 alias cal='cal -3'
 
