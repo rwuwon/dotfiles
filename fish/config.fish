@@ -15,7 +15,6 @@ export GPGKEY=10F5EEB0
 
 alias bc='bc -l'
 alias bmon='bmon -b'
-alias cal='cal -3'
 
 # GNU is weird
 #alias gpg='gpg2'
