@@ -39,8 +39,8 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'DejaVu Sans Mono:size=10',
-    gap_x = 1605,
-    gap_y = 500,
+    gap_x = 1618,
+    gap_y = 0,
     minimum_height = 5,
 	minimum_width = 5,
     net_avg_samples = 2,
@@ -61,6 +61,14 @@ conky.config = {
 }
 
 conky.text = [[
+1 firefox
+2 google-chrome
+3 google-chrome
+7 keepassxc
+8 gnome-calculator
+9 nautilus
+0 rhythmbox
+
 ${scroll 16 $nodename - $sysname $kernel on $machine | }
 ${hr}
 ${color orange}Uptime:$color $uptime
