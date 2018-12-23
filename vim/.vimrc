@@ -306,6 +306,9 @@ nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
+nmap <C-S-n> gt
+nmap <C-S-p> gT
+
 nmap <Left> <C-W>h
 nmap <Down> <C-W>j
 nmap <Up> <C-W>k
