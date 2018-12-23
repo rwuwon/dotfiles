@@ -1,6 +1,7 @@
 [user]
 	name = Raymond Wu Won
 	email = rwuwon@gmail.com
+        signingKey = BAAD1790
 [commit]
 	gpgSign = false
 [gpg]
