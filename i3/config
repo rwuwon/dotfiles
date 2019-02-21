@@ -262,6 +262,7 @@ mode "$mode_launcher" {
     bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec firefox
     bindsym g exec google-chrome
+    bindsym i exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
     bindsym k exec keepassxc
     bindsym l exec pavucontrol
     bindsym n exec nautilus
@@ -277,10 +278,15 @@ mode "$mode_launcher" {
 bindsym ctrl+$mod+1 exec firefox
 bindsym ctrl+$mod+2 exec google-chrome
 bindsym ctrl+$mod+3 exec google-chrome
+
+#bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
+bindsym ctrl+$mod+6 exec 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
 bindsym ctrl+$mod+0 exec rhythmbox
+# for #i3 troubleshooting:
+# exec_always sleep 10 && gnome-terminal -t "asdf" -- zsh -c 'bc' && sleep 10
 
 #set $mode_launcher2 Launch: [power]
 #bindsym $mod+F1 mode "$mode_launcher2"
@@ -291,6 +297,9 @@ for_window [class="Gnome-calculator"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Firefox" instance="Places"] floating enable
+for_window [class="Firefox" instance="Browser"] floating enable
+
+#doesn't work due to dual displays:
 #for_window [class="Ibus-extension-gtk3"] floating enable
 
 # 4.28. Focus on window activation: smart|urgent|focus|none
