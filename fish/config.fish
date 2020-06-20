@@ -15,14 +15,15 @@ export GPGKEY=10F5EEB0
 
 alias bc='bc -l'
 alias bmon='bmon -b'
+alias make='time make'
 
 # GNU is weird
 #alias gpg='gpg2'
 
 # x11-vim for +clipboard
-alias vi='vimx'
-alias vim='vimx'
-alias vimdiff='vim -d'
+#alias vi='vimx'
+#alias vim='vimx'
+#alias vimdiff='vim -d'
 
 alias l='ls -lah --time-style=long-iso --group-directories-first'
 alias ll='ls -lh --time-style=long-iso --group-directories-first'
