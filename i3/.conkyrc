@@ -63,7 +63,7 @@ conky.config = {
 conky.text = [[
 1 firefox
 2 google-chrome
-3 google-chrome
+3 firefox-esr
 7 keepassxc
 8 gnome-calculator
 9 nautilus
