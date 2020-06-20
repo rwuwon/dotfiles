@@ -267,6 +267,7 @@ mode "$mode_launcher" {
     bindsym l exec pavucontrol
     bindsym n exec nautilus
     bindsym r exec rhythmbox
+    bindsym t exec snap run authy
     bindsym v exec vivaldi
     bindsym x exec /home/io/X-Plane\ 11/X-Plane-x86_64
 
@@ -277,7 +278,7 @@ mode "$mode_launcher" {
 # Faster:
 bindsym ctrl+$mod+1 exec firefox
 bindsym ctrl+$mod+2 exec google-chrome
-bindsym ctrl+$mod+3 exec google-chrome
+bindsym ctrl+$mod+3 exec firefox-esr
 
 #bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+6 exec 'mosh io@deb -- tmux attach'
@@ -298,6 +299,8 @@ for_window [class="Nvidia-settings"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 for_window [class="Firefox" instance="Places"] floating enable
 for_window [class="Firefox" instance="Browser"] floating enable
+for_window [class="GParted"] floating enable
+for_window [class="Gnome-disks"] floating enable
 
 #doesn't work due to dual displays:
 #for_window [class="Ibus-extension-gtk3"] floating enable
@@ -360,6 +363,7 @@ bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
 
 # Focus next/previous workspace
 bindsym Mod1+Tab focus right
+bindsym Mod1+grave focus left
 bindsym Mod1+Shift+Tab focus left
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
