@@ -40,7 +40,7 @@ alias a='alias'
 alias g='git'
 alias att='tmux attach'
 alias det='tmux detach'
-alias aaa='tmux attach'
+alias aaa='tmux attach; or tmux'
 alias ddd='tmux detach'
 
 # oh-mh-zsh git aliases
