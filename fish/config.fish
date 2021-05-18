@@ -29,6 +29,7 @@ alias l='ls -lah --time-style=long-iso --group-directories-first'
 alias ll='ls -lh --time-style=long-iso --group-directories-first'
 alias lll='ls -lahrt --time-style=long-iso'
 alias l.='ls -d .* --time-style=long-iso'
+alias lsd='ls -d /* --time-style=long-iso'
 
 alias mv='mv -i'
 
@@ -38,8 +39,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias a='alias'
 alias g='git'
-alias att='tmux attach'
-alias det='tmux detach'
 alias aaa='tmux attach; or tmux'
 alias ddd='tmux detach'
 
