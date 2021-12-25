@@ -19,11 +19,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -234,11 +234,11 @@ exec nm-applet
 #setting mouse acceleration off and keyboard repeat delay fast.
 exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
-exec clipit
+exec diodon
 #exec redshift-gtk
 #background wallpaper
 exec ~/.fehbg
-exec dropbox start
+exec ~/scripts/dropboxd
 #exec --no-startup-id conky -c ~/.conkyrc
 exec conky -c ~/.conkyrc
 exec_always "sleep 15 && ibus-daemon"
@@ -252,14 +252,15 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: gnome-[a]brt [b]lueman [c]alc [e]clipse [f]irefox [g]oogle-chrome [k]eepassxc [n]autilus [r]hythmbox [v]ivaldi vo[l]ume  -->[ENTER]
+set $mode_launcher Launch: b[a]rrier [b]lueman [c]alc firefox-[e]sr [e]clipse [f]irefox [g]oogle-chrome [i]rssi [k]eepassxc [n]autilus [r]hythmbox au[t]hy [v]ivaldi vo[l]ume
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym a exec gnome-abrt
-    bindsym b exec blueman-tray
+    bindsym a exec barrier
+    bindsym b exec blueman-applet
     bindsym c exec gnome-calculator
-    bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
+    bindsym e exec firefox-esr
+#    bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec firefox
     bindsym g exec google-chrome
     bindsym i exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
@@ -285,7 +286,7 @@ bindsym ctrl+$mod+6 exec 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
-bindsym ctrl+$mod+0 exec rhythmbox
+bindsym ctrl+$mod+0 exec libreoffice --calc
 # for #i3 troubleshooting:
 # exec_always sleep 10 && gnome-terminal -t "asdf" -- zsh -c 'bc' && sleep 10
 
@@ -301,6 +302,9 @@ for_window [class="Firefox" instance="Places"] floating enable
 for_window [class="Firefox" instance="Browser"] floating enable
 for_window [class="GParted"] floating enable
 for_window [class="Gnome-disks"] floating enable
+for_window [class="Toplevel"] floating enable
+for_window [class="Gnome-screenshot"] floating enable
+for_window [class="retroarch"] floating enable
 
 #doesn't work due to dual displays:
 #for_window [class="Ibus-extension-gtk3"] floating enable
@@ -309,7 +313,7 @@ for_window [class="Gnome-disks"] floating enable
 focus_on_window_activation smart
 
 #lock machine before suspending
-bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && systemctl suspend
+bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && sleep 1 && systemctl suspend
 
 # Lock machine - use dark brown colour to show that screen is not off
 bindsym $mod+Pause exec i3lock -f -c 1a0000
@@ -414,3 +418,6 @@ mouse_warping none
 # https://wiki.archlinux.org/index.php/Keyboard_backlight
 #bindsym XF86KbdBrightnessUp exec kblight.py + 1
 #bindsym XF86KbdBrightnessDown exec kblight.py - 10
+
+workspace 1 output primary
+workspace 10 output HDMI-0
