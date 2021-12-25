@@ -1,4 +1,7 @@
-set PATH ~/scripts /usr/local/bin /usr/sbin $PATH
+set PATH ~/scripts /home/io/.linuxbrew/bin /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
+
+#cal -w (date +%Y)
+#cal 2020
 
 #alias -='cd -'     # deprecated
 # Run this once in fish and it should set.
