@@ -314,7 +314,7 @@ for_window [class="retroarch"] floating enable
 focus_on_window_activation smart
 
 #lock machine before suspending
-bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && sleep 1 && systemctl suspend
+bindsym $mod+Scroll_Lock exec i3lock -f -c 1a0000 && sleep 2 && systemctl suspend
 
 # Lock machine - use dark brown colour to show that screen is not off
 bindsym $mod+Pause exec i3lock -f -c 1a0000
@@ -337,10 +337,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 2 -5% #decrease sound vo
 bindsym XF86AudioMute exec pactl set-sink-mute 2 toggle # mute sound
 
 # Dual monitor setup:
-bindsym $mod+F12 exec pactl set-sink-volume 1 +5% #increase sound volume
-bindsym $mod+F11 exec pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym $mod+Ctrl+F12 exec pactl set-sink-volume 1 100% # volume 100% #helps me not go above 100%
-bindsym $mod+F10 exec pactl set-sink-mute 1 toggle # mute sound
+bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
+bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
+bindsym $mod+Ctrl+F12 exec pactl set-sink-volume @DEFAULT_SINK@ 100% # volume 100% #helps me not go above 100%
+bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Single monitor setup:
 #bindsym $mod+F12 exec pactl set-sink-volume 0 +5% #increase sound volume
@@ -424,9 +424,9 @@ mouse_warping none
 #bindsym XF86KbdBrightnessUp exec kblight.py + 1
 #bindsym XF86KbdBrightnessDown exec kblight.py - 10
 
+#2023-05-09 Temporarily commented out the following 2 lines for single monitor operation
 workspace 1 output primary
 workspace 10 output HDMI-0
 
 assign [class="Firefox-esr"] 8
-assign [class="Google-chrome"] 3
-
+#assign [class="Google-chrome"] 3
