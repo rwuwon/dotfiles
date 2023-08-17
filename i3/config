@@ -252,14 +252,14 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [a]nki barrier [b]lueman [c]alc firefox-[e]sr [e]clipse [f]irefox [g]oogle-chrome [i]rssi [k]eepassxc [n]autilus [r]hythmbox au[t]hy [v]ivaldi vo[l]ume
+set $mode_launcher Launch: [a]nki [b]lueman [c]alc [e]dge [f]irefox [g]oogle-chrome [i]rssi [k]eepassxc [n]autilus [p]lover [r]hythmbox au[t]hy [v]ivaldi vo[l]ume
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym a exec anki.flatpak
     bindsym b exec blueman-applet
     bindsym c exec gnome-calculator
-    bindsym e exec firefox-esr
+    bindsym e exec microsoft-edge
 #    bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec firefox
     bindsym g exec google-chrome
@@ -267,6 +267,7 @@ mode "$mode_launcher" {
     bindsym k exec keepassxc
     bindsym l exec pavucontrol
     bindsym n exec nautilus
+    bindsym p exec /home/io/scripts/plover
     bindsym r exec rhythmbox
     bindsym t exec snap run authy
     bindsym v exec vivaldi
