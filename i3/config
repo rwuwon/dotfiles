@@ -419,6 +419,8 @@ mouse_warping none
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 #bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 #bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # https://wiki.archlinux.org/index.php/Keyboard_backlight
 #bindsym XF86KbdBrightnessUp exec kblight.py + 1
