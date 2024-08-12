@@ -1,0 +1,5 @@
+xset r rate 250 40
+
+xset b off
+xset dpms 600 600 600
+xset s 600 600
