@@ -1,0 +1,6 @@
+# im-config(8) generated on Thu, 25 Jul 2024 17:43:26 +1000
+run_im ibus
+# im-config signature: 848b77da9b7d7354b38dbe1ca584ff46  -
+
+xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 0.5
+xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Profile Enabled" 0 1
