@@ -2,5 +2,8 @@
 run_im ibus
 # im-config signature: 848b77da9b7d7354b38dbe1ca584ff46  -
 
-xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 0.5
-xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Profile Enabled" 0 1
+#xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" 0.5
+#xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Profile Enabled" 0 1
+
+#xinput set-prop "SYNA8006:00 06CB:CD8B Touchpad" "Tapping" 1
+#xinput set-prop "SYNA8006:00 06CB:CD8B Touchpad" "Natural Scrolling" 1
