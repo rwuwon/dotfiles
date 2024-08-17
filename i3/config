@@ -53,8 +53,9 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
+# For right-handed use on ThinkPad with only one super key
+bindsym $mod+Shift+z exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
