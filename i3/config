@@ -242,8 +242,8 @@ exec diodon
 #background wallpaper
 exec ~/.fehbg
 exec ~/scripts/dropboxd
-#exec --no-startup-id conky -c ~/.conkyrc
-exec conky -c ~/.conkyrc
+exec --no-startup-id conky -c ~/.conkyrc
+#exec conky -c ~/.conkyrc
 exec_always "sleep 15 && ibus-daemon"
 exec nvidia-settings --load-config-only
 
