@@ -53,8 +53,9 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
+# For right-handed use on ThinkPad with only one super key
+bindsym $mod+Shift+z exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -282,7 +283,7 @@ mode "$mode_launcher" {
 
 # Faster:
 bindsym ctrl+$mod+1 exec firefox
-bindsym ctrl+$mod+2 exec google-chrome
+bindsym ctrl+$mod+2 exec microsoft-edge
 bindsym ctrl+$mod+3 exec firefox-esr
 
 #bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
@@ -325,15 +326,32 @@ bindsym $mod+Pause exec i3lock -f -c 5b1c27
 
 #bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
 # https://www.reddit.com/r/i3wm/comments/5a9304/problems_with_hotkeying_gnomescreenshot_a/
-bindsym --release Print exec gnome-screenshot -i
-bindsym --release Mod1+Sys_Req exec gnome-screenshot -w
-bindsym --release Shift+Print exec gnome-screenshot -a
-bindsym --release Ctrl+Print exec gnome-screenshot -c
-bindsym --release Ctrl+Mod1+Sys_Req exec gnome-screenshot -c -w
-bindsym --release Ctrl+Shift+Print exec gnome-screenshot -c -a
-bindsym --release $mod+Print exec gnome-screenshot
-bindsym $mod+Mod1+Shift+4 exec gnome-screenshot -i
-bindsym $mod+Mod1+Shift+3 exec gnome-screenshot -i
+bindsym --release $mod+Print exec gnome-screenshot -i
+#bindsym --release Print exec gnome-screenshot -i
+#bindsym --release Mod1+Sys_Req exec gnome-screenshot -w
+#bindsym --release Shift+Print exec gnome-screenshot -a
+#bindsym --release Ctrl+Print exec gnome-screenshot -c
+#bindsym --release Ctrl+Mod1+Sys_Req exec gnome-screenshot -c -w
+#bindsym --release Ctrl+Shift+Print exec gnome-screenshot -c -a
+#bindsym $mod+Mod1+Shift+3 exec gnome-screenshot -i
+#bindsym $mod+Mod1+Shift+4 exec gnome-screenshot -i
+
+# maim works with lossless webp, unlike gnome-screenshot 41.0
+# screenshot everything, save & copy to clipboard
+bindsym --release Print exec maim -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+# macOS binding for muscle memory training
+bindsym $mod+Mod1+Shift+3 exec maim -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+# screenshot active window, save & copy to clipboard
+bindsym --release Ctrl+Print exec maim -m 10 -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+# screenshot selection, save & copy to clipboard
+bindsym --release Ctrl+Shift+Print exec maim -s -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+# macOS binding for muscle memory training
+bindsym $mod+Mod1+Shift+4 exec maim -s -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+# screenshot active window to clipboard only
+bindsym --release Shift+Print exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+# screenshot active window to clipboard only, alternate binding
+bindsym $mod+Shift+x exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 2 +5% #increase sound volume
