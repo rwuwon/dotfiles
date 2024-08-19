@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --bg-scale '/home/io/Pictures/artful-aardvark-ubuntu.png' 
+feh --no-fehbg --bg-max '~/Pictures/wallpapers/ubuntu 2304 lunar lobster.png' 
