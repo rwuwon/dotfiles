@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-max '~/Pictures/wallpapers/ubuntu 2304 lunar lobster.png' 
+feh --no-fehbg --bg-fill '~/Pictures/wallpapers/ubuntu 2304 lunar lobster.png' 
