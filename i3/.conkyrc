@@ -62,12 +62,13 @@ conky.config = {
 
 conky.text = [[
 1 firefox
-2 google-chrome
+2 microsoft-edge
 3 firefox-esr
+6 mosh
 7 keepassxc
 8 gnome-calculator
 9 nautilus
-0 rhythmbox
+0 libreoffice calc
 
 ${scroll 16 $nodename - $sysname $kernel on $machine | }
 ${hr}
