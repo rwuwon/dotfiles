@@ -3,3 +3,8 @@ xset r rate 250 40
 xset b off
 xset dpms 600 600 600
 xset s 600 600
+
+# Enable swipe navigation in Firefox
+# https://www.reddit.com/r/debian/comments/17c5wf4/missing_two_things_swipe_gesture_and_bluetooth/
+# export MOZ_ENABLE_WAYLAND=1
+export MOZ_USE_XINPUT2=1
