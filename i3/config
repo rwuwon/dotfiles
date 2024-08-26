@@ -443,7 +443,7 @@ bindsym $mod+m bar mode toggle
 
 # Stop mouse pointer jumping when screens are switched
 # https://i3wm.org/docs/userguide.html#_mouse_warping
-mouse_warping none
+mouse_warping output
 
 # Swap alt & cmd keys on MBP
 # https://www.reddit.com/r/i3wm/comments/552ylr/what_is_your_lappy_mod_key/d87cmo6/
@@ -455,8 +455,8 @@ mouse_warping none
 #bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 #bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 bindsym $mod+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 100%
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -e set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -e set 5%-
 
 # https://wiki.archlinux.org/index.php/Keyboard_backlight
 #bindsym XF86KbdBrightnessUp exec kblight.py + 1
