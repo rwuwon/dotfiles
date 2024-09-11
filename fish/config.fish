@@ -20,6 +20,9 @@ alias bc='bc -l'
 alias bmon='bmon -b'
 alias make='time make'
 
+alias less='less -i'
+alias bat='batcat'
+
 # GNU is weird
 #alias gpg='gpg2'
 
@@ -34,7 +37,7 @@ alias lll='ls -lahrt --time-style=long-iso'
 alias l.='ls -d .* --time-style=long-iso'
 alias lsd='ls -d /* --time-style=long-iso'
 
-alias mv='mv -i'
+alias mv='mv -vi'
 
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 # https://news.ycombinator.com/item?id=11071754
@@ -216,3 +219,4 @@ alias md='mkdir -p'
 #alias zegrep='zegrep --color=auto'
 #alias zfgrep='zfgrep --color=auto'
 #alias zgrep='zgrep --color=auto'
+alias cal='ncal -b'
