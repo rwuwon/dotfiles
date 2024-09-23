@@ -114,6 +114,10 @@ bindsym $mod+f fullscreen toggle
 # popup_during_fullscreen smart|ignore|leave_fullscreen
 popup_during_fullscreen smart
 
+# "maximised" as the default to make it easier to launch multi browser windows
+# $mod+e of course will tile things again
+workspace_layout tabbed
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 # so good for getting an overview of all the window titles for browser windows
