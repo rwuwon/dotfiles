@@ -34,7 +34,7 @@ alias bat='batcat'
 alias l='ls -lah --time-style=long-iso --group-directories-first'
 alias ll='ls -lh --time-style=long-iso --group-directories-first'
 alias lll='ls -lahrt --time-style=long-iso'
-alias l.='ls -d .* --time-style=long-iso'
+alias l.='ls -d .* --time-style=long-iso --group-directories-first'
 alias lsd='ls -d /* --time-style=long-iso'
 
 alias mv='mv -vi'
@@ -47,13 +47,14 @@ alias a='alias'
 alias g='git'
 alias aaa='tmux attach; or tmux'
 alias ddd='tmux detach'
+alias m='mosh deb -- tmux a'
 
 # oh-mh-zsh git aliases
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
-alias _=sudo
+#no longer works with Debian 12 fish: alias _=sudo
 #alias afind='ack -il'
 #alias d='dirs -v | head -10'
 #alias ebuild='nocorrect ebuild'
