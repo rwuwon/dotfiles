@@ -22,6 +22,8 @@ alias make='time make'
 
 alias less='less -i'
 alias bat='batcat'
+alias t='tmux'
+alias s='sudo -i'
 
 # GNU is weird
 #alias gpg='gpg2'
