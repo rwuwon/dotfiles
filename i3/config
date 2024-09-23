@@ -195,7 +195,7 @@ bindsym $mod+Shift+r restart
 # this button is amazing fast
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that) - mod+right click and drag *vaguely near* window border to resize!
 mode "resize" {
@@ -270,7 +270,7 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [a]nki [b]lueman [c]alc [e]dge [f]irefox [g]oogle-chrome [i]rssi [j]oplin [k]eepassxc [n]autilus [p]lover [r]hythmbox au[t]hy [v]ivaldi vo[l]ume
+set $mode_launcher Launch: [a]nki [b]lueman [c]alc [e]dge [h]ibernate [f]irefox [g]oogle-chrome [i]rssi [k]eepassxc [n]autilus [p]lover [r]hythmbox [s]eahorse au[t]hy [v]ivaldi vo[l]ume [x]term
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
@@ -281,6 +281,7 @@ mode "$mode_launcher" {
 #    bindsym e exec /home/io/eclipse/java-oxygen/eclipse/eclipse
     bindsym f exec firefox
     bindsym g exec google-chrome
+    bindsym h exec sleep 1 && systemctl hibernate
     bindsym i exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
     bindsym j exec flatpak run net.cozic.joplin_desktop
     bindsym k exec keepassxc
@@ -288,6 +289,7 @@ mode "$mode_launcher" {
     bindsym n exec nautilus
     bindsym p exec /home/io/scripts/plover
     bindsym r exec rhythmbox
+    bindsym s exec seahorse
     bindsym t exec snap run authy
     bindsym v exec vivaldi
     bindsym x exec i3-sensible-terminal
