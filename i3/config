@@ -462,6 +462,9 @@ mouse_warping output
 #bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 #bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 bindsym $mod+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 100%
+bindsym $mod+Ctrl+XF86MonBrightnessUp exec --no-startup-id brightnessctl set 50%
+bindsym $mod+Ctrl+XF86MonBrightnessDown exec --no-startup-id brightnessctl set -e 50%
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 1
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -e set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -e set 5%-
 
