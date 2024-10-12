@@ -340,10 +340,12 @@ for_window [class="gnome-calculator"] floating enable
 focus_on_window_activation smart
 
 #lock machine before suspending
-bindsym Ctrl+$mod+l exec i3lock -f -c 5b1c27 && sleep 1 && systemctl suspend
+bindsym $mod+Scroll_Lock exec i3lock -f -c 5b1c27 && sleep 1 && systemctl suspend
+bindsym Ctrl+$mod+p exec i3lock -f -c 5b1c27 && sleep 1 && systemctl suspend
 
 # Lock machine - use dark brown colour to show that screen is not off
-bindsym Ctrl+$mod+p exec i3lock -f -c 5b1c27
+bindsym $mod+Pause exec i3lock -f -c 5b1c27
+bindsym Ctrl+$mod+l exec i3lock -f -c 5b1c27
 
 #bindsym Print exec gnome-screenshot -i #screenshot dialog via the same dialog as Ubuntu.
 # https://www.reddit.com/r/i3wm/comments/5a9304/problems_with_hotkeying_gnomescreenshot_a/
