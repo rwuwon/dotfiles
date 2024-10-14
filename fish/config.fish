@@ -50,6 +50,7 @@ alias g='git'
 alias aaa='tmux attach; or tmux'
 alias ddd='tmux detach'
 alias m='mosh deb -- tmux a'
+alias yt-dlp='yt-dlp --no-mtime'
 
 # oh-mh-zsh git aliases
 alias ...='cd ../..'
