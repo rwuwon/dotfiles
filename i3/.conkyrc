@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]
 
 conky.config = {
-    alignment = 'top_left',
+    alignment = 'top_right',
     background = true,
     border_width = 1,
     cpu_avg_samples = 5,
@@ -39,8 +39,8 @@ conky.config = {
     draw_shades = false,
     use_xft = true,
     font = 'DejaVu Sans Mono:size=10',
-    gap_x = 1618,
-    gap_y = 0,
+    gap_x = 10,
+    gap_y = 10,
     minimum_height = 5,
 	minimum_width = 5,
     net_avg_samples = 2,
@@ -64,6 +64,7 @@ conky.text = [[
 1 firefox
 2 microsoft-edge
 3 firefox-esr
+4 joplin
 6 mosh
 7 keepassxc
 8 gnome-calculator

@@ -274,7 +274,7 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [a]nki [b]lueman [c]alc [e]dge [h]ibernate [f]irefox [g]oogle-chrome [i]rssi [k]eepassxc [n]autilus [p]lover [r]hythmbox [s]eahorse au[t]hy [v]ivaldi vo[l]ume [x]term
+set $mode_launcher Launch: [a]nki [b]lueman [c]alc [e]dge [h]ibernate [f]irefox [g]oogle-chrome [i]rssi [j]oplin [k]eepassxc [n]autilus [p]lover [r]hythmbox [s]eahorse au[t]hy [v]ivaldi vo[l]ume [x]term
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
@@ -306,7 +306,7 @@ mode "$mode_launcher" {
 bindsym ctrl+$mod+1 exec firefox
 bindsym ctrl+$mod+2 exec microsoft-edge
 bindsym ctrl+$mod+3 exec firefox-esr
-
+bindsym ctrl+$mod+4 exec flatpak run net.cozic.joplin_desktop
 #bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+6 exec 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+7 exec keepassxc
