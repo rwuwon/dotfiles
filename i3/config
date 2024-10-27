@@ -262,7 +262,7 @@ exec --no-startup-id ~/.fehbg
 #exec ~/scripts/dropboxd
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 #exec --no-startup-id conky -c ~/.conkyrc
-exec_always --no-startup-id conky -c ~/.config/conky/conky.conf
+exec_always --no-startup-id conky -q -c ~/.config/conky/conky.conf &>/dev/null
 #exec_always "sleep 15 && ibus-daemon"
 exec nvidia-settings --load-config-only
 
