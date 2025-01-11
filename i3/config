@@ -309,8 +309,7 @@ bindsym ctrl+$mod+2 exec microsoft-edge
 bindsym ctrl+$mod+3 exec firefox-esr
 bindsym ctrl+$mod+4 exec flatpak run net.cozic.joplin_desktop
 bindsym ctrl+$mod+5 exec scid
-#bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
-bindsym ctrl+$mod+6 exec 'mosh io@deb -- tmux attach'
+bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
@@ -480,7 +479,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -e set 5%-
 workspace 1 output primary
 workspace 10 output HDMI-0
 
-assign [class="Firefox-esr"] 8
+assign [class="firefox"] 1
+assign [class="firefox-esr"] 8
+assign [class="Microsoft-edge"] 8
 #assign [class="Google-chrome"] 3
-assign [class="Microsoft-edge-dev"] 8
-exec --no-startup-id xss-lock -n -- ~/scripts/lock.sh
