@@ -479,7 +479,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -e set 5%-
 workspace 1 output primary
 workspace 10 output HDMI-0
 
-assign [class="firefox"] 1
+# clashes with firefox-esr assign [class="firefox"] 1
 assign [class="firefox-esr"] 8
 assign [class="Microsoft-edge"] 8
 #assign [class="Google-chrome"] 3
