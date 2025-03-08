@@ -364,7 +364,7 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 
 "------------------------------------------------------------
 " Set title caps for line - see :h gu
-map <F10> :s/\v<(.)(\w*)/\u\1\L\2/g
+map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
 set scrolloff=3                         " Keep 3 lines below and above the cursor
 set t_Co=256
 set smartindent
@@ -377,3 +377,17 @@ inoremap <C-S> <C-O>:update<CR>
 " The help file will not say increment!
 
 set colorcolumn=+1
+
+call plug#begin()
+    " List your plugins here
+    "Plug 'tpope/vim-sensible'
+    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'Vimjas/vim-python-pep8-indent'
+    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+call plug#end()
+
+au BufNewFile,BufRead *.py
+    \ set foldmethod=indent
+
+nnoremap <F10> :!python3 %<CR>
