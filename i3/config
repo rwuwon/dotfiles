@@ -34,6 +34,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
+#exec_always --no-startup-id xss-lock -n -- ~/scripts/lock.sh
 exec --no-startup-id nm-applet
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
@@ -71,7 +72,9 @@ bindsym $mod+F4 kill
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+# j4-dmenu-desktop is faster than i3-dmenu-desktop
+#bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+bindcode $mod+40 exec --no-startup-id j4-dmenu-desktop
 bindsym $mod+z exec --no-startup-id rofi -show window
 
 # change focus
@@ -478,8 +481,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -e set 5%-
 #2023-05-09 Temporarily commented out the following 2 lines for single monitor operation
 workspace 1 output primary
 workspace 10 output HDMI-0
+#workspace 10 output secondary
 
 # clashes with firefox-esr assign [class="firefox"] 1
-assign [class="firefox-esr"] 8
-assign [class="Microsoft-edge"] 8
+assign [class="firefox-esr"] 3
+assign [class="Microsoft-edge"] 3
 #assign [class="Google-chrome"] 3
