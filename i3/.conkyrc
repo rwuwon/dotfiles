@@ -65,6 +65,7 @@ conky.text = [[
 2 microsoft-edge
 3 firefox-esr
 4 joplin
+5 scid
 6 mosh
 7 keepassxc
 8 gnome-calculator
