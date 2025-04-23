@@ -377,7 +377,7 @@ bindsym $mod+Mod1+Shift+4 exec maim -s -m 10 | tee ~/Pictures/screenshots/$(date
 # screenshot active window to clipboard only
 bindsym --release Shift+Print exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # screenshot active window to clipboard only, alternate binding
-bindsym $mod+Shift+z exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+z exec maim -s | xclip -selection clipboard -t image/png
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
