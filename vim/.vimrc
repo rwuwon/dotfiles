@@ -450,7 +450,6 @@ let g:vimspector_configurations = {
       \ } }
 
 let g:vimspector_base_dir='/home/io/.vim/plugged/vimspector'
-let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
 let g:vimspector_enable_mappings = 'HUMAN'
 
 nmap <LocalLeader>db <Plug>VimspectorBreakpoints
