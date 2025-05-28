@@ -252,7 +252,7 @@ set number
 set notimeout ttimeout ttimeoutlen=200
  
 " Use <F9> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F9>
+"set pastetoggle=<F9>
  
  
 "------------------------------------------------------------
@@ -322,6 +322,12 @@ nmap <S-Down> <C-W>-
 nmap <S-Up> <C-W>+
 nmap <S-Right> <C-W>>
 
+" Ctrl-movement keys are better for window switching
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+
 "spacebar=page down; shift+spacebar=page up
 "nnoremap <Space> <C-d>
 "nnoremap <S-Space> <C-u>
@@ -333,7 +339,7 @@ nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
 " a to maintain insert mode.
 inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
 " <S-F7> doesn't work in CLI vim; only gvim. Using F8 for compatibility.
-nnoremap <F8> :set nospell<CR>
+nnoremap <F2> :set nospell<CR>
 
 "------------------------------------------------------------
 " Colorschemes
@@ -356,15 +362,16 @@ colorscheme Tomorrow-Night-Bright
 "colorscheme PaperColor
 
 "------------------------------------------------------------
-nmap <F12> :set syntax=python<CR>
+"nmap <F12> :set syntax=python<CR>
 "nnoremap <F5> "=strftime("%c")<CR>P
 "inoremap <F5> <C-R>=strftime("%c")<CR>
-nnoremap <F5> "=strftime("%FT%T%z")<CR>P
+"nnoremap <F5> "=strftime("%FT%T%z")<CR>P
+nmap <Leader>t "=strftime("%FT%T%z")<CR>P
 inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 
 "------------------------------------------------------------
 " Set title caps for line - see :h gu
-map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
+" map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
 set scrolloff=3                         " Keep 3 lines below and above the cursor
 set t_Co=256
 set smartindent
@@ -385,9 +392,87 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+    Plug 'puremourning/vimspector'
 call plug#end()
 
-au BufNewFile,BufRead *.py
-    \ set foldmethod=indent
+"au BufNewFile,BufRead *.py
+"    \ set foldmethod=indent
 
-nnoremap <F10> :!python3 %<CR>
+" nnoremap <F10> :!python3 %<CR>
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+" Default leader key is \ but let's add space to that
+" https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+nnoremap <leader>s :source $MYVIMRC
+
+" https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
+" https://github.com/puremourning/vimspector
+" nmap <F5> <Plug>VimspectorContinue
+
+let g:vimspector_adapters = #{
+      \   test_debugpy: #{ extends: 'debugpy' }
+      \ }
+
+let g:vimspector_configurations = {
+      \ "test_debugpy_config": {
+      \   "adapter": "test_debugpy",
+      \   "filetypes": [ "python" ],
+      \   "configuration": {
+      \     "request": "launch",
+      \     "type": "python",
+      \     "cwd": "${fileDirname}",
+      \     "args": [],
+      \     "program": "${file}",
+      \     "stopOnEntry": v:false,
+      \     "console": "integratedTerminal",
+      \     "integer": 123,
+      \   },
+      \   "breakpoints": {
+      \     "exception": {
+      \       "raised": "N",
+      \       "uncaught": "",
+      \       "userUnhandled": ""
+      \     }
+      \   }
+      \ } }
+
+" https://github.com/puremourning/vimspector?tab=readme-ov-file#picking-a-pid
+function! CustomPickProcess( ... ) abort
+  let ps = 'ps aux'
+
+  let line_selected = fzf#run( {
+      \ 'source': ps,
+      \ 'options': '--header-lines=1  '
+      \          . '--prompt="Select Process: " '
+      \ ,
+      \
+      \ } )[ 0 ]
+  if empty( line_selected)
+    return 0
+  endif
+  let pid = split( line_selected )[ 0 ]
+  return str2nr( pid )
+endfunction
+
+let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
+let g:vimspector_enable_mappings = 'HUMAN'
+
+nmap <Leader>db <Plug>VimspectorBreakpoints
+
+nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
+nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
+nmap <LocalLeader>B     <Plug>VimspectorBreakpoints
+nmap <LocalLeader>D     <Plug>VimspectorDisassemble
