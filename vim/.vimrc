@@ -310,8 +310,8 @@ nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
-nmap <C-S-n> gt
-nmap <C-S-p> gT
+nmap <LocalLeader>l gt
+nmap <LocalLeader>h gT
 
 nmap <Left> <C-W>h
 nmap <Down> <C-W>j
@@ -366,7 +366,7 @@ colorscheme Tomorrow-Night-Bright
 "nnoremap <F5> "=strftime("%c")<CR>P
 "inoremap <F5> <C-R>=strftime("%c")<CR>
 "nnoremap <F5> "=strftime("%FT%T%z")<CR>P
-nmap <Leader>t "=strftime("%FT%T%z")<CR>P
+nmap <LocalLeader>t "=strftime("%FT%T%z")<CR>P
 inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 
 "------------------------------------------------------------
@@ -415,12 +415,12 @@ augroup END
 " Default leader key is \ but let's add space to that
 " https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
 nnoremap <SPACE> <Nop>
-let mapleader = " "
-nnoremap <leader>s :source $MYVIMRC
+let maplocalleader = " "
+nnoremap <LocalLeader>s :source $MYVIMRC
+
 
 " https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
 " https://github.com/puremourning/vimspector
-" nmap <F5> <Plug>VimspectorContinue
 
 let g:vimspector_adapters = #{
       \   test_debugpy: #{ extends: 'debugpy' }
@@ -449,6 +449,18 @@ let g:vimspector_configurations = {
       \   }
       \ } }
 
+let g:vimspector_base_dir='/home/io/.vim/plugged/vimspector'
+let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
+let g:vimspector_enable_mappings = 'HUMAN'
+
+nmap <LocalLeader>db <Plug>VimspectorBreakpoints
+
+nmap <Leader><F11> <Plug>VimspectorUpFrame
+nmap <Leader><F12> <Plug>VimspectorDownFrame
+nmap <Leader>B     <Plug>VimspectorBreakpoints
+nmap <Leader>D     <Plug>VimspectorDisassemble
+
+
 " https://github.com/puremourning/vimspector?tab=readme-ov-file#picking-a-pid
 function! CustomPickProcess( ... ) abort
   let ps = 'ps aux'
@@ -468,11 +480,3 @@ function! CustomPickProcess( ... ) abort
 endfunction
 
 let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
-let g:vimspector_enable_mappings = 'HUMAN'
-
-nmap <Leader>db <Plug>VimspectorBreakpoints
-
-nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
-nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
-nmap <LocalLeader>B     <Plug>VimspectorBreakpoints
-nmap <LocalLeader>D     <Plug>VimspectorDisassemble
