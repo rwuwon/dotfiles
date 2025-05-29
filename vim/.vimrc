@@ -393,6 +393,7 @@ call plug#begin()
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'puremourning/vimspector'
+    Plug 'vim-airline/vim-airline'
 call plug#end()
 
 "au BufNewFile,BufRead *.py
