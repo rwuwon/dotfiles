@@ -35,6 +35,13 @@ set incsearch		" do incremental searching
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
+" Default leader key is \ but let's add space to that
+" https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+nnoremap <Leader>s :source $MYVIMRC
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -310,8 +317,8 @@ nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
-nmap <LocalLeader>l gt
-nmap <LocalLeader>h gT
+nmap <Leader>l gt
+nmap <Leader>h gT
 
 nmap <Left> <C-W>h
 nmap <Down> <C-W>j
@@ -366,7 +373,7 @@ colorscheme Tomorrow-Night-Bright
 "nnoremap <F5> "=strftime("%c")<CR>P
 "inoremap <F5> <C-R>=strftime("%c")<CR>
 "nnoremap <F5> "=strftime("%FT%T%z")<CR>P
-nmap <LocalLeader>t "=strftime("%FT%T%z")<CR>P
+nmap <Leader>t "=strftime("%FT%T%z")<CR>P
 inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 
 "------------------------------------------------------------
@@ -413,12 +420,6 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
-" Default leader key is \ but let's add space to that
-" https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
-nnoremap <SPACE> <Nop>
-let maplocalleader = " "
-nnoremap <LocalLeader>s :source $MYVIMRC
-
 
 " https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
 " https://github.com/puremourning/vimspector
@@ -453,7 +454,7 @@ let g:vimspector_configurations = {
 let g:vimspector_base_dir='$HOME/.vim/plugged/vimspector'
 let g:vimspector_enable_mappings = 'HUMAN'
 
-nmap <LocalLeader>db <Plug>VimspectorBreakpoints
+nmap <Leader>db <Plug>VimspectorBreakpoints
 
 nmap <Leader><F11> <Plug>VimspectorUpFrame
 nmap <Leader><F12> <Plug>VimspectorDownFrame
