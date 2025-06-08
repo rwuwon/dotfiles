@@ -395,12 +395,13 @@ set colorcolumn=+1
 call plug#begin()
     " List your plugins here
     "Plug 'tpope/vim-sensible'
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'puremourning/vimspector'
     Plug 'vim-airline/vim-airline'
+    Plug 'preservim/nerdtree'
 call plug#end()
 
 "au BufNewFile,BufRead *.py
