@@ -368,6 +368,9 @@ colorscheme Tomorrow-Night-Bright
 "set background=light
 "colorscheme PaperColor
 
+nmap <Leader>c :set background=light<CR>:colorscheme PaperColor<CR>
+nmap <Leader>C :set background=dark<CR>:colorscheme Tomorrow-Night-Bright<CR>
+
 "------------------------------------------------------------
 "nmap <F12> :set syntax=python<CR>
 "nnoremap <F5> "=strftime("%c")<CR>P
