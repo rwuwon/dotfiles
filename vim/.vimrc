@@ -310,6 +310,9 @@ inoremap <Up> <C-o>gk
 " Keep words together
 set linebreak
 
+nmap <Leader>w :set wrap<CR>
+nmap <Leader>W :set nowrap<CR>
+
 so $HOME/.vim/myfiletypes.vim
 
 "nmap <C-i> <C-^>
