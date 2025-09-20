@@ -350,6 +350,7 @@ nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
 inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
 " <S-F7> doesn't work in CLI vim; only gvim. Using F8 for compatibility.
 nnoremap <F2> :set nospell<CR>
+inoremap <F2> <Esc>:set nospell<CR>a
 
 "------------------------------------------------------------
 " Colorschemes
@@ -488,3 +489,7 @@ function! CustomPickProcess( ... ) abort
 endfunction
 
 let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
+
+" Tips & Tricks
+" Write to read-only file:
+" :w !sudo tee %
