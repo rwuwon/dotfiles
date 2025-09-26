@@ -285,7 +285,7 @@ set $mode_launcher Launch: [a]nki [b]lueman [c]alc sci[d] [e]dge [f]irefox [g]oo
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym a exec anki.flatpak, mode "default"
+    bindsym a exec flatpak run net.ankiweb.Anki, mode "default"
     bindsym b exec blueman-applet, mode "default"
     bindsym c exec gnome-calculator, mode "default"
     bindsym d exec scid, mode "default"
@@ -300,7 +300,7 @@ mode "$mode_launcher" {
     bindsym l exec pavucontrol, mode "default"
     bindsym n exec nautilus, mode "default"
     bindsym o exec /home/io/scripts/blueconnect.sh, mode "default"
-    bindsym p exec /home/io/scripts/plover, mode "default"
+    bindsym p exec packettracer, mode "default"
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym t exec snap run authy, mode "default"
