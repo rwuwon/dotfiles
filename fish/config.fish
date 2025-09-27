@@ -1,5 +1,9 @@
 set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
 
+# Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+#export MANROFFOPT="-c"  # Use if formatting is wonky:
+
 #cal -w (date +%Y)
 #cal 2020
 
