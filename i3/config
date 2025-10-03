@@ -491,4 +491,4 @@ workspace 10 output HDMI-0
 # clashes with firefox-esr assign [class="firefox"] 1
 assign [class="firefox-esr"] 3
 assign [class="Microsoft-edge"] 3
-#assign [class="Google-chrome"] 3
+assign [class="Joplin"] 4
