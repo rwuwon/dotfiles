@@ -386,7 +386,7 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 "------------------------------------------------------------
 " Set title caps for line - see :h gu
 " map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
-set scrolloff=3                         " Keep 3 lines below and above the cursor
+set scrolloff=5                         " Keep 5 lines below and above the cursor
 set t_Co=256
 set smartindent
 " Use CTRL-S for saving, also in Insert mode
