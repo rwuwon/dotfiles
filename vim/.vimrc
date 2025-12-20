@@ -316,7 +316,7 @@ nmap <Leader>W :set nowrap<CR>
 so $HOME/.vim/myfiletypes.vim
 
 "nmap <C-i> <C-^>
-nmap <Tab> :bn<CR>
+nmap <Leader><Tab> :bn<CR>  " Because <Tab> interferes with <C-i>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
