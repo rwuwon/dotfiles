@@ -22,6 +22,7 @@ set $right l
 set $term gnome-terminal
 # Your preferred application launcher
 #set $menu wmenu-run
+#set $menu rofi
 set $menu j4-dmenu-desktop
 
 include /etc/sway/config-vars.d/*
@@ -110,8 +111,12 @@ input "1267:10956:ELAN_Touchscreen" {
 
     # Start your launcher
     bindsym $mod+d exec $menu
-
     bindsym $mod+z exec rofi -show combi -modes combi -combi-modes "window,drun,run"
+    set $menu2 tofi-run | xargs swaymsg exec --
+    #bindsym $mod+z exec $menu2
+    #bindsym $mod+z exec bemenu
+    #bindsym $mod+z exec wmenu
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -309,7 +314,7 @@ bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
 
     # Clipboard manager
     exec wl-paste -t text --watch clipman store --max-items=10 --histpath="~/.local/share/clipman.json"
-    bindsym Ctrl+$mod+v exec clipman pick --tool="rofi" --max-items=10 --histpath="~/.local/share/clipman.json"
+    bindsym Ctrl+$mod+v exec clipman pick --tool="bemenu" --max-items=10 --histpath="~/.local/share/clipman.json"
 
 #
 # Status Bar:
