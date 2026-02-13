@@ -122,6 +122,7 @@ input "1267:10956:ELAN_Touchscreen" {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -185,6 +186,8 @@ input "1267:10956:ELAN_Touchscreen" {
     bindsym $mod+semicolon splith
     bindsym $mod+v splitv
 
+    bindsym $mod+q split toggle
+
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
@@ -199,8 +202,21 @@ input "1267:10956:ELAN_Touchscreen" {
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
 
+    # toggle sticky
+    bindsym $mod+Shift+s sticky toggle
+
     # Move focus to the parent container
     bindsym $mod+a focus parent
+    # useful when dealing across tiled windows with tabs
+
+    bindsym $mod+Shift+a focus child
+    # good for escaping from $mod+a
+
+    # Make the currently focused window a scratchpad - i3 only; need sway-scratchpad
+    #bindsym $mod+Shift+minus move scratchpad
+
+    # Show the first scratchpad window - i3 only; need sway-scratchpad
+    #bindsym $mod+minus scratchpad show
 
     workspace_layout tabbed
 #
@@ -239,6 +255,22 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Resizing windows in i3 using keyboard only
+# http://unix.stackexchange.com/q/255344/150597
+
+# Resizing by 1
+bindsym $mod+Ctrl+Shift+Right resize grow width 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Shift+Left resize shrink width 1 px or 1 ppt
+
+# Resizing by 10
+bindsym $mod+Ctrl+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Ctrl+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
+
 #
 # Utilities:
 #
@@ -275,6 +307,9 @@ bindsym $mod+r mode "resize"
     # Screen recording:
     # wf-recorder --audio=alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo.monitor -c h264_vaapi -d /dev/dri/renderD128 -f ~/Videos/recording\ $(date --iso-8601=seconds).mkv -g $(slurp)
 
+    # Clipboard manager
+    exec wl-paste -t text --watch clipman store --max-items=10 --histpath="~/.local/share/clipman.json"
+    bindsym Ctrl+$mod+v exec clipman pick --tool="rofi" --max-items=10 --histpath="~/.local/share/clipman.json"
 
 #
 # Status Bar:
