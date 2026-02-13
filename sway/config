@@ -6,9 +6,9 @@
 
 ### Variables
 font pango:monospace 8
+titlebar_padding 2
 #font pango:DejaVu Sans Mono 8
 #titlebar_border_thickness 1
-titlebar_padding 2
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -271,6 +271,10 @@ bindsym $mod+r mode "resize"
     bindsym --release Ctrl+Print exec grimshot --notify savecopy window ~/Pictures/screenshots/$(date --iso-8601=seconds).png
     bindsym --release Shift+Print exec grimshot --notify copy area
     bindsym --release $mod+Shift+z exec grimshot --notify copy area
+
+    # Screen recording:
+    # wf-recorder --audio=alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo.monitor -c h264_vaapi -d /dev/dri/renderD128 -f ~/Videos/recording\ $(date --iso-8601=seconds).mkv -g $(slurp)
+
 
 #
 # Status Bar:
