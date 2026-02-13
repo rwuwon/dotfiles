@@ -33,9 +33,11 @@ include /etc/sway/config-vars.d/*
 # This is commented in Debian, because the Sway wallpaper files are in a separate
 # package `sway-backgrounds`. Installing this package drops a config file to
 # /etc/sway/config.d/
+
+# Don't exec_always swaybg or new processes will keep spawning...
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#exec_always swaybg -o "*" -i '/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png' -m fill
-exec_always swaybg -o "*" -i '/usr/share/backgrounds/gnome/geometrics-d.jxl' -m fill
+#exec swaybg -o "*" -i '/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png' -m fill
+exec swaybg -o "*" -i '/usr/share/backgrounds/gnome/geometrics-d.jxl' -m fill
 
 #
 # Example configuration:
