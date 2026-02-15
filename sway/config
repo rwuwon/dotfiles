@@ -3,6 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+# See also `man -k sway`
 
 ### Variables
 font pango:monospace 8
@@ -78,7 +79,7 @@ input "1739:52619:SYNA8006:00_06CB:CD8B_Touchpad" {
 # Read `man 5 sway-input` for more information about this section.
 
 input "2:10:TPPS/2_Elan_TrackPoint" {
-    tap enabled
+    #tap enabled
     # disable-while-typing
     dwt disabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
@@ -112,8 +113,8 @@ input "1267:10956:ELAN_Touchscreen" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
-    bindsym $mod+z exec rofi -show combi -modes combi -combi-modes "window,drun,run"
+    bindsym $mod+z exec $menu
+    bindsym $mod+d exec rofi -show combi -modes combi -combi-modes "window,drun,run"
     set $menu2 tofi-run | xargs swaymsg exec --
     #bindsym $mod+z exec $menu2
     #bindsym $mod+z exec bemenu
@@ -225,6 +226,11 @@ input "1267:10956:ELAN_Touchscreen" {
     # Show the first scratchpad window - i3 only; need sway-scratchpad
     #bindsym $mod+minus scratchpad show
 
+    # change borders
+    bindsym $mod+u border none
+    bindsym $mod+y border pixel 1
+    bindsym $mod+n border normal
+
     workspace_layout tabbed
 #
 # Scratchpad:
@@ -244,17 +250,17 @@ input "1267:10956:ELAN_Touchscreen" {
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
+    # up will grow the containers height
+    # down will shrink the containers height
     bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
+    bindsym $down resize shrink height 10px
+    bindsym $up resize grow height 10px
     bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
+    bindsym Down resize shrink height 10px
+    bindsym Up resize grow height 10px
     bindsym Right resize grow width 10px
 
     # Return to default mode
@@ -310,8 +316,11 @@ bindsym $mod+Ctrl+Left resize shrink width 10 px or 10 ppt
     bindsym --release Ctrl+Print exec grimshot --notify savecopy window ~/Pictures/screenshots/$(date --iso-8601=seconds).png
     bindsym --release Shift+Print exec grimshot --notify copy area
     bindsym --release $mod+Shift+z exec grimshot --notify copy area
+    # Fallback:
+    bindsym --release $mod+Print exec gnome-screenshot -i
 
     # Screen recording:
+    # Audio sources: pactl list sources|grep Name
     # wf-recorder --audio=alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo.monitor -c h264_vaapi -d /dev/dri/renderD128 -f ~/Videos/recording\ $(date --iso-8601=seconds).mkv -g $(slurp)
 
     # Clipboard manager
@@ -333,6 +342,7 @@ bar {
     #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
     status_command i3status
 
+    # Omit to return to i3wm theme:
     #colors {
         #statusline #ffffff
         #background #323232
@@ -340,13 +350,11 @@ bar {
         #inactive_workspace #32323200 #32323200 #5c5c5c
     #}
 
-    height 0
-
-    #icon_theme Adwaita
+    #height 0
 }
 
+# Use across different machines:
 include /etc/sway/config.d/*
-
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
@@ -362,7 +370,7 @@ mode "$mode_launcher" {
     bindsym e exec microsoft-edge, mode "default"
     bindsym f exec firefox, mode "default"
     bindsym g exec google-chrome, mode "default"
-    bindsym h exec sleep 1 && systemctl hibernate, mode "default"
+    bindsym h exec systemctl hibernate, mode "default"
     bindsym i exec gnome-clocks, mode "default"
     bindsym j exec flatpak run net.cozic.joplin_desktop, mode "default"
     bindsym k exec keepassxc, mode "default"
@@ -374,7 +382,7 @@ mode "$mode_launcher" {
     bindsym s exec seahorse, mode "default"
     bindsym t exec snap run authy, mode "default"
     bindsym v exec vmware, mode "default"
-    bindsym x exec i3-sensible-terminal, mode "default"
+    bindsym x exec $term, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -397,22 +405,23 @@ bindsym ctrl+$mod+0 exec libreoffice --calc
 #set $mode_launcher2 Launch: [power]
 #bindsym $mod+F1 mode "$mode_launcher2"
 
+#
+# Window assignments
+#
 assign [app_id="firefox-esr"] 3
 assign [app_id="microsoft-edge"] 3
 assign [app_id="net.cozic.joplin_desktop"] 4
 
-#for_window [app_id="org.keepassxc.KeePassXC"] floating enable
-#for_window [class="Pavucontrol"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
-for_window [class="Firefox" instance="Places"] floating enable
-for_window [class="Firefox" instance="Browser"] floating enable
-for_window [class="GParted"] floating enable
-for_window [class="Gnome-disks"] floating enable
-for_window [class="Toplevel"] floating enable
-for_window [class="Gnome-screenshot"] floating enable
-for_window [class="retroarch"] floating enable
+#
+# Window floating settings
+#
+for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 
+# Hints:
+# sudo -E gparted
+# swaymsg -t get_tree | jq -C | less -R #xprop alternative
+# wev #xev alternative
 
 # Focus next/previous workspace
 bindsym Mod1+Tab focus right
@@ -453,4 +462,5 @@ bindsym $mod+m bar mode toggle
 # Startup/boot commands:
 exec ~/.dropbox-dist/dropboxd
 # For OBS PipeWire Screen Capture:
+# https://wiki.gentoo.org/wiki/Sway#Screen_sharing_does_not_work
 exec --no-startup-id dbus-update-activation-environment --all
