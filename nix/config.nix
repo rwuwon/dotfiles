@@ -10,6 +10,7 @@
       myPackages = buildEnv {
         name = "my-packages";
         paths = [
+          emoji-picker
           man
           nix
           vim-full
