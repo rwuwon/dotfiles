@@ -29,16 +29,26 @@ set $menu j4-dmenu-desktop
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
+
+# This could be used for multi-monitor setups
+#output eDP-1 {
+#    background ~/wallpaper.png fill
+#    resolution 1920x1080
+#}
+
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # This is commented in Debian, because the Sway wallpaper files are in a separate
 # package `sway-backgrounds`. Installing this package drops a config file to
 # /etc/sway/config.d/
 
-# Don't exec_always swaybg or new processes will keep spawning...
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#exec swaybg -o "*" -i '/usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png' -m fill
-exec swaybg -o "*" -i '/usr/share/backgrounds/gnome/geometrics-d.jxl' -m fill
+# But don't use /etc/sway/config.d/40-sway-background.conf - it doesn't behave well compared to below.
+
+# Also never use `exec_always swaybg` because new processes will keep spawning with each reload!
+#
+
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/gnome/geometrics-d.jxl fill
 
 #
 # Example configuration:
@@ -46,6 +56,8 @@ exec swaybg -o "*" -i '/usr/share/backgrounds/gnome/geometrics-d.jxl' -m fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+# position is for https://github.com/swaywm/sway/wiki#multihead
+output eDP-1 resolution 1920x1080 scale 1.0 position 0 0
 
 ### Idle configuration
 #
