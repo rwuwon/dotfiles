@@ -260,6 +260,7 @@ exec_always ~/scripts/keyboardmouse.sh
 #exec /usr/bin/parcellite
 # Clipboard manager diodon
 exec --no-startup-id diodon
+bindsym Ctrl+$mod+v exec diodon
 #exec redshift-gtk
 #background wallpaper
 exec --no-startup-id ~/.fehbg
