@@ -40,7 +40,7 @@ set incsearch		" do incremental searching
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
-nnoremap <Leader>s :source $MYVIMRC
+nnoremap <Leader>s :source $MYVIMRC<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -365,15 +365,13 @@ let g:kolor_bold=1                      " Enable bold. Default: 1
 let g:kolor_underlined=0                " Enable underline. Default: 0
 let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
 
-" https://github.com/chriskempson/tomorrow-theme
-"colorscheme Tomorrow
 set background=dark
-colorscheme Tomorrow-Night-Bright
 "set background=light
-"colorscheme PaperColor
+"colorscheme sorbet
+colorscheme retrobox
 
-nmap <Leader>c :set background=light<CR>:colorscheme PaperColor<CR>
-nmap <Leader>C :set background=dark<CR>:colorscheme Tomorrow-Night-Bright<CR>
+nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>
+nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
 
 "------------------------------------------------------------
 "nmap <F12> :set syntax=python<CR>
