@@ -281,7 +281,7 @@ assign [class="Rhythmbox"] 10
 
 # Press $mod+o followed by either f, t, Esc or Return to launch firefox,
 # thunderbird or return to the default mode, respectively.
-set $mode_launcher Launch: [a]nki [b]lueman [c]alc sci[d] [e]dge [f]irefox [g]oogle-chrome [h]ibernate t[i]mer [j]oplin [k]eepassxc vo[l]ume [n]autilus bluec[o]nnect [p]lover [r]hythmbox [s]eahorse au[t]hy [v]mware [x]term
+set $mode_launcher Launch: [a]nki [b]lueman [c]alc sci[d] [e]dge [f]irefox [g]oogle-chrome [h]ibernate t[i]mer [j]oplin [k]eepassxc vo[l]ume [n]autilus bluec[o]nnect [p]lover [r]hythmbox [s]eahorse au[t]hy [v]irt-manager [x]term
 
 bindsym $mod+o mode "$mode_launcher"
 
@@ -305,7 +305,7 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym t exec snap run authy, mode "default"
-    bindsym v exec vmware, mode "default"
+    bindsym v exec virt-manager, mode "default"
     bindsym x exec i3-sensible-terminal, mode "default"
 
     bindsym Escape mode "default"
