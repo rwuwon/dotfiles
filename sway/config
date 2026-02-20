@@ -59,10 +59,6 @@ output * bg /usr/share/backgrounds/gnome/geometrics-d.jxl fill
 # position is for https://github.com/swaywm/sway/wiki#multihead
 output eDP-1 resolution 1920x1080 scale 1.0 position 0 0
 
-exec export WLR_BACKENDS=headless
-exec export WLR_LIBINPUT_NO_DEVICES=1
-exec export WAYLAND_DISPLAY=wayland-1
-
 mode "Passthrough Mode - Press mod+Shift+p to exit" {
     bindsym $mod+Shift+p mode "default"
 }
