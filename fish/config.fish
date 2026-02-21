@@ -1,4 +1,4 @@
-set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
+set PATH ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
 
 # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
@@ -86,9 +86,9 @@ alias ......='cd ../../../../..'
 #alias gbsr='git bisect reset'
 #alias gbss='git bisect start'
 alias gc='git commit -v'
-#alias 'gc!'='git commit -v --amend'
+alias 'gc!'='git commit -v --amend'
 alias gca='git commit -v -a'
-#alias 'gca!'='git commit -v -a --amend'
+alias 'gca!'='git commit -v -a --amend'
 alias gcam='git commit -a -m'
 #alias 'gcan!'='git commit -v -a --no-edit --amend'
 #alias 'gcans!'='git commit -v -a -s --no-edit --amend'
