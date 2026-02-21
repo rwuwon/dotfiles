@@ -250,9 +250,9 @@ bar {
 }
 
 mode "Passthrough Mode - Press mod+Shift+p to exit" {
-    bindsym $mod+Shift+p mode "default"; floating_modifier $mod normal
+    bindsym $mod+Shift+p mode "default"
 }
-bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"; floating_modifier none
+bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"
 
 # ------------------
 # |CUSTOM COMMANDS |
