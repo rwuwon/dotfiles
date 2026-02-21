@@ -248,6 +248,12 @@ bar {
         # Obey Fitts's law
         tray_padding 0
 }
+
+mode "Passthrough Mode - Press mod+Shift+p to exit" {
+    bindsym $mod+Shift+p mode "default"; floating_modifier $mod normal
+}
+bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"; floating_modifier none
+
 # ------------------
 # |CUSTOM COMMANDS |
 # ------------------
