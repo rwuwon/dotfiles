@@ -251,8 +251,10 @@ bar {
 
 mode "Passthrough Mode - Press mod+Shift+p to exit" {
     bindsym $mod+Shift+p mode "default"
+    set $mod Mod1
 }
 bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"
+set $mod Mod4
 
 # ------------------
 # |CUSTOM COMMANDS |
