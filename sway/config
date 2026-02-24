@@ -461,6 +461,9 @@ bindsym --whole-window --border $mod+shift+button5 workspace next
 
 # The middle button over a titlebar kills the window
 bindsym --release button2 kill
+
+# Force kill window (xkill alternative), tip from #sway
+bindsym $mod+shift+alt+q exec 'yad --question --text="kill -9 this window, OK?" --default-cancel && kill -9 $(swaymsg -t get_tree | jq -r "..| try select(.focused == true) .pid")'
 #
 # # The middle button and a modifer over any part of the window kills the window
 # bindsym --whole-window $mod+button2 kill
