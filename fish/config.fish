@@ -46,6 +46,7 @@ alias lll='ls -lahrt --time-style=long-iso'
 alias l.='ls -d .* --time-style=long-iso --group-directories-first'
 alias lsd='ls -d /* --time-style=long-iso'
 
+alias cp='cp -vi'
 alias mv='mv -vi'
 
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
