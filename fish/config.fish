@@ -10,7 +10,6 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 #cal -w (date +%Y)
 #cal 2020
 
-#alias -='cd -'     # deprecated
 # Run this once in fish and it should set.
 abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 
@@ -31,6 +30,7 @@ alias less='less -i'
 alias bat='batcat'
 alias t='tmux'
 alias s='sudo -i'
+alias sd='sudo'
 
 # GNU is weird
 #alias gpg='gpg2'
@@ -55,6 +55,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias a='alias'
 alias g='git'
 alias aaa='tmux attach; or tmux'
+alias ttt='tmux attach; or tmux'
 alias ddd='tmux detach'
 alias m='mosh deb -- tmux a'
 alias yt-dlp='yt-dlp --no-mtime'
@@ -70,8 +71,8 @@ alias ......='cd ../../../../..'
 #alias ebuild='nocorrect ebuild'
 #alias egrep='egrep --color=auto'
 #alias fgrep='fgrep --color=auto'
-#alias g=git
-#alias ga='git add'
+alias g=git
+alias ga='git add'
 #alias gaa='git add --all'
 #alias gap='git apply'
 #alias gapa='git add --patch'
@@ -232,3 +233,7 @@ alias md='mkdir -p'
 #alias zgrep='zgrep --color=auto'
 alias cal='ncal -b'
 alias ip='ip -c'
+
+alias f='fish'
+alias ho='home-manager switch'
+end
