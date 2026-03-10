@@ -271,15 +271,15 @@ exec --no-startup-id diodon
 bindsym Ctrl+$mod+v exec diodon
 #exec redshift-gtk
 #background wallpaper
-exec --no-startup-id ~/.fehbg
-#exec ~/scripts/dropboxd
+exec ~/.fehbg
+#exec --no-startup-id ~/scripts/dropboxd
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 #exec --no-startup-id conky -c ~/.conkyrc
-exec_always --no-startup-id conky -q -c ~/.config/conky/conky.conf &>/dev/null
+#exec_always --no-startup-id conky -q -c ~/.config/conky/conky.conf &>/dev/null
 #exec_always "sleep 15 && ibus-daemon"
 exec nvidia-settings --load-config-only
 # Disable touchscreen:
-exec xinput disable 10
+#exec xinput disable 10
 
 # xprop example: WM_CLASS(STRING) = "rhythmbox", "Rhythmbox" "string","Class"
 #assign [class="Vivaldi-stable"] 1
@@ -378,16 +378,17 @@ bindsym --release $mod+Print exec gnome-screenshot -i
 #bindsym $mod+Mod1+Shift+4 exec gnome-screenshot -i
 
 # maim works with lossless webp, unlike gnome-screenshot 41.0
+# Just remember to use -f webp...
 # screenshot everything, save & copy to clipboard
-bindsym --release Print exec maim -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+bindsym --release Print exec maim -m 10 -f webp | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
 # macOS binding for muscle memory training
-bindsym $mod+Mod1+Shift+3 exec maim -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+bindsym $mod+Mod1+Shift+3 exec maim -m 10 -f webp | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
 # screenshot active window, save & copy to clipboard
-bindsym --release Ctrl+Print exec maim -m 10 -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+bindsym --release Ctrl+Print exec maim -m 10 -f webp -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
 # screenshot selection, save & copy to clipboard
-bindsym --release Ctrl+Shift+Print exec maim -s -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+bindsym --release Ctrl+Shift+Print exec maim -s -m 10 -f webp | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
 # macOS binding for muscle memory training
-bindsym $mod+Mod1+Shift+4 exec maim -s -m 10 | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
+bindsym $mod+Mod1+Shift+4 exec maim -s -m 10 -f webp | tee ~/Pictures/screenshots/$(date --iso-8601=seconds).webp | xclip -selection clipboard -t image/png
 # screenshot active window to clipboard only
 bindsym --release Shift+Print exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # screenshot active window to clipboard only, alternate binding
@@ -470,6 +471,11 @@ bindsym $mod+m bar mode toggle
 
 # Stop mouse pointer jumping when screens are switched
 # https://i3wm.org/docs/userguide.html#_mouse_warping
+
+# "By default, when switching focus to a window on a different output (e.g. focusing a window on
+# workspace 3 on output VGA-1, coming from workspace 2 on LVDS-1), the mouse cursor is warped to
+# the center of that window.
+
 mouse_warping output
 
 # Swap alt & cmd keys on MBP
