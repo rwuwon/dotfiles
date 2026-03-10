@@ -1,11 +1,12 @@
-set PATH ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
+set PATH ~/nix/vnc ~/scripts /usr/sbin /home/io/.local/share/flatpak/exports/bin $PATH
+#set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
+#set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
 
-# colouriser https://github.com/garabik/grc?tab=readme-ov-file#readme
-source ~/.config/fish/functions/grc.fish
+# set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
 
 # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-#export MANROFFOPT="-c"  # Use if formatting is wonky:
+export MANROFFOPT="-c"  # Use if formatting is wonky:
 
 #cal -w (date +%Y)
 #cal 2020
@@ -21,6 +22,7 @@ abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 export EDITOR=vim
 export GPG_TTY=(tty)
 export GPGKEY=10F5EEB0
+export 4K=6D3F23B4
 
 alias bc='bc -l'
 alias bmon='bmon -b'
