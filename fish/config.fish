@@ -1,7 +1,7 @@
 set PATH ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin $PATH 
 
 # colouriser https://github.com/garabik/grc?tab=readme-ov-file#readme
-source ~/.config/fish/grc.fish
+source ~/.config/fish/functions/grc.fish
 
 # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
