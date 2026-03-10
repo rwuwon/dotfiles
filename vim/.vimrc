@@ -254,6 +254,8 @@ set cmdheight=2
  
 " Display line numbers on the left
 set number
+
+set relativenumber
  
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -269,8 +271,8 @@ set notimeout ttimeout ttimeoutlen=200
  
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set expandtab
  
 " Indentation settings for using hard tabs for indent. Display tabs as
