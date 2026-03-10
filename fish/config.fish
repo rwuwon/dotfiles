@@ -237,4 +237,3 @@ alias ip='ip -c'
 
 alias f='fish'
 alias ho='home-manager switch'
-end
