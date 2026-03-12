@@ -1,62 +1,65 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
   set PATH ~/nix/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
-  
+
   #set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /usr/share /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
   # set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
-  
+
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
   export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
-  
+
   #cal -w (date +%Y)
   #cal 2020
-  
+
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
-  
+
+  # Try running once to stop abbreviated paths:
+  #set -g fish_prompt_pwd_dir_length 0
+
   # This is necessary for pinentry cli to send password box properly; maybe
   # bash version: export GPG_TTY=$(tty)
-  
+
   # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
   #
   export EDITOR=vim
   export GPG_TTY=(tty)
   export GPGKEY=10F5EEB0
   export 4K=6D3F23B4
-  
+
   alias bc='bc -l'
   alias bmon='bmon -b'
   alias make='time make'
-  
+
   alias less='less -i'
   alias bat='batcat'
   alias t='tmux'
   alias s='sudo -i'
   alias sd='sudo'
-  
+
   # GNU is weird
   #alias gpg='gpg2'
-  
+
   # x11-vim for +clipboard
   #alias vi='vimx'
   #alias vim='vimx'
   #alias vimdiff='vim -d'
-  
+
   alias l='ls -lah --time-style=long-iso --group-directories-first'
   alias ll='ls -lh --time-style=long-iso --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso'
   alias l.='ls -d .* --time-style=long-iso --group-directories-first'
   alias lsd='ls -d /* --time-style=long-iso'
-  
+
   alias cp='cp -vi'
   alias mv='mv -vi'
-  
+
   # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
   # https://news.ycombinator.com/item?id=11071754
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-  
+
   alias a='alias'
   alias g='git'
   alias aaa='tmux attach; or tmux'
@@ -64,7 +67,7 @@ if status is-interactive
   alias ddd='tmux detach'
   alias m='mosh deb -- tmux a'
   alias yt-dlp='yt-dlp --no-mtime'
-  
+
   # oh-mh-zsh git aliases
   alias ...='cd ../..'
   alias ....='cd ../../..'
@@ -238,7 +241,7 @@ if status is-interactive
   #alias zgrep='zgrep --color=auto'
   alias cal='ncal -b'
   alias ip='ip -c'
-  
+
   alias f='fish'
   alias ho='home-manager switch'
 end
