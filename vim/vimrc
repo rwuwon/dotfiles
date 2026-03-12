@@ -386,7 +386,6 @@ inoremap <C-S> <C-O>:update<CR>
 " The help file will not say increment!
 
 set colorcolumn=+1
-set cursorcolumn
 
 "call plug#begin()
     " List your plugins here
@@ -417,67 +416,17 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+
+" Show tabs and trailing characters as - and ·
+set listchars=tab:->,trail:·
+set list
+nmap <Leader>l :set nolist<CR>
+nmap <Leader>L :set list<CR>
 
 " https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
 " https://github.com/puremourning/vimspector
-
-"let g:vimspector_adapters = #{
-"      \   test_debugpy: #{ extends: 'debugpy' }
-"      \ }
-"
-"let g:vimspector_configurations = {
-"      \ "test_debugpy_config": {
-"      \   "adapter": "test_debugpy",
-"      \   "filetypes": [ "python" ],
-"      \   "configuration": {
-"      \     "request": "launch",
-"      \     "type": "python",
-"      \     "cwd": "${fileDirname}",
-"      \     "args": [],
-"      \     "program": "${file}",
-"      \     "stopOnEntry": v:false,
-"      \     "console": "integratedTerminal",
-"      \     "integer": 123,
-"      \   },
-"      \   "breakpoints": {
-"      \     "exception": {
-"      \       "raised": "N",
-"      \       "uncaught": "",
-"      \       "userUnhandled": ""
-"      \     }
-"      \   }
-"      \ } }
-"
-"let g:vimspector_base_dir='$HOME/.vim/plugged/vimspector'
-"let g:vimspector_enable_mappings = 'HUMAN'
-"
-"nmap <Leader>db <Plug>VimspectorBreakpoints
-"
-"nmap <Leader><F11> <Plug>VimspectorUpFrame
-"nmap <Leader><F12> <Plug>VimspectorDownFrame
-"nmap <Leader>B     <Plug>VimspectorBreakpoints
-"nmap <Leader>D     <Plug>VimspectorDisassemble
-"
-"
-"" https://github.com/puremourning/vimspector?tab=readme-ov-file#picking-a-pid
-"function! CustomPickProcess( ... ) abort
-"  let ps = 'ps aux'
-"
-"  let line_selected = fzf#run( {
-"      \ 'source': ps,
-"      \ 'options': '--header-lines=1  '
-"      \          . '--prompt="Select Process: " '
-"      \ ,
-"      \
-"      \ } )[ 0 ]
-"  if empty( line_selected)
-"    return 0
-"  endif
-"  let pid = split( line_selected )[ 0 ]
-"  return str2nr( pid )
-"endfunction
-"
-"let g:vimspector_custom_process_picker_func = 'CustomPickProcess'
 
 " Tips & Tricks
 " Write to read-only file:
