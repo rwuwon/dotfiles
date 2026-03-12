@@ -417,7 +417,7 @@ augroup Binary
 augroup END
 
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
+"let g:indent_guides_auto_colors = 1
 
 " Show tabs and trailing characters as - and ·
 set listchars=tab:->,trail:·
