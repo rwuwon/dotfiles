@@ -397,6 +397,8 @@ set colorcolumn=+1
     "Plug 'puremourning/vimspector'
     "Plug 'vim-airline/vim-airline'
     "Plug 'preservim/nerdtree'
+    "Plug 'nathanaelkane/vim-indent-guides'
+
 "call plug#end()
 
 "au BufNewFile,BufRead *.py
