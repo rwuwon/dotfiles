@@ -41,7 +41,7 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 
 "nnoremap <Leader>s :source $MYVIMRC
-nnoremap <Leader>s :source /home/io/nix/dotfiles/vim/vimrc<CR>
+nnoremap <Leader>s :source /home/io/dotfiles/vim/vimrc
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -260,7 +260,7 @@ set relativenumber
 set notimeout ttimeout ttimeoutlen=200
 
 " Use <F9> to toggle between 'paste' and 'nopaste'
-"set pastetoggle=<F9>
+set pastetoggle=<F9>
 
 
 "------------------------------------------------------------
@@ -386,6 +386,7 @@ inoremap <C-S> <C-O>:update<CR>
 " The help file will not say increment!
 
 set colorcolumn=+1
+set cursorcolumn
 
 "call plug#begin()
     " List your plugins here
