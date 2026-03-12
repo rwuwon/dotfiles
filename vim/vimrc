@@ -320,8 +320,8 @@ nmap <Leader><Tab> :bn<CR>  " Because <Tab> interferes with <C-i>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
-nmap <Leader>l gt
-nmap <Leader>h gT
+nmap <Leader>j gt
+nmap <Leader>k gT
 
 nmap <Left> <C-W>h
 nmap <Down> <C-W>j
