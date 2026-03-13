@@ -411,7 +411,7 @@ bindsym ctrl+$mod+2 exec microsoft-edge
 bindsym ctrl+$mod+3 exec firefox-esr
 bindsym ctrl+$mod+4 exec flatpak run net.cozic.joplin_desktop
 bindsym ctrl+$mod+5 exec /usr/games/scid
-bindsym ctrl+$mod+6 exec gnome-terminal -t "irssi" -- fish -c 'mosh io@deb -- tmux attach'
+bindsym ctrl+$mod+6 exec gnome-terminal -t "gcloud" -- fish -c 'mosh io@deb -- tmux attach'
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
