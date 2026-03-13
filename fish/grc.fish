@@ -15,7 +15,7 @@
 #       tcpdump tune2fs vmstat w who sockstat
 
 set -U grc_plugin_execs cat cvs df diff dig gcc g++ ifconfig \
-       make mount mtr netstat ping ps tail traceroute \
+       make mount mtr netstat ping ps traceroute \
        wdiff blkid du dnf docker docker-compose docker-machine env id ip iostat kubectl \
        last lsattr lsblk lspci lsmod lsof getfacl getsebool ulimit uptime nmap \
        fdisk findmnt free semanage sar ss sysctl stat showmount \
