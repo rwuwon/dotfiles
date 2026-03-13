@@ -35,7 +35,7 @@ if status is-interactive
 
   alias less='less -i'
   alias bat='batcat'
-  alias t='tmux'
+  alias t='tmux a; or tmux'
   alias s='sudo -i'
   alias sd='sudo'
 
