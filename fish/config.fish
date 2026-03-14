@@ -34,7 +34,7 @@ if status is-interactive
   alias make='time make'
 
   alias less='less -i'
-  alias bat='batcat'
+  #alias bat='batcat'
   alias t='tmux a; or tmux'
   alias s='sudo -i'
   alias sd='sudo'
