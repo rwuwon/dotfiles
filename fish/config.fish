@@ -7,7 +7,7 @@ if status is-interactive
 
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
-  export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
 
   #cal -w (date +%Y)
