@@ -244,4 +244,6 @@ if status is-interactive
 
   alias f='fish'
   alias ho='home-manager switch'
+  alias hov='home-manager switch -v'
+  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
 end
