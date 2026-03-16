@@ -246,4 +246,7 @@ if status is-interactive
   alias ho='home-manager switch'
   alias hov='home-manager switch -v'
   alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
+  alias vi="vim -p"
+  alias vim="vim -p"
+  alias vimd="vimdiff"
 end
