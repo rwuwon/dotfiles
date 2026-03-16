@@ -1,6 +1,7 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
-  set PATH ~/nix/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
+  uname -a
+  set PATH ~/dotfiles/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
 
   #set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /usr/share /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
   # set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
