@@ -1,5 +1,6 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  set -g fish_greeting # Suppress greeting
   uname -a
   set PATH ~/dotfiles/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
 
