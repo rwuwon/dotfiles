@@ -1,0 +1,57 @@
+# nix on Debian:
+
+# 1. Install and add user to group:
+sudo apt install nix-setup-systemd
+sudo adduser io nix-users
+
+# 2. Enable channel:
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+nix-channel --list
+nix-channel --update
+
+# 3. nix-shell will now work:
+nix-shell -p vim
+
+# 4. If using nix-env -iA:
+mkdir -p ~/.config/nixpkgs
+vim ~/.config/nixpkgs/config.nix
+nix-env -iA nixpkgs.myPackages
+
+export PATH=$PATH:~/.nix-profile/bin
+
+###############################
+# ~/.config/nixpkgs/config.nix:
+
+# https://nixos.org/manual/nixpkgs/stable/#sec-getting-documentation
+# nix-channel --list
+# nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+# nix-channel --update nixpkgs
+# nix-env -iA nixpkgs.myPackages
+
+# https://blog.koch.ro/posts/2024-01-16-using-nix-package-manager-in-debian.html
+#with (import <nixpkgs> {});
+
+{
+  packageOverrides =
+    pkgs: with pkgs; {
+      myPackages = buildEnv {
+        name = "my-packages";
+        paths = [
+          man
+          vim
+          git
+          fish
+          tmux
+        ];
+        pathsToLink = [
+          "/share/man"
+          "/share/doc"
+          "/bin"
+        ];
+        extraOutputsToInstall = [
+          "man"
+          "doc"
+        ];
+      };
+  };
+}

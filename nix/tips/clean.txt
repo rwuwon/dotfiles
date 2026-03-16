@@ -1,0 +1,10 @@
+non-NixOS:
+----------
+nix-env --list-generations
+nix-env --delete-generations 3d
+nix-collect-garbage --delete-older-than 3d
+
+NixOS:
+------
+nixos-rebuild list-generations
+sudo nix-collect-garbage --delete-older-than 3d

@@ -1,0 +1,15 @@
+# cd to flake directory
+
+# Update flake.lock
+nix flake update
+
+# Or update only the specific input, such as home-manager:
+nix flake update home-manager
+
+# Apply the updates
+sudo nixos-rebuild switch --flake .
+
+
+
+# Shrink VM images
+virt-sparsify --tmp /home/io/asdf/tmp debian-standard-clone.qcow2 debian-standard.qcow2

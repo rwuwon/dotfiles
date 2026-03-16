@@ -27,9 +27,6 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
-
     neofetch
     nnn # terminal file manager
 
@@ -45,6 +42,7 @@
     #yq-go # yaml processor https://github.com/mikefarah/yq
     #eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
+    grc
 
     # networking tools
     mtr # A network diagnostic tool
@@ -57,16 +55,21 @@
     ipcalc  # it is a calculator for the IPv4/v6 addresses
 
     # misc
+    bat
     cowsay
+    cpufetch
+    emoji-picker
+    fastfetch
     file
-    which
-    tree
+    #gawk
+    gdu
+    gnupg
     #gnused
     #gnutar
-    #gawk
+    jq
+    tree
+    which
     zstd
-    gnupg
-    bat
 
     # nix related
     #
@@ -78,6 +81,7 @@
     #hugo # static site generator
     glow # markdown previewer in terminal
 
+    atop
     btop  # htop/bmon alternative
     htop
     iotop # io monitoring
@@ -103,13 +107,17 @@
 
     # vnc
     wayvnc
+
+    #weechat
+    #neovim
+    #cyberchef # offline instance of cyberchef
   ];
 
   # basic configuration of git, please change to your own
   programs.git.settings = {
     enable = true;
-    username = "Raymond Wu Won";
-    useremail = "rwuwon@gmail.com";
+    username = "io";
+    useremail = "<>";
   };
 
   # starship - an customizable prompt for any shell
@@ -155,11 +163,125 @@
     };
   };
 
+  programs.tmux = {
+  enable = true;
+  clock24 = true;
+  # used for less common options, intelligently combines if defined in multiple places.
+  extraConfig = ''
+  # The next line is why the config is here and not sourced from dotfiles:
+  #set-option -g default-shell /home/io/.nix-profile/bin/fish
+  set-option -g prefix2 C-Space
+  setw -g mode-keys vi
+  set -g display-time 0
+  set -g history-limit 99999
+  set -g mouse on
+  bind -n S-PPage copy-mode -ue
+  bind-key a set mouse
+  bind-key j set mouse
+  bind-key ` attach -d
+  set -g base-index 1
+  setw -g pane-base-index 1
+  set-option -g renumber-windows on
+  '';
+  };
+
   programs.vim = {
     enable = true;
     extraConfig = builtins.readFile vim/vimrc;
-    plugins = with pkgs.vimPlugins; [ fzf-vim nerdtree vim-airline ];
+
+    plugins = with pkgs.vimPlugins; [
+      fzf-vim
+      nerdtree
+      vim-airline
+      vim-indent-guides
+      vim-nix
+      vim-sensible
+    ];
     settings = { ignorecase = true; };
+  };
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+    ".bash_aliases".text = ''
+      alias f='fish'
+      '';
+
+    # In terms of safety, nix > home.file sourcing > mkOutOfStoreSymlink
+    # vim: Won't work well with plugins if sourced.
+    # fish: Generally behaves well. Use conf.d/ for extra reliability.
+    # tmux: Safer to not source, to maintain set-option -g default-shell
+
+    ".config/fish/config.fish".source = fish/config.fish;
+    ".config/fish/conf.d/fish_prompt.fish" = {
+      text = ''
+      function fish_prompt --description 'Informative prompt'
+        #Save the return status of the previous command
+        set -l last_pipestatus $pipestatus
+        set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
+
+        if functions -q fish_is_root_user; and fish_is_root_user
+          printf '%s@%s %s%s%s# ' $USER (prompt_hostname) (set -q fish_color_cwd_root
+            and set_color $fish_color_cwd_root
+            or set_color $fish_color_cwd) \
+            (prompt_pwd) (set_color normal)
+        else
+          set -l status_color (set_color $fish_color_status)
+          set -l statusb_color (set_color --bold $fish_color_status)
+          set -l pipestatus_string (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
+
+          printf '[%s] %s%s@%s %s%s %s%s%s \n> ' (date "+%H:%M:%S") (set_color brblue) \
+            $USER (prompt_hostname) (set_color $fish_color_cwd) $PWD $pipestatus_string \
+            (set_color normal)
+
+        set -l nix_shell_info (
+          if test -n "$IN_NIX_SHELL"
+            echo -n "[nix-shell]\$ "
+          end
+        )
+        echo -n -s "$nix_shell_info"
+
+        end
+      end
+      '';
+    };
+
+    # Sourcing vim/myfiletypes.vim doesn't seem to work for some reason.
+    ".vim/myfiletypes.vim" = {
+      text = ''
+        augroup filetype
+                au!
+                au! BufRead,BufNewFile *.jy   set filetype=python
+        augroup END
+      '';
+    };
+
+    ".tmux.conf" = {
+      text = ''
+        set-option -g default-shell /run/current-system/sw/bin/fish
+        set-window-option -g mode-keys vi
+        set -g default-terminal "screen-256color"
+        set -ga terminal-overrides ',screen-256color:Tc'
+        set-option -g prefix2 C-Space
+        set -g display-time 0
+        set -g history-limit 99999
+        bind -n S-PPage copy-mode -ue
+        bind-key a set mouse
+        bind-key j set mouse
+        bind-key ` attach -d
+      '';
+    };
+
   };
 
   # This value determines the home Manager release that your

@@ -11,22 +11,11 @@
     ];
 
   # Bootloader.
-#  boot.loader.grub.enable = true;
-#  boot.loader.grub.device = "/dev/vda";
-#  boot.loader.grub.useOSProber = true;
-#  boot.loader.timeout = 1;
-
-  boot = {
-    #kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      grub = {
-        enable = true;
-        device = "/dev/vda";
-        useOSProber = true;
-      };
-      timeout = 1;
-    };
-  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/vda";
+  boot.loader.grub.useOSProber = true;
+  boot.loader.timeout = 1;
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -56,29 +45,27 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
+  ### Start of section for i3, not sway
+  ## Enable the X11 windowing system.
+  #services.xserver.enable = true;
 
-#### Start of section for i3, not sway
-  # Enable the X11 windowing system.
-#  services.xserver.enable = true;
+  ## Enable the GNOME Desktop Environment.
+  #services.displayManager.gdm.enable = true;
+  #services.desktopManager.gnome.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-#    services.displayManager.gdm.enable = true;
-#    services.desktopManager.gnome.enable = true;
+  #services.xserver = {
+  #  enable = true;
 
-#  services.xserver = {
-#    enable = true;
-
-#    windowManager.i3 = {
-#      enable = true;
-#      extraPackages = with pkgs; [
-#        dmenu #application launcher most people use
-#        i3status # gives you the default i3 status bar
-#        i3blocks #if you are planning on using i3blocks over i3status
-#        ];
-#      };
-#    };
-#### End of section for i3, not sway
-
+  #  windowManager.i3 = {
+  #    enable = true;
+  #    extraPackages = with pkgs; [
+  #      dmenu #application launcher most people use
+  #      i3status # gives you the default i3 status bar
+  #      i3blocks #if you are planning on using i3blocks over i3status
+  #      ];
+  #    };
+  #  };
+  ### End of section for i3, not sway
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -87,7 +74,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -151,7 +138,8 @@
   # To set up Sway using Home Manager, you must first enable Polkit in your NixOS configuration.
   #security.polkit.enable = true;
 
-  # Install firefox.
+  programs.mosh.enable = true;
+
   programs.firefox.enable = true;
 
   programs.sway = {
@@ -161,56 +149,16 @@
   programs.sway.extraPackages = with pkgs; [
     brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust termite rofi light bemenu wl-clipboard clipman ];
 
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    extraConfig = '' # used for less common options, intelligently combines if defined in multiple places.
-    # Apply changes by running: tmux source-file ~/.tmux.conf
-
-    # Prefix tip via https://www.reddit.com/r/neovim/comments/wta8k2/why_not_use_space_as_leader_key/
-    # and https://koenwoortman.com/tmux-prefix-ctrl-space/
-    set -g prefix2 C-Space
-    
-    set -g mode-keys vi
-    set -g display-time 0
-    set -g history-limit 99999
-    # Interferes with local selection & copy:
-    #set -g mouse on
-    
-    # Setup 'v' to begin selection as in Vim
-    #bind-key -T vi-copy v begin-selection
-    #bind-key -T vi-copy y copy-pipe "cat >/tmp/out"
-    
-    # Update default binding of `Enter` to also use copy-pipe
-    #unbind -T vi-copy Enter
-    #bind-key -T vi-copy Enter copy-pipe "cat >/tmp/out"
-    
-    # Scroll
-    bind -n S-PPage copy-mode -ue
-    
-    # Use Ctrl-B a to toggle mouse mode
-    bind-key a set mouse
-    # j included for faster toggling from home row
-    bind-key j set mouse
-    
-    # Detach other attached sessions
-    bind-key ` attach -d
-    '';
-  };
-
   programs.fish = {
     enable = true;
-    interactiveShellInit = builtins.readFile fish/config.fish;
-    #interactiveShellInit = ''
-    #'';
   };
 
-  users.extraUsers.root = {
-    shell = pkgs.fish;
-  };
   users.extraUsers.io = {
     shell = pkgs.fish;
   };
+  #users.extraUsers.root = {
+  #  shell = pkgs.fish;
+  #};
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -225,19 +173,16 @@
   environment.systemPackages = with pkgs; [
   # Flakes clones its dependencies through the git command,
   # so git must be installed first
-  # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #linux
   git
-  #vim
   wget
 
   fishPlugins.done
   fishPlugins.fzf-fish
   fishPlugins.forgit
   fishPlugins.hydro
-  fzf
   fishPlugins.grc
-  grc
+  #fzf
+  #grc
   # Use 3rd-party fish plugins manually packaged.
   #(pkgs.callPackage ../fish-colored-man.nix {buildFishPlugin = pkgs.fishPlugins.buildFishPlugin; } )
 
@@ -245,20 +190,11 @@
   #x11vnc
   #xorg.xinit
 
-  #tmux
-  #fzf
-  #btop
   #firefox
   #grim # screenshot functionality
   #slurp # screenshot functionality
   #wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
   #mako # notification system developed by swaywm maintainer
-  #weechat
-  #neovim
-  #cyberchef # offline instance of cyberchef
-  #alacritty
-  #kitty
-  #bat
   ];
   # Set the default editor to vim
   environment.variables.EDITOR = "vim";

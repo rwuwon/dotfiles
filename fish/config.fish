@@ -2,8 +2,8 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
   set PATH ~/nix/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
 
-  #set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /usr/share /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
-  # set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /snap/bin /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
+  #set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /usr/share /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
+  # set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
 
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
@@ -63,11 +63,10 @@ if status is-interactive
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
   alias a='alias'
-  alias m='mosh deb -- tmux a'
+  alias m='mosh oracle -- tmux a'
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
 
-  # oh-mh-zsh git aliases
   alias ...='cd ../..'
   alias ....='cd ../../..'
   alias .....='cd ../../../..'
@@ -88,6 +87,7 @@ if status is-interactive
   #alias egrep='egrep --color=auto'
   #alias fgrep='fgrep --color=auto'
 
+  # oh-mh-zsh git aliases
   alias g=git
   alias ga='git add'
   #alias gaa='git add --all'

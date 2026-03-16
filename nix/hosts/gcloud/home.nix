@@ -1,3 +1,119 @@
+{ config, pkgs, ... }:
+# https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
+# https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
+in
+{
+  xdg.configFile = {
+# Use only for testing. Beware of "recursion"!
+# Switch between systems by first commenting out BOTH sections
+#    fish.source = "${dotfiles}/fish";
+#    tmux.source = "${dotfiles}/tmux";
+#    vim.source = "${dotfiles}/vim";
+  };
+
+  targets.genericLinux.enable = true;
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "io";
+  home.homeDirectory = "/home/io";
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "25.11"; # Please read the comment before changing.
+
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = with pkgs; [
+    bat
+    cpufetch
+    #deno
+    emoji-picker
+    fastfetch
+    hello
+    links2
+    #man
+    nix
+    #yt-dlp
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    (writeShellScriptBin "my-hello" ''
+      echo "Hello, ${config.home.username}!"
+    '')
+  ];
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+    ".bash_aliases".text = ''
+      alias f='fish'
+      '';
+    #".vimrc".source = /home/${config.home.username}/nix/dotfiles/vim/vimrc;
+    ".vim/myfiletypes.vim".source = /home/${config.home.username}/nix/dotfiles/vim/myfiletypes.vim;
+    ".config/tmux/tmux.conf".source = /home/${config.home.username}/nix/dotfiles/tmux/tmux.conf;
+    ".config/fish/conf.d/config.fish".source = /home/${config.home.username}/nix/dotfiles/fish/config.fish;
+    ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/nix/dotfiles/fish/grc.fish;
+    ".config/fish/conf.d/fish_prompt.fish".source = /home/${config.home.username}/nix/dotfiles/fish/fish_prompt.fish;
+  };
+
+  # Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/io/etc/profile.d/hm-session-vars.sh
+  #
+  home.sessionVariables = {
+    # EDITOR = "emacs";
+  };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      fzf-vim
+      nerdtree
+      vim-airline
+      vim-indent-guides
+      vim-nix
+      vim-sensible
+    ];
+    settings = { ignorecase = true; };
+    extraConfig = ''
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -41,7 +157,7 @@ nnoremap <SPACE> <Nop>
 let mapleader = " "
 
 "nnoremap <Leader>s :source $MYVIMRC
-nnoremap <Leader>s :source /home/io/nix/.vimrc<CR>
+nnoremap <Leader>s :source /home/io/nix/dotfiles/vim/vimrc
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -131,31 +247,30 @@ packadd matchit
 "              newbie, basing your first .vimrc on this file is a good choice.
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
- 
+
 "------------------------------------------------------------
 " Features {{{1
 "
 " These options and commands enable some very useful features in Vim, that
 " no user should have to live without.
- 
+
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 "set nocompatible
- 
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 "filetype indent plugin on
- 
+
 " Enable syntax highlighting
 "syntax on
- 
- 
+
 "------------------------------------------------------------
 " Must have options {{{1
 "
 " These are highly recommended options.
- 
+
 " Vim with default settings does not allow easy switching between multiple files
 " in the same editor window. Users can use multiple split windows or multiple
 " tab pages to edit multiple files, but it is still best to enable an option to
@@ -171,29 +286,29 @@ packadd matchit
 " crashes.
 " Read :h 22.4
 set hidden
- 
+
 " Note that not everyone likes working this way (with the hidden option).
 " Alternatives include using tabs or split windows instead of re-using the same
 " window as mentioned above, and/or either of the following options:
 " set confirm
 " set autowriteall
- 
+
 " Better command-line completion
 set wildmenu
- 
+
 " Show partial commands in the last line of the screen
 "set showcmd
- 
+
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 "set hlsearch
- 
+
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
- 
- 
+
+
 "------------------------------------------------------------
 " Usability options {{{1
 "
@@ -201,41 +316,41 @@ set wildmenu
 " change Vim's behaviour in ways which deviate from the true Vi way, but
 " which are considered to add usability. Which, if any, of these options to
 " use is very much a personal preference, but they are harmless.
- 
+
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
- 
+
 " Allow backspacing over autoindent, line breaks and start of insert action
 "set backspace=indent,eol,start
- 
+
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 "set autoindent
- 
+
 " Stop certain movements from always going to the first character of a line.
 " While this behaviour deviates from that of Vi, it does what most users
 " coming from other editors would expect.
 set nostartofline
- 
+
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 "set ruler
- 
+
 " Always display the status line, even if only one window is displayed
 set laststatus=2
 
 " Always display full path
 " This interferes with row/col display. Do not use.
 "set statusline+=%F
- 
+
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
 set confirm
- 
+
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
- 
+
 " And reset the terminal code for the visual bell. If visualbell is set, and
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
@@ -245,56 +360,56 @@ set t_vb=
 " unnamed for mac, unnamedplus for linux
 "set clipboard=unnamed
 set clipboard=unnamedplus
- 
+
 " Enable use of the mouse for all modes
 set mouse=a
- 
+
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
- 
+
 " Display line numbers on the left
 set number
- 
+set relativenumber
+
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
- 
+
 " Use <F9> to toggle between 'paste' and 'nopaste'
-"set pastetoggle=<F9>
- 
- 
+set pastetoggle=<F9>
+
+
 "------------------------------------------------------------
 " Indentation options {{{1
 "
 " Indentation settings according to personal preference.
- 
+
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
-set softtabstop=4
+set softtabstop=2
 set expandtab
- 
+
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
-"set shiftwidth=4
-"set tabstop=4
- 
- 
+set shiftwidth=2
+set tabstop=2
+
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
 " Useful mappings
- 
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
- 
+
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 " nnoremap <C-L> :nohl<CR><C-L>
 " Enter is snappier and better:
 nnoremap <silent> <Backspace> :nohls<CR>
- 
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
@@ -311,18 +426,18 @@ inoremap <Up> <C-o>gk
 " Keep words together
 set linebreak
 
-nmap <Leader>w :set wrap<CR>
-nmap <Leader>W :set nowrap<CR>
+nmap <Leader>W :set wrap<CR>
+nmap <Leader>w :set nowrap<CR>
 
-"so $HOME/.vim/myfiletypes.vim
+so $HOME/.vim/myfiletypes.vim
 
 "nmap <C-i> <C-^>
 nmap <Leader><Tab> :bn<CR>  " Because <Tab> interferes with <C-i>
 nmap <S-Tab> :bp<CR>
 "nmap <M-w> :bd<CR>
 
-nmap <Leader>l gt
-nmap <Leader>h gT
+nmap <Leader>j gt
+nmap <Leader>k gT
 
 nmap <Left> <C-W>h
 nmap <Down> <C-W>j
@@ -355,19 +470,9 @@ inoremap <F2> <Esc>:set nospell<CR>a
 
 "------------------------------------------------------------
 " Colorschemes
-" https://github.com/jonathanfilip/vim-lucius
-"colorscheme lucius
-"LuciusDarkHighContrast
-"LuciusLight
 
-" https://github.com/zeis/vim-kolor.git
-let g:kolor_italic=1                    " Enable italic. Default: 1
-let g:kolor_bold=1                      " Enable bold. Default: 1
-let g:kolor_underlined=0                " Enable underline. Default: 0
-let g:kolor_alternative_matchparen=0    " Gray 'MatchParen' color. Default: 0
-
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 "colorscheme sorbet
 colorscheme retrobox
 
@@ -387,7 +492,7 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 " map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
 set scrolloff=5                         " Keep 5 lines below and above the cursor
 set t_Co=256
-set smartindent
+"set smartindent
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
@@ -397,18 +502,6 @@ inoremap <C-S> <C-O>:update<CR>
 " The help file will not say increment!
 
 set colorcolumn=+1
-
-"call plug#begin()
-    " List your plugins here
-    "Plug 'tpope/vim-sensible'
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    "Plug 'junegunn/fzf.vim'
-    "Plug 'Vimjas/vim-python-pep8-indent'
-    "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-    "Plug 'puremourning/vimspector'
-    "Plug 'vim-airline/vim-airline'
-    "Plug 'preservim/nerdtree'
-"call plug#end()
 
 "au BufNewFile,BufRead *.py
 "    \ set foldmethod=indent
@@ -427,6 +520,29 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Show tabs and trailing characters as - and ·
+set listchars=tab:->,trail:·
+set list
+nmap <Leader>l :set nolist<CR>
+nmap <Leader>L :set list<CR>
+
+" https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
+" https://github.com/puremourning/vimspector
+
 " Tips & Tricks
 " Write to read-only file:
 " :w !sudo tee %
+    '';
+    };
+
+# Don't use this as it interferes with home.file above
+# Or just use ~/.config/fish/conf.d/config.fish
+#  programs.fish = {
+#    enable = true;
+#    interactiveShellInit = ''
+#      set fish_greeting # Disable greeting
+#    '';
+#  };
+}
