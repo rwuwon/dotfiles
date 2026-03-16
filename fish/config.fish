@@ -30,23 +30,25 @@ if status is-interactive
   export 4K=6D3F23B4
 
   alias bc='bc -l'
-  alias bmon='bmon -b'
   alias make='time make'
 
   alias less='less -i'
-  #alias bat='batcat'
+  #alias bat='batcat'   # Debianism
   alias t='tmux a; or tmux'
+  alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
 
-  # GNU is weird
-  #alias gpg='gpg2'
+  alias cal='ncal -b'
+  alias ip='ip -c'
 
-  # x11-vim for +clipboard
-  #alias vi='vimx'
-  #alias vim='vimx'
-  #alias vimdiff='vim -d'
-
+  alias f='fish'
+  alias ho='home-manager switch'
+  alias hov='home-manager switch -v'
+  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
+  alias vi="vim -p"
+  alias vim="vim -p"
+  alias vimd="vimdiff"
   alias l='ls -lah --time-style=long-iso --group-directories-first'
   alias ll='ls -lh --time-style=long-iso --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso'
@@ -61,11 +63,8 @@ if status is-interactive
   alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
   alias a='alias'
-  alias g='git'
-  alias aaa='tmux attach; or tmux'
-  alias ttt='tmux attach; or tmux'
-  alias ddd='tmux detach'
   alias m='mosh deb -- tmux a'
+  alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
 
   # oh-mh-zsh git aliases
@@ -73,12 +72,22 @@ if status is-interactive
   alias ....='cd ../../..'
   alias .....='cd ../../../..'
   alias ......='cd ../../../../..'
+
+  # GNU is weird
+  #alias gpg='gpg2'
+
+  # x11-vim for +clipboard
+  #alias vi='vimx'
+  #alias vim='vimx'
+  #alias vimdiff='vim -d'
+
   #no longer works with Debian 12 fish: alias _=sudo
   #alias afind='ack -il'
   #alias d='dirs -v | head -10'
   #alias ebuild='nocorrect ebuild'
   #alias egrep='egrep --color=auto'
   #alias fgrep='fgrep --color=auto'
+
   alias g=git
   alias ga='git add'
   #alias gaa='git add --all'
@@ -221,11 +230,9 @@ if status is-interactive
   #alias ls='ls --color=tty'
   #alias lsa='ls -lah'
   #alias man='nocorrect man'
-  alias md='mkdir -p'
   #alias mkdir='nocorrect mkdir'
   #alias mv='nocorrect mv'
   #alias mysql='nocorrect mysql'
-  #alias please=sudo
   #alias rd=rmdir
   #alias run-help=man
   #alias sudo='nocorrect sudo'
@@ -239,14 +246,4 @@ if status is-interactive
   #alias zegrep='zegrep --color=auto'
   #alias zfgrep='zfgrep --color=auto'
   #alias zgrep='zgrep --color=auto'
-  alias cal='ncal -b'
-  alias ip='ip -c'
-
-  alias f='fish'
-  alias ho='home-manager switch'
-  alias hov='home-manager switch -v'
-  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
-  alias vi="vim -p"
-  alias vim="vim -p"
-  alias vimd="vimdiff"
 end
