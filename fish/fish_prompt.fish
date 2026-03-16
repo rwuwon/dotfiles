@@ -26,3 +26,11 @@ function fish_prompt --description 'Informative prompt'
 
     end
 end
+
+# Prompt can also be set from fish using:
+
+# fish_config prompt show
+# fish_config prompt choose nim
+# fish_config prompt save
+
+# Particularly relevant for root or terminal
