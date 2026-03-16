@@ -309,7 +309,6 @@ mode "$mode_launcher" {
     bindsym p exec packettracer, mode "default"
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
-    bindsym t exec snap run authy, mode "default"
     bindsym v exec virt-manager, mode "default"
     bindsym x exec i3-sensible-terminal, mode "default"
 
