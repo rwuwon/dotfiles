@@ -1,0 +1,4 @@
+bind h everywhere quit
+bind j everywhere down
+bind k everywhere up
+bind l everywhere open

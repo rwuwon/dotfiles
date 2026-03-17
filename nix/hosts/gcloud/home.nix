@@ -39,6 +39,7 @@ in
     hello
     links2
     #man
+    newsboat
     nix
     #yt-dlp
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -77,6 +78,8 @@ in
     ".config/fish/conf.d/config.fish".source = /home/${config.home.username}/nix/dotfiles/fish/config.fish;
     ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/nix/dotfiles/fish/grc.fish;
     ".config/fish/conf.d/fish_prompt.fish".source = /home/${config.home.username}/nix/dotfiles/fish/fish_prompt.fish;
+    ".config/newsboat/urls".source = /home/${config.home.username}/nix/dotfiles/newsboat/urls;
+    ".config/newsboat/config".source = /home/${config.home.username}/nix/dotfiles/newsboat/config;
   };
 
   # Home Manager can also manage your environment variables through
