@@ -28,5 +28,5 @@ echo export PATH=/home/$USER/.nix-profile/bin:\$PATH >> ~/.bashrc
 export PATH=/home/$USER/.nix-profile/bin:$PATH
 
 
-cp ~/nix/hosts/oracle/home.nix ~/.config/home-manager/
+ln -s ~/nix/hosts/oracle/home.nix ~/.config/home-manager/home.nix
 home-manager switch

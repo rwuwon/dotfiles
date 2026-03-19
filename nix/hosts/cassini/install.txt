@@ -28,7 +28,7 @@ echo export PATH=/home/$USER/.nix-profile/bin:\$PATH >> ~/.bashrc
 export PATH=/home/$USER/.nix-profile/bin:$PATH
 
 
-cp ~/nix/hosts/cassini/home.nix ~/.config/home-manager/
+ln -s ~/nix/hosts/cassini/home.nix ~/.config/home-manager/home.nix
 home-manager switch
 
 
