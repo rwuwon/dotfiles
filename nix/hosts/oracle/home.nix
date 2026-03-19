@@ -41,6 +41,7 @@ in
     #man
     newsboat
     nix
+    nix-output-monitor
     #yt-dlp
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -75,9 +76,9 @@ in
     #".vimrc".source = /home/${config.home.username}/nix/dotfiles/vim/vimrc;
     ".vim/myfiletypes.vim".source = /home/${config.home.username}/nix/dotfiles/vim/myfiletypes.vim;
     ".config/tmux/tmux.conf".source = /home/${config.home.username}/nix/dotfiles/tmux/tmux.conf;
-    ".config/fish/conf.d/config.fish".source = /home/${config.home.username}/nix/dotfiles/fish/config.fish;
+    ".config/fish/config.fish".source = /home/${config.home.username}/nix/dotfiles/fish/config.fish;
     ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/nix/dotfiles/fish/grc.fish;
-    ".config/fish/conf.d/fish_prompt.fish".source = /home/${config.home.username}/nix/dotfiles/fish/fish_prompt.fish;
+    ".config/fish/functions/fish_prompt.fish".source = /home/${config.home.username}/nix/dotfiles/fish/fish_prompt.fish;
     ".config/newsboat/urls".source = /home/${config.home.username}/nix/dotfiles/newsboat/urls;
     ".config/newsboat/config".source = /home/${config.home.username}/nix/dotfiles/newsboat/config;
   };

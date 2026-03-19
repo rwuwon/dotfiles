@@ -38,7 +38,6 @@ in
     bat
     btdu
     cpufetch
-    cyberchef
     deno
     emoji-picker
     fastfetch
@@ -47,7 +46,9 @@ in
     #kitty
     links2
     #man
+    newsboat
     nix
+    nix-output-monitor
     trippy
     viu
     yt-dlp
@@ -60,6 +61,10 @@ in
     signal-desktop
     stellarium
     telegram-desktop
+
+    # CTF
+    cyberchef
+    stegseek
 
     # Unfree Packages
     #hello-unfree
@@ -109,9 +114,12 @@ in
     ".bash_aliases".text = ''
       alias f='fish'
       '';
+    #".vimrc".source = /home/${config.home.username}/nix/dotfiles/vim/vimrc;
+    ".vim/myfiletypes.vim".source = /home/${config.home.username}/nix/dotfiles/vim/myfiletypes.vim;
     ".config/tmux/tmux.conf".source = /home/${config.home.username}/dotfiles/tmux/tmux.conf;
     ".config/fish/config.fish".source = /home/${config.home.username}/dotfiles/fish/config.fish;
     ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/dotfiles/fish/grc.fish;
+    ".config/fish/functions/fish_prompt.fish".source = /home/${config.home.username}/dotfiles/fish/fish_prompt.fish;
   };
 
   # Home Manager can also manage your environment variables through
