@@ -20,7 +20,7 @@ if status is-interactive
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 
   # Try running once to stop abbreviated paths:
-  #set -g fish_prompt_pwd_dir_length 0
+  set -g fish_prompt_pwd_dir_length 0
 
   # This is necessary for pinentry cli to send password box properly; maybe
   # bash version: export GPG_TTY=$(tty)
