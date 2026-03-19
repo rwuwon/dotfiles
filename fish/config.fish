@@ -46,8 +46,8 @@ if status is-interactive
   alias ip='ip -c'
 
   alias f='fish'
-  alias ho='home-manager switch'
-  alias hov='home-manager switch -v'
+  alias ho='home-manager switch &| nom'
+  alias hov='home-manager switch -v &| nom'
   alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
   alias vi="vim -p"
   alias vim="vim -p"
