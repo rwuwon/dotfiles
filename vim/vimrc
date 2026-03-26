@@ -429,5 +429,10 @@ nmap <Leader>L :set list<CR>
 " https://github.com/puremourning/vimspector
 
 " Tips & Tricks
+" -------------
 " Write to read-only file:
 " :w !sudo tee %
+"
+" Reverse order of lines:
+" :g/^/m0
+" https://vim.fandom.com/wiki/Reverse_order_of_lines
