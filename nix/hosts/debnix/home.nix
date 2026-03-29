@@ -121,12 +121,18 @@ in
   programs.home-manager.enable = true;
 
   programs.git = {
-  enable = true;
-  settings.user = {
+    enable = true;
+    settings.user = {
       name  = "io";
-      email = "<>";
-      };
-  };
+      email = "<io@debnix>";
+    };
+    settings.init.defaultBranch = "main";
+    ignores = [
+      "*~"
+      "**/*~"
+      "**/*.bak"
+      "**/*.sw[abcdefghijklmnop]"
+      ];
 
   programs.tmux = {
   enable = true;

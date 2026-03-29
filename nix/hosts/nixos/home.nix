@@ -68,6 +68,7 @@
     #gnutar
     jq
     tree
+    wget
     which
     zstd
 
@@ -114,23 +115,37 @@
   ];
 
   # basic configuration of git, please change to your own
-  programs.git.settings = {
+  #programs.git.settings = {
+  #  enable = true;
+  #  username = "io";
+  #  useremail = "<>";
+  #};
+  programs.git = {
     enable = true;
-    username = "io";
-    useremail = "<>";
+    settings.user = {
+      name  = "io";
+      email = "<io@nixos>";
+    };
+    settings.init.defaultBranch = "main";
+    ignores = [
+      "*~"
+      "**/*~"
+      "**/*.bak"
+      "**/*.sw[abcdefghijklmnop]"
+      ];
   };
 
   # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
+  #programs.starship = {
+  #  enable = true;
+  #  # custom settings
+  #  settings = {
+  #    add_newline = false;
+  #    aws.disabled = true;
+  #    gcloud.disabled = true;
+  #    line_break.disabled = true;
+  #  };
+  #};
 
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {

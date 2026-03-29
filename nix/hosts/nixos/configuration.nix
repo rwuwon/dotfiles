@@ -173,14 +173,14 @@
   environment.systemPackages = with pkgs; [
   # Flakes clones its dependencies through the git command,
   # so git must be installed first
-  git
-  wget
+  #git
+  #wget
 
-  fishPlugins.done
-  fishPlugins.fzf-fish
-  fishPlugins.forgit
-  fishPlugins.hydro
-  fishPlugins.grc
+  #fishPlugins.done
+  #fishPlugins.fzf-fish
+  #fishPlugins.forgit
+  #fishPlugins.hydro
+  #fishPlugins.grc
   #fzf
   #grc
   # Use 3rd-party fish plugins manually packaged.

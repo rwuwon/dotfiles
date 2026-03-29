@@ -106,6 +106,21 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    settings.user = {
+      name  = "io";
+      email = "<io@oracle>";
+    };
+    settings.init.defaultBranch = "main";
+    ignores = [
+      "*~"
+      "**/*~"
+      "**/*.bak"
+      "**/*.sw[abcdefghijklmnop]"
+      ];
+  };
+
   programs.vim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
