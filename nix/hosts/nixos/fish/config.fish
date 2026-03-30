@@ -1,15 +1,19 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  set -g fish_greeting # Suppress greeting
+  uname -a
+  set PATH ~/scripts $PATH
+
   set EDITOR vim
   set VISUAL vim
-  uname -a
+
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
 
   # Try running once to stop abbreviated paths:
-  #set -g fish_prompt_pwd_dir_length 0
+  set -g fish_prompt_pwd_dir_length 0
 
   alias bc='bc -l'
   alias l 'ls -alh --group-directories-first'
@@ -20,15 +24,12 @@ if status is-interactive
   alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
   alias less='less -i'
   alias t='tmux a; or tmux'
+  alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
   alias cp='cp -vi'
   alias mv='mv -vi'
-
   alias md='mkdir -p'
-  alias aaa='tmux attach; or tmux'
-  alias ttt='tmux attach; or tmux'
-  alias ddd='tmux detach'
   alias yt-dlp='yt-dlp --no-mtime'
   alias ...='cd ../..'
   alias ....='cd ../../..'

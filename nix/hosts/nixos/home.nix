@@ -63,10 +63,10 @@
     file
     #gawk
     gdu
-    gnupg
     #gnused
     #gnutar
     jq
+    tmux
     tree
     wget
     which
@@ -101,9 +101,9 @@
     usbutils # lsusb
 
     # terminal emulators
-    ghostty
-    kitty
-    alacritty
+    #ghostty
+    #kitty
+    #alacritty
     viu
 
     # vnc
@@ -148,19 +148,19 @@
   #};
 
   # alacritty - a cross-platform, GPU-accelerated terminal emulator
-  programs.alacritty = {
-    enable = true;
-    # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 10;
-        #draw_bold_text_with_bright_colors = true;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
-    };
-  };
+  #programs.alacritty = {
+  #  enable = true;
+  #  # custom settings
+  #  settings = {
+  #    env.TERM = "xterm-256color";
+  #    font = {
+  #      size = 10;
+  #      #draw_bold_text_with_bright_colors = true;
+  #    };
+  #    scrolling.multiplier = 5;
+  #    selection.save_to_clipboard = true;
+  #  };
+  #};
 
   programs.bash = {
     enable = true;
@@ -178,27 +178,13 @@
     };
   };
 
-  programs.tmux = {
-  enable = true;
-  clock24 = true;
-  # used for less common options, intelligently combines if defined in multiple places.
-  extraConfig = ''
-  # The next line is why the config is here and not sourced from dotfiles:
-  #set-option -g default-shell /home/io/.nix-profile/bin/fish
-  set-option -g prefix2 C-Space
-  setw -g mode-keys vi
-  set -g display-time 0
-  set -g history-limit 99999
-  set -g mouse on
-  bind -n S-PPage copy-mode -ue
-  bind-key a set mouse
-  bind-key j set mouse
-  bind-key ` attach -d
-  set -g base-index 1
-  setw -g pane-base-index 1
-  set-option -g renumber-windows on
-  '';
-  };
+  #programs.tmux = {
+  #enable = true;
+  #clock24 = true;
+  ## used for less common options, intelligently combines if defined in multiple places.
+  ##extraConfig = ''
+  ##'';
+  #};
 
   programs.vim = {
     enable = true;
@@ -234,38 +220,15 @@
 
     # In terms of safety, nix > home.file sourcing > mkOutOfStoreSymlink
     # vim: Won't work well with plugins if sourced.
-    # fish: Generally behaves well. Use conf.d/ for extra reliability.
-    # tmux: Safer to not source, to maintain set-option -g default-shell
+    ".config/bat/config".source = config.lib.file.mkOutOfStoreSymlink "/home/io/dotfiles/bat/config";
 
     ".config/fish/config.fish".source = fish/config.fish;
-    ".config/fish/functions/fish_prompt.fish".source = fish/fish_prompt.fish;
+    ".config/fish/functions/fish_prompt.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/fish_prompt.fish";
+    ".config/fish/conf.d/grc.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/grc.fish";
 
-    # Sourcing vim/myfiletypes.vim doesn't seem to work for some reason.
-    ".vim/myfiletypes.vim" = {
-      text = ''
-        augroup filetype
-                au!
-                au! BufRead,BufNewFile *.jy   set filetype=python
-        augroup END
-      '';
-    };
+    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/tmux/tmux.conf";
 
-    ".tmux.conf" = {
-      text = ''
-        set-option -g default-shell /run/current-system/sw/bin/fish
-        set-window-option -g mode-keys vi
-        set -g default-terminal "screen-256color"
-        set -ga terminal-overrides ',screen-256color:Tc'
-        set-option -g prefix2 C-Space
-        set -g display-time 0
-        set -g history-limit 99999
-        bind -n S-PPage copy-mode -ue
-        bind-key a set mouse
-        bind-key j set mouse
-        bind-key ` attach -d
-      '';
-    };
-
+    ".vim/myfiletypes.vim".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/vim/myfiletypes.vim";
   };
 
   # This value determines the home Manager release that your

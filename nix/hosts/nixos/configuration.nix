@@ -102,6 +102,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
+      pinentry-curses
     ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnWSu79DOWQHv9/+szfYVX83FW+DqsXKOjLqwpf4DDH io@cassini"
                                     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINlUXxbg46VdgDnCqjIKkfVvjmzidWTjfiY+pN1m6odM io@stardust" ];
@@ -202,10 +203,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 
   # List services that you want to enable:
 
