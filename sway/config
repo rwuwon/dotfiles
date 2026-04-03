@@ -110,7 +110,7 @@ input "type:keyboard" {
     xkb_layout us(altgr-intl)
 
     repeat_delay 250
-    repeat_rate 40
+    repeat_rate 45
 }
 
 input "1267:10956:ELAN_Touchscreen" {
