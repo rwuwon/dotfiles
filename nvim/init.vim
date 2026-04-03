@@ -1,0 +1,208 @@
+set nocompatible
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+" Default leader key is \ but let's add space to that
+" https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+"nmap <F12> :set syntax=python<CR>
+"syntax enable
+
+"filetype indent plugin on
+set laststatus=2
+set confirm
+set cmdheight=2
+set number
+set cc=80
+set scrolloff=5     " Keep 5 lines below and above the cursor
+set t_Co=256
+set ignorecase
+set smartcase
+set relativenumber
+set softtabstop=2
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set autoindent
+set linebreak
+set colorcolumn=+1
+set clipboard=unnamedplus
+
+nnoremap <Leader>s :source $HOME/.config/nvim/init.vim<CR>
+
+
+nmap <Leader>l :set list<CR>:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»<CR>
+nmap <Leader>L :set nolist<CR>
+nmap <Leader>w :set nowrap<CR>
+nmap <Leader>W :set wrap<CR>
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
+nmap <Leader>p :set clipboard=unnamedplus<CR>
+nmap <Leader>P :set clipboard=unnamed<CR>
+
+nmap <Leader><Tab> :bn<CR>  " Because <Tab> interferes with <C-i>
+nmap <S-Tab> :bp<CR>
+nmap <Leader>j gt
+nmap <Leader>k gT
+
+nmap <Leader>t "=strftime("%FT%T%z")<CR>P
+inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
+
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+nnoremap <silent> <Backspace> :nohls<CR>
+
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Window switching
+nmap <Left> <C-W>h
+nmap <Down> <C-W>j
+nmap <Up> <C-W>k
+nmap <Right> <C-W>l
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+
+" Resize
+nmap <S-Left> <C-W><
+nmap <S-Down> <C-W>-
+nmap <S-Up> <C-W>+
+nmap <S-Right> <C-W>>
+
+" Spell Checking
+nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
+inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
+nnoremap <F2> :set nospell<CR>
+inoremap <F2> <Esc>:set nospell<CR>a
+
+" Set title caps for line - see :h gu
+map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
+" Colorschemes
+set notermguicolors
+set background=dark
+"set background=light
+colorscheme retrobox
+
+nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>
+nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
+
+call plug#begin()
+  " List your plugins here
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+
+call plug#end()
+
+" Tips & Tricks
+" -------------
+" Write to read-only file:
+" :w !sudo tee %
+"
+" Ctrl-a/x for increment/decrement
+" Visual select, ctrl-g, numerical list
+"
+" Reverse order of lines:
+" :g/^/m0
+" https://vim.fandom.com/wiki/Reverse_order_of_lines
+" Start of lua config
+" -------------------
+lua << END
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- indent-blankline
+require("ibl").setup()
+
+---@type nvim_tree.config
+local config = {
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+}
+require("nvim-tree").setup(config)
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'powerline_dark',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+
+END
