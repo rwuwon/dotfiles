@@ -105,11 +105,14 @@ nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>
 nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
 
 call plug#begin()
-  " List your plugins here
-  Plug 'nvim-lualine/lualine.nvim'
-  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'ibhagwan/fzf-lua'
   Plug 'lukas-reineke/indent-blankline.nvim'
-
+  Plug 'nvim-lualine/lualine.nvim'
+  Plug 'jeffkreeftmeijer/neovim-sensible'
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'farmergreg/vim-lastplace'
+  Plug 'LnL7/vim-nix/'
 call plug#end()
 
 " Tips & Tricks
