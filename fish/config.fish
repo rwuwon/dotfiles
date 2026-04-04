@@ -5,22 +5,22 @@ if status is-interactive
   head /var/mail/$USER
   set PATH ~/dotfiles/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
 
-  #set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin ~/nix/vnc ~/scripts /usr/local/bin /usr/sbin /usr/share /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin $PATH
-  # set PATH ~/scripts /usr/local/bin /usr/sbin /opt/urserver /home/io/.local/share/flatpak/exports/bin /home/io/.local/bin /home/io/.linuxbrew/bin $PATH
+  # Stop abbreviated paths:
+  set -g fish_prompt_pwd_dir_length 0
+
+  set EDITOR vim
+  set VISUAL vim
 
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
-
-  #cal -w (date +%Y)
-  #cal 2020
-
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
-
-  # Try running once to stop abbreviated paths:
-  set -g fish_prompt_pwd_dir_length 0
+  alias ...='cd ../..'
+  alias ....='cd ../../..'
+  alias .....='cd ../../../..'
+  alias ......='cd ../../../../..'
 
   # This is necessary for pinentry cli to send password box properly; maybe
   # bash version: export GPG_TTY=$(tty)
@@ -30,65 +30,36 @@ if status is-interactive
   export EDITOR=vim
   export GPG_TTY=(tty)
 
+  # Short aliases
   alias bc='bc -l'
-  alias make='time make'
-
+  alias bt='btop'
+  alias l 'ls -alh --group-directories-first'
+  alias la 'ls -alh --group-directories-first'
+  alias l. 'ls -d .*'
+  alias ld 'ls -d */'
+  alias ll 'ls -l --group-directories-first'
+  alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
   alias less='less -i'
   #alias bat='batcat'   # Debianism
   alias t='tmux a; or tmux'
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
-
-  alias cal='ncal -b'
-  alias ip='ip -c'
+  alias cp='cp -vi'
+  alias mv='mv -vi'
+  alias md='mkdir -p'
+  alias yt-dlp='yt-dlp --no-mtime'
 
   alias f='fish'
+  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
   alias ho='home-manager switch &| nom'
   alias hov='home-manager switch -v &| nom'
-  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
   alias nv="nvim -p"
   alias nvd="nvim -d"
   alias vi="vim -p"
   alias vim="vim -p"
-  alias vimd="vimdiff"
-  alias l='ls -lah --time-style=long-iso --group-directories-first'
-  alias ll='ls -lh --time-style=long-iso --group-directories-first'
-  alias lll='ls -lahrt --time-style=long-iso'
-  alias l.='ls -d .* --time-style=long-iso --group-directories-first'
-  alias lsd='ls -d /* --time-style=long-iso'
-
-  alias cp='cp -vi'
-  alias mv='mv -vi'
-
-  # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-  # https://news.ycombinator.com/item?id=11071754
-  alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-  alias a='alias'
-  alias m='mosh oracle -- tmux a'
-  alias md='mkdir -p'
-  alias yt-dlp='yt-dlp --no-mtime'
-
-  alias ...='cd ../..'
-  alias ....='cd ../../..'
-  alias .....='cd ../../../..'
-  alias ......='cd ../../../../..'
-
-  # GNU is weird
-  #alias gpg='gpg2'
-
-  # x11-vim for +clipboard
-  #alias vi='vimx'
-  #alias vim='vimx'
-  #alias vimdiff='vim -d'
-
-  #no longer works with Debian 12 fish: alias _=sudo
-  #alias afind='ack -il'
-  #alias d='dirs -v | head -10'
-  #alias ebuild='nocorrect ebuild'
-  #alias egrep='egrep --color=auto'
-  #alias fgrep='fgrep --color=auto'
+  alias vimd="nvim -d"
+  alias vimddiff="nvim -d"
 
   # oh-mh-zsh git aliases
   alias g=git
