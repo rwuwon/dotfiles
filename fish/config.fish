@@ -29,8 +29,6 @@ if status is-interactive
   #
   export EDITOR=vim
   export GPG_TTY=(tty)
-  export GPGKEY=10F5EEB0
-  export 4K=6D3F23B4
 
   alias bc='bc -l'
   alias make='time make'
