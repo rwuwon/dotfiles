@@ -50,6 +50,7 @@ if status is-interactive
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
 
+  alias dfh='df -h'
   alias f='fish'
   alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
   alias ho='home-manager switch &| nom'
