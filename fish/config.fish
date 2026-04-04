@@ -52,7 +52,8 @@ if status is-interactive
 
   alias dfh='df -h'
   alias f='fish'
-  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
+  alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
   alias ho='home-manager switch &| nom'
   alias hov='home-manager switch -v &| nom'
   alias nv="nvim -p"
