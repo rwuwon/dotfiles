@@ -59,7 +59,7 @@ if status is-interactive
   alias vi="vim -p"
   alias vim="vim -p"
   alias vimd="nvim -d"
-  alias vimddiff="nvim -d"
+  alias vimdiff="nvim -d"
 
   # oh-mh-zsh git aliases
   alias g=git
