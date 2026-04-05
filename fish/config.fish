@@ -26,26 +26,39 @@ if status is-interactive
   # bash version: export GPG_TTY=$(tty)
 
   # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
-  #
   export EDITOR=vim
   export GPG_TTY=(tty)
 
   # Short aliases
+  alias a='alias'
+
   alias bc='bc -l'
   alias bt='btop'
-  alias l 'ls -alh --group-directories-first'
+
+  #alias l 'ls -alh --group-directories-first'
+  #alias la 'ls -alh --group-directories-first'
+  #alias l. 'ls -d .*'
+  #alias ld 'ls -d */'
+  #alias ll 'ls -l --group-directories-first'
+  #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
+
+  alias l='ls -lah --time-style=long-iso --group-directories-first'
   alias la 'ls -alh --group-directories-first'
-  alias l. 'ls -d .*'
-  alias ld 'ls -d */'
-  alias ll 'ls -l --group-directories-first'
-  alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
+  alias ll='ls -lh --time-style=long-iso --group-directories-first'
+  alias lll='ls -lahrt --time-style=long-iso'
+  alias l.='ls -d .* --time-style=long-iso --group-directories-first'
+  alias lsd='ls -d /* --time-style=long-iso'
+
   alias less='less -i'
   #alias bat='batcat'   # Debianism
+  alias m='mosh oracle -- tmux a'
+  alias p='mosh pi -- tmux a'
   alias t='tmux a; or tmux'
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
   alias cp='cp -vi'
+  alias make='time make'
   alias mv='mv -vi'
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
@@ -62,6 +75,10 @@ if status is-interactive
   alias vim="vim -p"
   alias vimd="nvim -d"
   alias vimdiff="nvim -d"
+
+# https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+# https://news.ycombinator.com/item?id=11071754
+# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
   # oh-mh-zsh git aliases
   alias g=git
