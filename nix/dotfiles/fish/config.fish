@@ -22,21 +22,42 @@ if status is-interactive
   alias .....='cd ../../../..'
   alias ......='cd ../../../../..'
 
+  # This is necessary for pinentry cli to send password box properly; maybe
+  # bash version: export GPG_TTY=$(tty)
+
+  # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
+  #export EDITOR=vim
+  #export GPG_TTY=(tty)
+
   # Short aliases
+  alias a='alias'
   alias bc='bc -l'
   alias bt='btop'
+
+  #alias l 'ls -alh --group-directories-first'
+  #alias la 'ls -alh --group-directories-first'
+  #alias l. 'ls -d .*'
+  #alias ld 'ls -d */'
+  #alias ll 'ls -l --group-directories-first'
+  #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
+
   alias l 'ls -alh --group-directories-first'
   alias la 'ls -alh --group-directories-first'
   alias l. 'ls -d .*'
   alias ld 'ls -d */'
   alias ll 'ls -l --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
+
   alias less='less -i'
+  #alias bat='batcat'   # Debianism
+  alias m='mosh oracle -- tmux a'
+  alias p='mosh pi -- tmux a'
   alias t='tmux a; or tmux'
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
   alias cp='cp -vi'
+  alias make='time make'
   alias mv='mv -vi'
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
@@ -54,14 +75,51 @@ if status is-interactive
   alias vimd="nvim -d"
   alias vimdiff="nvim -d"
 
+# https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+# https://news.ycombinator.com/item?id=11071754
+# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
   # oh-mh-zsh git aliases
   alias g=git
   alias ga='git add'
+  #alias gaa='git add --all'
+  #alias gap='git apply'
+  #alias gapa='git add --patch'
+  #alias gau='git add --update'
+  #alias gb='git branch'
+  #alias gba='git branch -a'
+  #alias gbd='git branch -d'
+  #alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
+  #alias gbl='git blame -b -w'
+  #alias gbnm='git branch --no-merged'
+  #alias gbr='git branch --remote'
+  #alias gbs='git bisect'
+  #alias gbsb='git bisect bad'
+  #alias gbsg='git bisect good'
+  #alias gbsr='git bisect reset'
+  #alias gbss='git bisect start'
   alias gc='git commit -v'
   alias 'gc!'='git commit -v --amend'
   alias gca='git commit -v -a'
   alias 'gca!'='git commit -v -a --amend'
   alias gcam='git commit -a -m'
+  #alias 'gcan!'='git commit -v -a --no-edit --amend'
+  #alias 'gcans!'='git commit -v -a -s --no-edit --amend'
+  #alias gcb='git checkout -b'
+  #alias gcd='git checkout develop'
+  #alias gcf='git config --list'
+  #alias gcl='git clone --recursive'
+  #alias gclean='git clean -fd'
+  #alias gcm='git checkout master'
+  #alias gcmsg='git commit -m'
+  #alias 'gcn!'='git commit -v --no-edit --amend'
+  #alias gco='git checkout'
+  #alias gcount='git shortlog -sn'
+  #alias gcp='git cherry-pick'
+  #alias gcpa='git cherry-pick --abort'
+  #alias gcpc='git cherry-pick --continue'
+  alias gcs='git commit -S'
+  #alias gcsm='git commit -s -m'
   alias gd='git diff'
   alias gdca='git diff --cached'
   alias gdct='git describe --tags `git rev-list --tags --max-count=1`'

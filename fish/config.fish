@@ -3,8 +3,8 @@ if status is-interactive
   set -g fish_greeting # Suppress greeting
   uname -a
   head /var/mail/$USER
-  set PATH ~/dotfiles/vnc ~/scripts /usr/sbin /usr/games /home/io/.local/share/flatpak/exports/bin $PATH
-
+  set PATH ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
+  #set PATH /usr/games /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
   # Stop abbreviated paths:
   set -g fish_prompt_pwd_dir_length 0
 
@@ -31,7 +31,6 @@ if status is-interactive
 
   # Short aliases
   alias a='alias'
-
   alias bc='bc -l'
   alias bt='btop'
 
@@ -123,7 +122,7 @@ if status is-interactive
   #alias gcsm='git commit -s -m'
   alias gd='git diff'
   alias gdca='git diff --cached'
-  #alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
+  alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
   alias gdcw='git diff --cached --word-diff'
   alias gdt='git diff-tree --no-commit-id --name-only -r'
   alias gdw='git diff --word-diff'
