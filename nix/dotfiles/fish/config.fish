@@ -1,17 +1,30 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  set -g fish_greeting # Suppress greeting
+  uname -a
+  head /var/mail/$USER
+  set PATH ~/scripts /usr/sbin $PATH
+
+  # Stop abbreviated paths:
+  set -g fish_prompt_pwd_dir_length 0
+
   set EDITOR vim
   set VISUAL vim
-  uname -a
+
+  #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
+  # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
+  alias ...='cd ../..'
+  alias ....='cd ../../..'
+  alias .....='cd ../../../..'
+  alias ......='cd ../../../../..'
 
-  # Try running once to stop abbreviated paths:
-  #set -g fish_prompt_pwd_dir_length 0
-
+  # Short aliases
   alias bc='bc -l'
+  alias bt='btop'
   alias l 'ls -alh --group-directories-first'
   alias la 'ls -alh --group-directories-first'
   alias l. 'ls -d .*'
@@ -27,10 +40,19 @@ if status is-interactive
   alias mv='mv -vi'
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
-  alias ...='cd ../..'
-  alias ....='cd ../../..'
-  alias .....='cd ../../../..'
-  alias ......='cd ../../../../..'
+
+  alias dfh='df -h'
+  alias f='fish'
+  alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  alias ho='home-manager switch &| nom'
+  alias hov='home-manager switch -v &| nom'
+  alias nv="nvim -p"
+  alias nvd="nvim -d"
+  alias vi="vim -p"
+  alias vim="vim -p"
+  alias vimd="nvim -d"
+  alias vimdiff="nvim -d"
 
   # oh-mh-zsh git aliases
   alias g=git
@@ -46,25 +68,117 @@ if status is-interactive
   alias gdcw='git diff --cached --word-diff'
   alias gdt='git diff-tree --no-commit-id --name-only -r'
   alias gdw='git diff --word-diff'
+  alias gf='git fetch'
+  #alias gfa='git fetch --all --prune'
+  #alias gfo='git fetch origin'
+  #alias gg='git gui citool'
+  #alias gga='git gui citool --amend'
+  #alias ggpull='git pull origin $(git_current_branch)'
+  #alias ggpur=ggu
+  #alias ggpush='git push origin $(git_current_branch)'
+  #alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
   alias ghh='git help'
+  #alias gignore='git update-index --assume-unchanged'
+  #alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+  #alias gist='nocorrect gist'
+  #alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
+  #alias gk='\gitk --all --branches'
+  #alias gke='\gitk --all $(git log -g --pretty=%h)'
   alias gl='git pull'
   alias glg='git log --stat'
+  alias glgss='git log --stat --show-signature'
   alias glgg='git log --graph'
   alias glgga='git log --graph --decorate --all'
   alias glgm='git log --graph --max-count=10'
   alias glgp='git log --stat -p'
   alias glo='git log --oneline --decorate'
   alias globurl='noglob urlglobber '
+  alias glod='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'
+  alias glods='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'' --date=short'
+  alias glog='git log --oneline --decorate --graph'
+  alias gloga='git log --oneline --decorate --graph --all'
+  alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'
+  alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --all'
+  #alias glp=_git_log_prettily
+  #alias glum='git pull upstream master'
+  #alias gm='git merge'
+  #alias gma='git merge --abort'
+  #alias gmom='git merge origin/master'
+  #alias gmt='git mergetool --no-prompt'
+  #alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
+  #alias gmum='git merge upstream/master'
   alias gp='git push'
   alias gpd='git push --dry-run'
+  #alias gpoat='git push origin --all && git push origin --tags'
+  #alias gpristine='git reset --hard && git clean -dfx'
+  #alias gpsup='git push --set-upstream origin $(git_current_branch)'
+  #alias gpu='git push upstream'
   alias gpv='git push -v'
+  #alias gr='git remote'
+  #alias gra='git remote add'
+  #alias grb='git rebase'
+  #alias grba='git rebase --abort'
+  #alias grbc='git rebase --continue'
+  #alias grbi='git rebase -i'
+  #alias grbm='git rebase master'
+  #alias grbs='git rebase --skip'
+  #alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+  #alias grh='git reset HEAD'
+  #alias grhh='git reset HEAD --hard'
+  #alias grmv='git remote rename'
+  #alias grrm='git remote remove'
+  #alias grset='git remote set-url'
+  #alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+  #alias gru='git reset --'
+  #alias grup='git remote update'
+  alias grv='git remote -v'
+  alias gsb='git status -sb'
+  #alias gsd='git svn dcommit'
+  #alias gsi='git submodule init'
+  alias gsps='git show --pretty=short --show-signature'
+  #alias gsr='git svn rebase'
+  alias gss='git status -s'
   alias gst='git status'
-
-  alias f='fish'
-  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
-  alias ho='home-manager switch'
-  alias hov='home-manager switch -v'
-  alias vi="vim -p"
-  alias vim="vim -p"
-  alias vimd="vimdiff"
+  #alias gsta='git stash save'
+  #alias gstaa='git stash apply'
+  #alias gstc='git stash clear'
+  #alias gstd='git stash drop'
+  #alias gstl='git stash list'
+  #alias gstp='git stash pop'
+  #alias gsts='git stash show --text'
+  #alias gsu='git submodule update'
+  alias gts='git tag -s'
+  alias gtv='git tag | sort -V'
+  #alias gunignore='git update-index --no-assume-unchanged'
+  #alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+  #alias gup='git pull --rebase'
+  #alias gupv='git pull --rebase -v'
+  #alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+  #alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+  #alias heroku='nocorrect heroku'
+  #alias history='omz_history -i'
+  #alias hpodder='nocorrect hpodder'
+  #alias l='ls -lah --time-style=long-iso'
+  #alias l.='ls -d .* --color=auto'
+  #alias la='ls -lAh'
+  #alias ll='ls -lh'
+  #alias ls='ls --color=tty'
+  #alias lsa='ls -lah'
+  #alias man='nocorrect man'
+  #alias mkdir='nocorrect mkdir'
+  #alias mv='nocorrect mv'
+  #alias mysql='nocorrect mysql'
+  #alias rd=rmdir
+  #alias run-help=man
+  #alias sudo='nocorrect sudo'
+  #alias vi=vimx
+  #alias vim=vimx
+  #alias which='(alias; declare -f) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot'
+  #alias which-command=whence
+  #alias xzegrep='xzegrep --color=auto'
+  #alias xzfgrep='xzfgrep --color=auto'
+  #alias xzgrep='xzgrep --color=auto'
+  #alias zegrep='zegrep --color=auto'
+  #alias zfgrep='zfgrep --color=auto'
+  #alias zgrep='zgrep --color=auto'
 end
