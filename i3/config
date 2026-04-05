@@ -263,9 +263,13 @@ set $mod Mod4
 # https://i3wm.org/docs/userguide.html#exec
 
 #exec rfkill block bluetooth
-#setting mouse acceleration off and keyboard repeat delay fast.
-exec_always ~/scripts/keyboardmouse.sh
-#exec /usr/bin/parcellite
+# Mouse acceleration is set at /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
+
+# Keyboard repeat rate can be set in *many* places (including ~/.xprofile).
+# But doing it here is more transparent.
+#exec_always ~/scripts/keyboardmouse.sh
+exec_always --no-startup-id xset r rate 250 45
+
 # Clipboard manager diodon
 exec --no-startup-id diodon
 bindsym Ctrl+$mod+v exec diodon
@@ -345,7 +349,6 @@ for_window [class="Toplevel"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="retroarch"] floating enable
 for_window [class="gnome-calculator"] floating enable
-#for_window [class="Gnome-calculator"] floating enable
 
 #doesn't work due to dual displays:
 #for_window [class="Ibus-extension-gtk3"] floating enable
