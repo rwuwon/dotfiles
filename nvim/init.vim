@@ -33,7 +33,7 @@ set linebreak
 set colorcolumn=+1
 set clipboard=unnamedplus
 
-nnoremap <Leader>s :source $HOME/.config/nvim/init.vim<CR>
+nnoremap <Leader>s :source $HOME/dotfiles/nvim/init.vim<CR>
 
 
 nmap <Leader>l :set list<CR>:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»<CR>
@@ -126,12 +126,17 @@ call plug#end()
 " Reverse order of lines:
 " :g/^/m0
 " https://vim.fandom.com/wiki/Reverse_order_of_lines
+
+" -------------------
 " Start of lua config
 " -------------------
 lua << END
+-- nvim-tree:
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+require("autoclose").setup()
 
 -- indent-blankline
 require("ibl").setup()
@@ -187,7 +192,30 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
+    --lualine_a = {'mode'},
+    lualine_a = {
+    {
+      'filename',
+      file_status = true,      -- Displays file status (readonly status, modified status)
+      newfile_status = false,  -- Display new file status (new file means no write after created)
+      path = 3,                -- 0: Just the filename
+                               -- 1: Relative path
+                               -- 2: Absolute path
+                               -- 3: Absolute path, with tilde as the home directory
+                               -- 4: Filename and parent dir, with tilde as the home directory
+
+      shorting_target = 40,    -- Shortens path to leave 40 spaces in the window
+                               -- for other components. (terrible name, any suggestions?)
+                               -- It can also be a function that returns
+                               -- the value of `shorting_target` dynamically.
+      symbols = {
+        modified = '[+]',      -- Text to show when the file is modified.
+        readonly = '[-]',      -- Text to show when the file is non-modifiable or readonly.
+        unnamed = '[No Name]', -- Text to show for unnamed buffers.
+        newfile = '[New]',     -- Text to show for newly created file before first write
+      }
+    }
+  },
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
     lualine_x = {'encoding', 'fileformat', 'filetype'},

@@ -33,7 +33,7 @@ set linebreak
 set colorcolumn=+1
 set clipboard=unnamedplus
 
-nnoremap <Leader>s :source /home/io/nix/dotfiles/nvim/init.vim<CR>
+nnoremap <Leader>s :source $HOME/nix/dotfiles/nvim/init.vim<CR>
 
 
 nmap <Leader>l :set list<CR>:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»<CR>
@@ -126,9 +126,12 @@ nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
 " Reverse order of lines:
 " :g/^/m0
 " https://vim.fandom.com/wiki/Reverse_order_of_lines
+
+" -------------------
 " Start of lua config
 " -------------------
 lua << END
+-- nvim-tree:
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
