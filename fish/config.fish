@@ -3,8 +3,8 @@ if status is-interactive
   set -g fish_greeting # Suppress greeting
   uname -a
   head /var/mail/$USER
-  set PATH ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/sbin $PATH
-  #set PATH /usr/games /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
+  set PATH ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
+  #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
   # Stop abbreviated paths:
   set -g fish_prompt_pwd_dir_length 0
 
