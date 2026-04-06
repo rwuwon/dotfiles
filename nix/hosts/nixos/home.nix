@@ -6,7 +6,7 @@ in
 imports =
   [ # Include the results of the hardware scan.
     ../../modules/nvim.nix
-    #../../modules/btop.nix   # btop doesn't work on android'
+    ../../modules/btop.nix
     #../../modules/scripts.nix
   ];
 
@@ -16,9 +16,10 @@ imports =
 #    fish.source = "${dotfiles}/fish";
 #    tmux.source = "${dotfiles}/tmux";
     "bat/config".source = "${dotfiles}/nix/dotfiles/bat/config";
-    "btop/btop.conf".source = "${dotfiles}/nix/dotfiles/btop/btop.conf";
+    #"btop/btop.conf".source = "${dotfiles}/nix/dotfiles/btop/btop.conf";
 
-    "fish/config.fish".source = "${dotfiles}/nix/hosts/nixos/fish/config.fish";
+    #"fish/config.fish".source = "${dotfiles}/nix/hosts/nixos/fish/config.fish";
+    "fish/config.fish".source = "${dotfiles}/nix/dotfiles/fish/config.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/nix/dotfiles/fish/fish_prompt.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/nix/dotfiles/fish/grc.fish";
 
@@ -86,7 +87,7 @@ imports =
     glow # markdown previewer in terminal
 
     atop
-    btop  # htop/bmon alternative
+    #btop  # htop/bmon alternative
     htop
     iotop # io monitoring
     iftop # network monitoring
@@ -116,6 +117,20 @@ imports =
 
     #weechat
     #cyberchef # offline instance of cyberchef
+
+    (writeShellScriptBin "my-hello" ''
+      echo "Hello, ${config.home.username}!"
+    '')
+
+    (writeShellScriptBin "ho" ''
+      echo -e "\tsudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ |& nom\n"
+      sudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ |& nom
+    '')
+
+    (writeShellScriptBin "hov" ''
+      echo -e "\tsudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ |& nom\n"
+      sudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ |& nom
+    '')
   ];
 
   # basic configuration of git, please change to your own
