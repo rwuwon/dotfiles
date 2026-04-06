@@ -8,7 +8,8 @@ in
 imports =
   [ # Include the results of the hardware scan.
     ../../modules/nvim.nix
-    ../../modules/vim.nix
+    ../../modules/btop.nix
+    #../../modules/scripts.nix
   ];
 
   xdg.configFile = {
@@ -16,6 +17,10 @@ imports =
 # Switch between systems by first commenting out BOTH sections
 #    fish.source = "${dotfiles}/fish";
 #    tmux.source = "${dotfiles}/tmux";
+    "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
+    "fish/config.fish".source = "${dotfiles}/fish/config.fish";
+    "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
+    "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
   };
 
   targets.genericLinux.enable = true;
@@ -119,10 +124,10 @@ imports =
     ".bash_aliases".text = ''
       alias f='fish'
       '';
-    ".config/tmux/tmux.conf".source = /home/${config.home.username}/dotfiles/tmux/tmux.conf;
-    ".config/fish/config.fish".source = /home/${config.home.username}/dotfiles/fish/config.fish;
-    ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/dotfiles/fish/grc.fish;
-    ".config/fish/functions/fish_prompt.fish".source = /home/${config.home.username}/dotfiles/fish/fish_prompt.fish;
+#    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/tmux/tmux.conf";
+#    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/fish/config.fish";
+#    ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/dotfiles/fish/grc.fish;
+#    ".config/fish/functions/fish_prompt.fish".source = /home/${config.home.username}/dotfiles/fish/fish_prompt.fish;
   };
 
   # Home Manager can also manage your environment variables through
@@ -142,7 +147,7 @@ imports =
   #  /etc/profiles/per-user/io/etc/profile.d/hm-session-vars.sh
   #
 #  home.sessionVariables = {
-#    # EDITOR = "emacs";
+#    # EDITOR = "vim";
 #  };
 
   # Let Home Manager install and manage itself.

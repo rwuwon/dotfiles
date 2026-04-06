@@ -7,12 +7,14 @@
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
+      autoclose-nvim
       ctrlp
       fzf-lua
       indent-blankline-nvim
       lualine-nvim
       neovim-sensible
       nvim-tree-lua
+      vim-dirdiff
       vim-lastplace
       vim-nix
       #vim-startify
