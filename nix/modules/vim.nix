@@ -1,0 +1,371 @@
+# Original config from https://github.com/ornicar/dotfiles/blob/main/nix/home/modules/neovim.nix
+
+# Unlike neovim, external vimrc doesn't work with home-manager plugins & colours
+# So don't keep trying!
+
+{ pkgs, config, ... }:
+{
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      fzf-vim
+      nerdtree
+      vim-airline
+      vim-indent-guides
+      vim-nix
+      vim-sensible
+    ];
+#    settings = { ignorecase = true; };
+    extraConfig = ''
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2016 Mar 25
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"  for MS-DOS and Win32:  $VIM\_vimrc
+"	    for OpenVMS:  sys$login:.vimrc
+
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
+set nocompatible
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  set undofile		" keep an undo file (undo changes after closing)
+endif
+set history=50		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" Default leader key is \ but let's add space to that
+" https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+"nmap <F12> :set syntax=python<CR>
+syntax enable
+set hlsearch
+
+filetype indent plugin on
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  " Use 50/72 for git
+  " Use gq<motion> to reformat
+  "
+  "autocmd FileType text setlocal textwidth=78
+  autocmd FileType text setlocal textwidth=0
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+if has('langmap') && exists('+langnoremap')
+  " Prevent that the langmap option applies to characters that result from a
+  " mapping.  If unset (default), this may break plugins (but it's backward
+  " compatible).
+  set langnoremap
+endif
+
+" Add optional packages.
+"
+" The matchit plugin makes the % command work better, but it is not backwards
+" compatible.
+packadd matchit
+
+" URL: http://vim.wikia.com/wiki/Example_vimrc
+" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
+" Description: A minimal, but feature rich, example .vimrc. If you are a
+"              newbie, basing your first .vimrc on this file is a good choice.
+"              If you're a more advanced user, building your own .vimrc based
+"              on this file is still a good idea.
+
+"------------------------------------------------------------
+
+" Must have options {{{1
+"
+" These are highly recommended options.
+
+" Vim with default settings does not allow easy switching between multiple files
+" in the same editor window. Users can use multiple split windows or multiple
+" tab pages to edit multiple files, but it is still best to enable an option to
+" allow easier switching between files.
+"
+" One such option is the 'hidden' option, which allows you to re-use the same
+" window and switch from an unsaved buffer without saving it first. Also allows
+" you to keep an undo history for multiple files when re-using the same window
+" in this way. Note that using persistent undo also lets you undo in multiple
+" files even in the same window, but is less efficient and is actually designed
+" for keeping undo history after closing Vim entirely. Vim will complain if you
+" try to quit without saving, and swap files will keep you safe if your computer
+" crashes.
+" Read :h 22.4
+set hidden
+
+" Note that not everyone likes working this way (with the hidden option).
+" Alternatives include using tabs or split windows instead of re-using the same
+" window as mentioned above, and/or either of the following options:
+" set confirm
+" set autowriteall
+
+" Better command-line completion
+set wildmenu
+
+" Show partial commands in the last line of the screen
+"set showcmd
+
+" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
+" mapping of <C-L> below)
+"set hlsearch
+
+" Modelines have historically been a source of security vulnerabilities. As
+" such, it may be a good idea to disable them and use the securemodelines
+" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
+" set nomodeline
+
+
+"------------------------------------------------------------
+" Usability options {{{1
+"
+" These are options that users frequently set in their .vimrc. Some of them
+" change Vim's behaviour in ways which deviate from the true Vi way, but
+" which are considered to add usability. Which, if any, of these options to
+" use is very much a personal preference, but they are harmless.
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+"set backspace=indent,eol,start
+
+" When opening a new line and no filetype-specific indenting is enabled, keep
+" the same indent as the line you're currently on. Useful for READMEs, etc.
+
+" Stop certain movements from always going to the first character of a line.
+" While this behaviour deviates from that of Vi, it does what most users
+" coming from other editors would expect.
+set nostartofline
+
+set laststatus=2
+
+set confirm
+
+" Use visual bell instead of beeping when doing something wrong
+set visualbell
+
+" And reset the terminal code for the visual bell. If visualbell is set, and
+" this line is also included, vim will neither flash nor beep. If visualbell
+" is unset, this does nothing.
+set t_vb=
+
+" Enable use of the mouse for all modes
+set mouse=a
+
+" Set the command window height to 2 lines, to avoid many cases of having to
+" "press <Enter> to continue"
+set cmdheight=2
+
+" Display line numbers on the left
+set number
+set scrolloff=5                         " Keep 5 lines below and above the cursor
+set t_Co=256
+set relativenumber
+
+" Quickly time out on keycodes, but never time out on mappings
+set notimeout ttimeout ttimeoutlen=200
+
+" Use <F9> to toggle between 'paste' and 'nopaste'
+set pastetoggle=<F9>
+
+
+"------------------------------------------------------------
+" Indentation options {{{1
+"
+" Indentation settings according to personal preference.
+
+" Indentation settings for using 4 spaces instead of tabs.
+" Do not change 'tabstop' from its default value of 8 with this setup.
+set softtabstop=2
+set expandtab
+
+" Indentation settings for using hard tabs for indent. Display tabs as
+" four characters wide.
+set shiftwidth=2
+set tabstop=2
+set autoindent
+set linebreak
+set colorcolumn=+1
+set clipboard=unnamedplus
+
+nnoremap <Leader>s :source $HOME/nix/dotfiles/vim/vimrc
+so $HOME/nix/dotfiles/vim/myfiletypes.vim
+
+set encoding=utf8
+set termencoding=utf8
+scriptencoding utf8
+set listchars=tab:⇒\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+nmap <Leader>l :set list<CR>
+nmap <Leader>L :set nolist<CR>
+nmap <Leader>w :set nowrap<CR>
+nmap <Leader>W :set wrap<CR>
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
+nmap <Leader>p :set clipboard=unnamedplus<CR>
+nmap <Leader>P :set clipboard=unnamed<CR>
+
+nmap <Leader><Tab> :bn<CR>  " Because <Tab> interferes with <C-i>
+nmap <S-Tab> :bp<CR>
+nmap <Leader>j gt
+nmap <Leader>k gT
+
+nmap <Leader>t "=strftime("%FT%T%z")<CR>P
+inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
+
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+nnoremap <silent> <Backspace> :nohls<CR>
+
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Window switching
+nmap <Left> <C-W>h
+nmap <Down> <C-W>j
+nmap <Up> <C-W>k
+nmap <Right> <C-W>l
+nmap <C-h> <C-W>h
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-l> <C-W>l
+
+" Resize
+nmap <S-Left> <C-W><
+nmap <S-Down> <C-W>-
+nmap <S-Up> <C-W>+
+nmap <S-Right> <C-W>>
+
+" Spell Checking
+nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
+inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
+nnoremap <F2> :set nospell<CR>
+inoremap <F2> <Esc>:set nospell<CR>a
+
+" Set title caps for line - see :h gu
+map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
+" Colorschemes
+set background=dark
+"set background=light
+colorscheme retrobox
+
+nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>
+nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
+
+"call plug#begin()
+    " List your plugins here
+    "Plug 'tpope/vim-sensible'
+    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    "Plug 'junegunn/fzf.vim'
+    "Plug 'Vimjas/vim-python-pep8-indent'
+    "Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+    "Plug 'puremourning/vimspector'
+    "Plug 'vim-airline/vim-airline'
+    "Plug 'preservim/nerdtree'
+    "Plug 'nathanaelkane/vim-indent-guides'
+"call plug#end()
+
+"au BufNewFile,BufRead *.py
+"    \ set foldmethod=indent
+
+" nnoremap <F10> :!python3 %<CR>
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+let g:indent_guides_enable_on_vim_startup = 1
+
+
+" https://dev.to/iggredible/debugging-in-vim-with-vimspector-4n0m
+" https://github.com/puremourning/vimspector
+
+" Tips & Tricks
+" -------------
+" Write to read-only file:
+" :w !sudo tee %
+"
+" Ctrl-a/x for increment/decrement
+" Visual select, ctrl-g, numerical list
+"
+" Reverse order of lines:
+" :g/^/m0
+" https://vim.fandom.com/wiki/Reverse_order_of_lines
+  '';
+  };
+}
