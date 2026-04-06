@@ -6,6 +6,8 @@ in
 imports =
   [ # Include the results of the hardware scan.
     ../../modules/nvim.nix
+    #../../modules/btop.nix   # btop doesn't work on android'
+    #../../modules/scripts.nix
   ];
 
   xdg.configFile = {
@@ -154,7 +156,13 @@ imports =
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
+
+  # https://discourse.nixos.org/t/link-scripts-to-bin-home-manager/41774/4
   home.file = {
+    #".local/bin" = {
+    #  source = ../../scripts;
+    #  recursive = true;
+    #};
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
