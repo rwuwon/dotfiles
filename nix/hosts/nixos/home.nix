@@ -1,29 +1,30 @@
 { config, pkgs, ... }:
-
+let
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}";
+in
 {
+imports =
+  [ # Include the results of the hardware scan.
+    ../../modules/nvim.nix
+  ];
+
+  xdg.configFile = {
+# Use only for testing. Beware of "recursion"!
+# Switch between systems by first commenting out BOTH sections
+#    fish.source = "${dotfiles}/fish";
+#    tmux.source = "${dotfiles}/tmux";
+    "bat/config".source = "${dotfiles}/nix/dotfiles/bat/config";
+    "btop/btop.conf".source = "${dotfiles}/nix/dotfiles/btop/btop.conf";
+
+    "fish/config.fish".source = "${dotfiles}/nix/hosts/nixos/fish/config.fish";
+    "fish/functions/fish_prompt.fish".source = "${dotfiles}/nix/dotfiles/fish/fish_prompt.fish";
+    "fish/conf.d/grc.fish".source = "${dotfiles}/nix/dotfiles/fish/grc.fish";
+
+    "tmux/tmux.conf".source = "${dotfiles}/nix/dotfiles/tmux/tmux.conf";
+  };
+
   home.username = "io";
   home.homeDirectory = "/home/io";
-
-  # link the configuration file in current directory to the specified location in home directory
-  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
-
-  # encode the file content in nix configuration file directly
-  # home.file.".xxx".text = ''
-  #     xxx
-  # '';
-
-  # set cursor size and dpi for 4k monitor
-  # xresources.properties = {
-  #   "Xcursor.size" = 16;
-  #   "Xft.dpi" = 172;
-  # };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -104,24 +105,24 @@
     #ghostty
     #kitty
     #alacritty
+
+    # terminal image viewer
     viu
 
     # vnc
     wayvnc
 
     #weechat
-    #neovim
     #cyberchef # offline instance of cyberchef
   ];
 
   # basic configuration of git, please change to your own
-  #programs.git.settings = {
-  #  enable = true;
-  #  username = "io";
-  #  useremail = "<>";
-  #};
   programs.git = {
     enable = true;
+    signing = {
+      key = "83C2250548D62119977DC1511D25FD60D6C614ED";
+      signByDefault = false;
+    };
     settings.user = {
       name  = "io";
       email = "<io@nixos>";
@@ -132,7 +133,50 @@
       "**/*~"
       "**/*.bak"
       "**/*.sw[abcdefghijklmnop]"
-      ];
+    ];
+  };
+
+  programs.bash = {
+    enable = true;
+    enableCompletion = true;
+    # TODO add your custom bashrc here
+    bashrcExtra = ''
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+    '';
+
+    # set some aliases, feel free to add more or remove some
+    shellAliases = {
+      k = "kubectl";
+      urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+      urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+    };
+  };
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+    ".bash_aliases".text = ''
+      alias f='fish'
+      '';
+
+    # vim: Won't work well with plugins if sourced.
+#    ".config/bat/config".source = config.lib.file.mkOutOfStoreSymlink "/home/io/dotfiles/bat/config";
+#
+#    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/hosts/nixos/fish/config.fish";
+#    ".config/fish/functions/fish_prompt.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/fish_prompt.fish";
+#    ".config/fish/conf.d/grc.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/grc.fish";
+#
+#    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/tmux/tmux.conf";
   };
 
   # starship - an customizable prompt for any shell
@@ -162,75 +206,6 @@
   #  };
   #};
 
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    # TODO add your custom bashrc here
-    bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-    '';
-
-    # set some aliases, feel free to add more or remove some
-    shellAliases = {
-      k = "kubectl";
-      urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
-    };
-  };
-
-  #programs.tmux = {
-  #enable = true;
-  #clock24 = true;
-  ## used for less common options, intelligently combines if defined in multiple places.
-  ##extraConfig = ''
-  ##'';
-  #};
-
-  programs.vim = {
-    enable = true;
-    extraConfig = builtins.readFile vim/vimrc;
-
-    plugins = with pkgs.vimPlugins; [
-      fzf-vim
-      nerdtree
-      vim-airline
-      vim-indent-guides
-      vim-nix
-      vim-sensible
-    ];
-    settings = { ignorecase = true; };
-  };
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-    ".bash_aliases".text = ''
-      alias f='fish'
-      '';
-
-    # In terms of safety, nix > home.file sourcing > mkOutOfStoreSymlink
-    # vim: Won't work well with plugins if sourced.
-    ".config/bat/config".source = config.lib.file.mkOutOfStoreSymlink "/home/io/dotfiles/bat/config";
-
-    ".config/fish/config.fish".source = fish/config.fish;
-    ".config/fish/functions/fish_prompt.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/fish_prompt.fish";
-    ".config/fish/conf.d/grc.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/fish/grc.fish";
-
-    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/tmux/tmux.conf";
-
-    ".vim/myfiletypes.vim".source = config.lib.file.mkOutOfStoreSymlink "/home/io/nix/dotfiles/vim/myfiletypes.vim";
-  };
-
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -240,4 +215,26 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.11";
+
+  # UNUSED:
+  # link the configuration file in current directory to the specified location in home directory
+  # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+
+  # link all files in `./scripts` to `~/.config/i3/scripts`
+  # home.file.".config/i3/scripts" = {
+  #   source = ./scripts;
+  #   recursive = true;   # link recursively
+  #   executable = true;  # make all files executable
+  # };
+
+  # encode the file content in nix configuration file directly
+  # home.file.".xxx".text = ''
+  #     xxx
+  # '';
+
+  # set cursor size and dpi for 4k monitor
+  # xresources.properties = {
+  #   "Xcursor.size" = 16;
+  #   "Xft.dpi" = 172;
+  # };
 }

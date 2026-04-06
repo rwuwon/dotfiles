@@ -2,20 +2,28 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
   set -g fish_greeting # Suppress greeting
   uname -a
-  set PATH ~/scripts $PATH
+  set PATH ~/scripts /usr/sbin $PATH
+
+  # Stop abbreviated paths:
+  set -g fish_prompt_pwd_dir_length 0
 
   set EDITOR vim
   set VISUAL vim
 
+  #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
+  # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"  # Use if formatting is wonky:
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
+  alias ...='cd ../..'
+  alias ....='cd ../../..'
+  alias .....='cd ../../../..'
+  alias ......='cd ../../../../..'
 
-  # Try running once to stop abbreviated paths:
-  set -g fish_prompt_pwd_dir_length 0
-
+  # Short aliases
   alias bc='bc -l'
+  alias bt='btop'
   alias l 'ls -alh --group-directories-first'
   alias la 'ls -alh --group-directories-first'
   alias l. 'ls -d .*'
@@ -31,10 +39,19 @@ if status is-interactive
   alias mv='mv -vi'
   alias md='mkdir -p'
   alias yt-dlp='yt-dlp --no-mtime'
-  alias ...='cd ../..'
-  alias ....='cd ../../..'
-  alias .....='cd ../../../..'
-  alias ......='cd ../../../../..'
+
+  alias dfh='df -h'
+  alias f='fish'
+  alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  alias ho='sudo nixos-rebuild switch --flake .'
+  alias hov='sudo nixos-rebuild -v switch --flake .'
+  alias nv="nvim -p"
+  alias nvd="nvim -d"
+  alias vi="vim -p"
+  alias vim="vim -p"
+  alias vimd="nvim -d"
+  alias vimdiff="nvim -d"
 
   # oh-mh-zsh git aliases
   alias g=git
@@ -63,12 +80,4 @@ if status is-interactive
   alias gpd='git push --dry-run'
   alias gpv='git push -v'
   alias gst='git status'
-
-  alias f='fish'
-  alias glll="echo 'cd ~/dotfiles/ && git pull:' && cd ~/dotfiles/ && gl && echo 'cd ~/nix/ && git pull:' && cd ~/nix/ && gl"
-  alias ho='sudo nixos-rebuild switch --flake .'
-
-  alias vi="vim -p"
-  alias vim="vim -p"
-  alias vimd="vimdiff"
 end

@@ -97,8 +97,8 @@ inoremap <F2> <Esc>:set nospell<CR>a
 map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
 " Colorschemes
 set notermguicolors
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 colorscheme retrobox
 
 nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>

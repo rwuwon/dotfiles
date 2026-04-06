@@ -224,10 +224,14 @@ set linebreak
 set colorcolumn=+1
 set clipboard=unnamedplus
 
-nnoremap <Leader>s :source /home/io/nix/dotfiles/vim/vimrc
+nnoremap <Leader>s :source $HOME/nix/dotfiles/vim/vimrc
 so $HOME/nix/dotfiles/vim/myfiletypes.vim
 
-set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+# utf8 lines might be needed for some terminals
+set encoding=utf8
+set termencoding=utf8
+scriptencoding utf8
+set listchars=tab:⇒\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 nmap <Leader>l :set list<CR>
 nmap <Leader>L :set nolist<CR>
 nmap <Leader>w :set nowrap<CR>
