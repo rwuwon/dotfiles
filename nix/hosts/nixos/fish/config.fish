@@ -44,8 +44,8 @@ if status is-interactive
   alias f='fish'
   alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
   alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
-  alias ho='sudo nixos-rebuild switch --flake .'
-  alias hov='sudo nixos-rebuild -v switch --flake .'
+  #alias ho='sudo nixos-rebuild switch --flake .'
+  #alias hov='sudo nixos-rebuild -v switch --flake .'
   alias nv="nvim -p"
   alias nvd="nvim -d"
   alias vi="vim -p"

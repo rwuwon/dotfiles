@@ -78,6 +78,16 @@ imports =
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
     '')
+
+    (writeShellScriptBin "ho" ''
+      echo -e "\thome-manager switch |& nom\n"
+      home-manager switch |& nom
+    '')
+
+    (writeShellScriptBin "hov" ''
+      echo -e "\thome-manager switch -v |& nom\n"
+      home-manager switch -v |& nom
+    '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

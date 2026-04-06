@@ -8,7 +8,7 @@ in
 imports =
   [ # Include the results of the hardware scan.
     ../../modules/nvim.nix
-    ../../modules/btop.nix   # btop doesn't work on android'
+    ../../modules/btop.nix
     ../../modules/scripts.nix
   ];
 
@@ -67,6 +67,16 @@ imports =
     # # environment:
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
+    '')
+
+    (writeShellScriptBin "ho" ''
+      echo -e "\thome-manager switch |& nom\n"
+      home-manager switch |& nom
+    '')
+
+    (writeShellScriptBin "hov" ''
+      echo -e "\thome-manager switch -v |& nom\n"
+      home-manager switch -v |& nom
     '')
   ];
 
