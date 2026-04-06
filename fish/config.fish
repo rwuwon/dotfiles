@@ -45,7 +45,9 @@ if status is-interactive
   alias la 'ls -alh --group-directories-first'
   alias ll='ls -lh --time-style=long-iso --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso'
+  #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
   alias l.='ls -d .* --time-style=long-iso --group-directories-first'
+  alias ld 'ls -d */'
   alias lsd='ls -d /* --time-style=long-iso'
 
   alias less='less -i'
