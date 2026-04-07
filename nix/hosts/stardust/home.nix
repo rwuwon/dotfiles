@@ -51,7 +51,10 @@ imports =
     deno
     emoji-picker
     fastfetch
+    fishPlugins.done
     fishPlugins.forgit
+    fishPlugins.fzf-fish
+    #fishPlugins.hydro
     #ghostty
     hello
     #kitty
