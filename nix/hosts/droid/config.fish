@@ -46,6 +46,8 @@ if status is-interactive
   alias ld 'ls --color=always -d */'
   alias ll 'ls --color=always -l --group-directories-first'
   alias lll='ls --color=always -lahrt --time-style=long-iso --group-directories-first'
+  alias ld 'ls --color=always -d */'
+  alias lsd='ls --color=always -d /* --time-style=long-iso'
 
   alias less='less -i'
   #alias bat='batcat'   # Debianism
@@ -64,9 +66,11 @@ if status is-interactive
   alias dfh='df -h'
   alias f='fish'
   alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
+  #alias gggg='echo "cd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && gl && echo "cd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && gl'
   alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
   #alias ho='nix-on-droid switch --flake . &| nom'
   #alias hov='nix-on-droid switch -v --flake . &| nom'
+  alias listg='nix-env --list-generations'
   alias nv="nvim -p"
   alias nvd="nvim -d"
   alias vi="vim -p"

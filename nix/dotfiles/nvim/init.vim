@@ -32,6 +32,8 @@ set autoindent
 set linebreak
 set colorcolumn=+1
 set clipboard=unnamedplus
+set backup      " keep a backup file (restore to previous version)
+set undofile    " keep an undo file (undo changes after closing)
 
 nnoremap <Leader>s :source $HOME/nix/dotfiles/nvim/init.vim<CR>
 

@@ -2,7 +2,7 @@
 
 # https://www.johndcook.com/blog/2019/10/29/computing-pi-with-bc/
 
-digits=2000
+digits=3000
 
 echo 'time bc -l <<< "scale='$digits';4*a(1)"'
 time bc -l <<< "scale=$digits;4*a(1)"
