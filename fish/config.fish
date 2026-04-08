@@ -5,6 +5,7 @@ if status is-interactive
   head /var/mail/$USER
   set PATH ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
   #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
+
   # Stop abbreviated paths:
   set -g fish_prompt_pwd_dir_length 0
 
