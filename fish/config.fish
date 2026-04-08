@@ -26,8 +26,7 @@ if status is-interactive
   # bash version: export GPG_TTY=$(tty)
 
   # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
-  export EDITOR=vim
-  export GPG_TTY=(tty)
+  #export GPG_TTY=(tty)
 
   # Short aliases
   alias a='alias'
@@ -41,8 +40,9 @@ if status is-interactive
   #alias ll 'ls -l --group-directories-first'
   #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
 
-  alias l='ls -lah --time-style=long-iso --group-directories-first'
-  alias la 'ls -alh --group-directories-first'
+  #alias l='ls -lah --time-style=long-iso --group-directories-first'
+  alias l='ls --time-style=long-iso --group-directories-first'
+  alias la 'ls --time-style=long-iso -alh --group-directories-first'
   alias ll='ls -lh --time-style=long-iso --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso'
   #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
