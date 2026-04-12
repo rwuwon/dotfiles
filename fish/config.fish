@@ -59,6 +59,7 @@ if status is-interactive
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
+  alias cal='ncal -b'
   alias cp='cp -vi'
   alias make='time make'
   alias mv='mv -vi'
