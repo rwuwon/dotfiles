@@ -2,7 +2,7 @@
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles";
+  dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
 imports =
@@ -138,6 +138,16 @@ imports =
     ".bash_aliases".text = ''
       alias f='fish'
       '';
+
+
+    ".config/kitty/kitty.conf".text = ''
+      enable_audio_bell no
+      font_family hack
+      font_size 12
+      text_composition_strategy 1.5 0
+      map shift+page_up scroll_page_up
+      map shift+page_down scroll_page_down
+    '';
 #    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/tmux/tmux.conf";
 #    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/fish/config.fish";
 #    ".config/fish/conf.d/grc.fish".source = /home/${config.home.username}/dotfiles/fish/grc.fish;

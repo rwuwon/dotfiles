@@ -426,7 +426,7 @@ bindsym ctrl+$mod+0 exec libreoffice --calc
 #
 assign [app_id="firefox-esr"] 3
 assign [app_id="microsoft-edge"] 3
-assign [app_id="\@joplin/app-desktop"] 4
+assign [app_id="joplin"] 4
 
 #
 # Window floating settings
@@ -435,7 +435,7 @@ for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 
 for_window [title="Picture in picture"] \
-    floating enable, move position 960 0, resize set 960 540, sticky disable
+    floating enable, move position 960 540, resize set 960 540, sticky disable
 
 # Hints:
 # sudo -E gparted
