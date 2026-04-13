@@ -19,7 +19,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 #set $term foot
-set $term gnome-terminal
+set $term kitty --single-instance
 # Your preferred application launcher
 #set $menu wmenu-run
 #set $menu rofi
@@ -410,7 +410,8 @@ bindsym ctrl+$mod+2 exec microsoft-edge
 bindsym ctrl+$mod+3 exec firefox-esr
 bindsym ctrl+$mod+4 exec /home/io/.nix-profile/bin/joplin-desktop
 bindsym ctrl+$mod+5 exec /usr/games/scid
-bindsym ctrl+$mod+6 exec gnome-terminal -t "gcloud" -- fish -c 'mosh io@deb -- tmux attach'
+#bindsym ctrl+$mod+6 exec gnome-terminal -t "gcloud" -- fish -c 'mosh io@deb -- tmux attach'
+bindsym ctrl+$mod+6 exec kitty --single-instance --title "gcloud" mosh io@deb -- tmux attach
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
