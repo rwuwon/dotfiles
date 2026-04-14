@@ -57,7 +57,7 @@ imports =
     #fishPlugins.hydro
     #ghostty
     hello
-    #kitty
+    kitty
     links2
     #man
     newsboat
