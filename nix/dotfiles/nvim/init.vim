@@ -38,10 +38,9 @@ set undofile    " keep an undo file (undo changes after closing)
 nnoremap <Leader>s :source $HOME/nix/dotfiles/nvim/init.vim<CR>
 
 
-nmap <Leader>l :set list<CR>:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»<CR>
-nmap <Leader>L :set nolist<CR>
-nmap <Leader>w :set nowrap<CR>
-nmap <Leader>W :set wrap<CR>
+nmap <Leader>l :set list!<CR>:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»<CR>
+nmap <Leader>n :set number!<CR>:set relativenumber!<CR>
+nmap <Leader>w :set nowrap!<CR>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
@@ -89,11 +88,9 @@ nmap <S-Down> <C-W>-
 nmap <S-Up> <C-W>+
 nmap <S-Right> <C-W>>
 
-" Spell Checking
-nnoremap <F7> :setlocal spell spelllang=en_au<CR><Esc>
-inoremap <F7> <Esc>:setlocal spell spelllang=en_au<CR>a
-nnoremap <F2> :set nospell<CR>
-inoremap <F2> <Esc>:set nospell<CR>a
+" Spell Checking - Test: color colour
+nnoremap <F7> :setlocal spell!<CR>:setlocal spelllang=en_au<CR><Esc>
+inoremap <F7> <Esc>:setlocal spell!<CR>:setlocal spelllang=en_au<CR>a
 
 " Set title caps for line - see :h gu
 map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
@@ -103,8 +100,16 @@ set notermguicolors
 set background=light
 colorscheme retrobox
 
-nmap <Leader>c :set background=light<CR>:colorscheme retrobox<CR>
-nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
+" Map Space-c to toggle between light and dark
+" https://jnrowe.github.io/articles/tips/Toggling_settings_in_vim.html
+function! Switch_background()
+    if &background == "light"
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
+map <Leader>c :call Switch_background()<CR>
 
 "call plug#begin()
 "  Plug 'ctrlpvim/ctrlp.vim'
@@ -112,6 +117,7 @@ nmap <Leader>C :set background=dark<CR>:colorscheme retrobox<CR>
 "  Plug 'lukas-reineke/indent-blankline.nvim'
 "  Plug 'nvim-lualine/lualine.nvim'
 "  Plug 'jeffkreeftmeijer/neovim-sensible'
+"  Plug 'm4xshen/autoclose.nvim'
 "  Plug 'nvim-tree/nvim-tree.lua'
 "  Plug 'farmergreg/vim-lastplace'
 "  Plug 'LnL7/vim-nix/'
@@ -138,7 +144,30 @@ lua << END
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require("autoclose").setup()
+require("autoclose").setup({
+  keys = {
+    ["("] = { escape = false, close = true, pair = "()" },
+    ["["] = { escape = false, close = true, pair = "[]" },
+    ["{"] = { escape = false, close = true, pair = "{}" },
+
+    [">"] = { escape = true, close = false, pair = "<>" },
+    [")"] = { escape = true, close = false, pair = "()" },
+    ["]"] = { escape = true, close = false, pair = "[]" },
+    ["}"] = { escape = true, close = false, pair = "{}" },
+
+    ['"'] = { escape = true, close = true, pair = '""' },
+    ["'"] = { escape = true, close = false, pair = "''" },
+    ["`"] = { escape = true, close = true, pair = "``" },
+  },
+  options = {
+    disabled_filetypes = { "text" },
+    disable_when_touch = false,
+    touch_regex = "[%w(%[{]",
+    pair_spaces = false,
+    auto_indent = true,
+    disable_command_mode = false,
+  },
+})
 
 -- indent-blankline
 require("ibl").setup()
