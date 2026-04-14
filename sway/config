@@ -398,7 +398,7 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym v exec virt-manager, mode "default"
-    bindsym x exec $term, mode "default"
+    bindsym x exec kitty, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -411,7 +411,7 @@ bindsym ctrl+$mod+3 exec firefox-esr
 bindsym ctrl+$mod+4 exec /home/io/.nix-profile/bin/joplin-desktop
 bindsym ctrl+$mod+5 exec /usr/games/scid
 #bindsym ctrl+$mod+6 exec gnome-terminal -t "gcloud" -- fish -c 'mosh io@deb -- tmux attach'
-bindsym ctrl+$mod+6 exec kitty --single-instance --title "gcloud" mosh io@deb -- tmux attach
+bindsym ctrl+$mod+6 exec $term --title "gcloud" mosh io@deb -- tmux attach
 bindsym ctrl+$mod+7 exec keepassxc
 bindsym ctrl+$mod+8 exec gnome-calculator
 bindsym ctrl+$mod+9 exec nautilus
