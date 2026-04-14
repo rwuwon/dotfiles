@@ -3,7 +3,8 @@ if status is-interactive
   set -g fish_greeting # Suppress greeting
   uname -a
   head /var/mail/$USER
-  set PATH ~/nix/scripts ~/scripts /usr/sbin $PATH
+  set PATH ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
+  #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
 
   # Stop abbreviated paths:
   set -g fish_prompt_pwd_dir_length 0
@@ -26,7 +27,6 @@ if status is-interactive
   # bash version: export GPG_TTY=$(tty)
 
   # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
-  #export EDITOR=vim
   #export GPG_TTY=(tty)
 
   # Short aliases
@@ -41,8 +41,9 @@ if status is-interactive
   #alias ll 'ls -l --group-directories-first'
   #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
 
-  alias l='ls -lah --time-style=long-iso --group-directories-first'
-  alias la 'ls -alh --group-directories-first'
+  #alias l='ls -lah --time-style=long-iso --group-directories-first'
+  alias l='ls --time-style=long-iso --group-directories-first'
+  alias la 'ls --time-style=long-iso -alh --group-directories-first'
   alias ll='ls -lh --time-style=long-iso --group-directories-first'
   alias lll='ls -lahrt --time-style=long-iso'
   #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
@@ -58,6 +59,7 @@ if status is-interactive
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
+  alias cal='ncal -b'
   alias cp='cp -vi'
   alias make='time make'
   alias mv='mv -vi'
