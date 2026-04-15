@@ -19,7 +19,9 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 #set $term foot
-set $term kitty --single-instance
+# Absolute paths are usually safer with sway's launchers
+# See also $mode_launcher section
+set $term /home/io/.nix-profile/bin/kitty --single-instance
 # Your preferred application launcher
 #set $menu wmenu-run
 #set $menu rofi
@@ -398,7 +400,7 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym v exec virt-manager, mode "default"
-    bindsym x exec kitty, mode "default"
+    bindsym x exec /home/io/.nix-profile/bin/kitty, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
