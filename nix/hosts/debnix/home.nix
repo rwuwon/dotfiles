@@ -2,6 +2,7 @@
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
+  pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -40,6 +41,10 @@ imports =
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    #pkgsUnstable.curl
+    # Use unstable fish because 4.2.1 doesn't highlight files upon tab
+    pkgsUnstable.fish
+
     atop
     bat
     btop
@@ -47,7 +52,7 @@ imports =
     #deno
     emoji-picker
     fastfetch
-    fish
+    #fish
     fzf
     hello
     gdu
