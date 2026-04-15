@@ -55,6 +55,13 @@ nmap <Leader>k gT
 nmap <Leader>t "=strftime("%FT%T%z")<CR>P
 inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 
+"https://vimtricks.wiki/posts/hex-edit-with-xxd
+"Always open binary files with vim -b or :set binary to prevent Vim from adding a trailing newline or converting line endings"
+"Convert to hex:
+nmap <Leader>h :%!xxd<CR>
+"Write back to binary:
+nmap <Leader>H :%!xxd -r
+
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
