@@ -70,13 +70,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch |& nom\n"
-      home-manager switch |& nom
+      echo -e "\thome-manager switch --cores 1 |& nom\n"
+      home-manager switch --cores 1 |& nom
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch -v |& nom\n"
-      home-manager switch -v |& nom
+      echo -e "\thome-manager switch --cores 1 -v |& nom\n"
+      home-manager switch --cores 1 -v |& nom
     '')
   ];
 

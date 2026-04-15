@@ -17,6 +17,7 @@ nix-channel --list
 #nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
 #nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --add https://nixos.org/channels/nixos-25.11 nixpkgs
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz home-manager
 nix-channel --update
 
@@ -30,3 +31,11 @@ export PATH=/home/$USER/.nix-profile/bin:$PATH
 
 ln -s ~/nix/hosts/debnix/home.nix ~/.config/home-manager/home.nix
 home-manager switch # Might need to run it twice if starting very minimal?
+
+#.bashrc aliases:
+#alias f='fish'
+#alias s='sudo -i'
+#alias t='tmux a || tmux'
+#export PATH=/home/io/.nix-profile/bin:$PATH
+#So kitty can work with tmux over ssh:
+#TERM=xterm-256color
