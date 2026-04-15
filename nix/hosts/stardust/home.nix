@@ -2,6 +2,7 @@
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
+  pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -43,8 +44,9 @@ imports =
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
+
+    pkgsUnstable.kitty
+
     bat
     btdu
     cpufetch
@@ -139,7 +141,6 @@ imports =
       alias f='fish'
       '';
 
-
     ".config/kitty/kitty.conf".text = ''
       enable_audio_bell no
       font_family hack
@@ -147,6 +148,7 @@ imports =
       text_composition_strategy 1.5 0
       map shift+page_up scroll_page_up
       map shift+page_down scroll_page_down
+      cursor_shape block
     '';
 #    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/tmux/tmux.conf";
 #    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/fish/config.fish";

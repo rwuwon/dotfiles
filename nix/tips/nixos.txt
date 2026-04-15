@@ -6,10 +6,21 @@ nix flake update
 # Or update only the specific input, such as home-manager:
 nix flake update home-manager
 
+####
+
+# Update:
+sudo nix flake update --flake ~/nix/hosts/nixos/
+
 # Apply the updates
-sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --cores 1 --flake ~/nix/hosts/nixos/ |& nom
 
+####
 
+# Cross Compiling:
+# https://wiki.nixos.org/wiki/Cross_Compiling#Getting_Started:~:text=alternative
+nix-build '<nixpkgs>' --arg crossSystem '(import <nixpkgs> {}).lib.systems.examples.armv7l-hf-multiplatform' -A apt
+
+####
 
 # Shrink VM images
 virt-sparsify --tmp /home/io/asdf/tmp debian-standard-clone.qcow2 debian-standard.qcow2
