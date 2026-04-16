@@ -90,9 +90,9 @@ if status is-interactive
 
   alias dfh='df -h'
   alias f='fish'
-  alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
-  alias gggg='echo "cd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo "cd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull'
-  alias glll='echo "cd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo "cd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull && echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
+  alias ggg='echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
+  alias gggg='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull'
+  alias glll='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull && echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
   #alias ho='home-manager switch &| nom'
   #alias hov='home-manager switch -v &| nom'
 
