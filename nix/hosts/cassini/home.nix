@@ -149,6 +149,7 @@ imports =
       map shift+page_up scroll_page_up
       map shift+page_down scroll_page_down
       cursor_shape block
+      map ctrl+shift+y kitten hints --program @
     '';
 #    ".config/tmux/tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/tmux/tmux.conf";
 #    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/home/${config.home.username}/dotfiles/fish/config.fish";
