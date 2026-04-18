@@ -116,6 +116,8 @@ imports =
     ".profile".text = ''
       alias t='tmux a || tmux'
       alias s='/data/data/com.termux.nix/files/home/.nix-profile/bin/sshd -p 8023 -h /data/data/com.termux.nix/files/usr/etc/ssh/ssh-host-ed25519_key'
+      alias ppp='pkill sshd'
+      /data/data/com.termux.nix/files/home/.nix-profile/bin/sshd -p 8023 -h /data/data/com.termux.nix/files/usr/etc/ssh/ssh-host-ed25519_key
       '';
 #    ".config/fish/config.fish".source = config.lib.file.mkOutOfStoreSymlink "/${config.home.homeDirectory}/nix/hosts/droid/config.fish";
 #    ".config/fish/conf.d/grc.fish".source = config.lib.file.mkOutOfStoreSymlink "/${config.home.homeDirectory}/nix/dotfiles/fish/grc.fish";
