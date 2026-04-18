@@ -2,18 +2,42 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
   set -g fish_greeting # Suppress greeting
   uname -a
-  set PATH ~/.local/bin ~/nix/scripts ~/scripts /usr/sbin $PATH
+
+  # https://fishshell.com/docs/current/cmds/test.html#examples
+  if test -d /var/mail
+    head /var/mail/$USER
+  end
+
+  function listg
+    if ! test -f /run/current-system/sw/bin/nixos-rebuild
+      nix-env --list-generations
+    else
+      nixos-rebuild list-generations;
+    end
+  end
+
+  # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
+  # Debianism
+  if test -f /usr/bin/batcat
+    alias bat='batcat'
+    export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+  else
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  end
+
+  #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
+  export MANROFFOPT="-c"  # Use if formatting is wonky:
+
+  set PATH ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
+  #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
 
   # Stop abbreviated paths:
   set -g fish_prompt_pwd_dir_length 0
 
+  set TERM tmux-256color
   set EDITOR vim
   set VISUAL vim
 
-  #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
-  # Use bat/batcat as pager for man pages - https://kszenes.github.io/blog/2024/Manpager/
-  #export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-  export MANROFFOPT="-c"  # Use if formatting is wonky:
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
   alias ...='cd ../..'
@@ -25,7 +49,6 @@ if status is-interactive
   # bash version: export GPG_TTY=$(tty)
 
   # https://www.gnupg.org/(it)/documentation/manuals/gnupg/Common-Problems.html
-  #export EDITOR=vim
   #export GPG_TTY=(tty)
 
   # Short aliases
@@ -39,6 +62,7 @@ if status is-interactive
   #alias ld 'ls -d */'
   #alias ll 'ls -l --group-directories-first'
   #alias lll='ls -lahrt --time-style=long-iso --group-directories-first'
+
   alias ls 'ls --color=always'
   alias l 'ls --color=always -alh --group-directories-first'
   alias la 'ls --color=always -alh --group-directories-first'
@@ -57,6 +81,7 @@ if status is-interactive
   alias ddd='tmux detach'
   alias s='sudo -i'
   alias sd='sudo'
+  alias cal='ncal -b'
   alias cp='cp -vi'
   alias make='time make'
   alias mv='mv -vi'
@@ -65,12 +90,12 @@ if status is-interactive
 
   alias dfh='df -h'
   alias f='fish'
-  alias ggg='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
-  #alias gggg='echo "cd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && gl && echo "cd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && gl'
-  alias glll='echo "cd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && gl && echo "cd ~/nix/ && git pull:" && cd ~/nix/ && gl'
-  #alias ho='nix-on-droid switch --flake . &| nom'
-  #alias hov='nix-on-droid switch -v --flake . &| nom'
-  alias listg='nix-env --list-generations'
+  alias ggg='echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
+  alias gggg='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull'
+  alias glll='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull && echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
+  #alias ho='home-manager switch &| nom'
+  #alias hov='home-manager switch -v &| nom'
+
   alias nv="nvim -p"
   alias nvd="nvim -d"
   alias vi="vim -p"
