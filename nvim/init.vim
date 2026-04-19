@@ -6,6 +6,7 @@ set backspace=indent,eol,start
 " https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
 nnoremap <SPACE> <Nop>
 let mapleader = " "
+inoremap jk <esc>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -103,8 +104,8 @@ inoremap <F7> <Esc>:setlocal spell!<CR>:setlocal spelllang=en_au<CR>a
 map <F4> :s/\v<(.)(\w*)/\u\1\L\2/g
 " Colorschemes
 set notermguicolors
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 colorscheme retrobox
 
 " Map Space-c to toggle between light and dark
