@@ -41,6 +41,9 @@
       #* Rounded corners on boxes, is ignored if TTY mode is ON.
       rounded_corners = False
 
+      #* Use terminal synchronized output sequences to reduce flickering on supported terminals.
+      terminal_sync = True
+
       #* Default symbols to use for graph creation, "braille", "block" or "tty".
       #* "braille" offers the highest resolution but might not be included in all fonts.
       #* "block" has half the resolution of braille but uses more common characters.
@@ -158,7 +161,7 @@
 
       #* Draw a clock at top of screen, formatting according to strftime, empty string to disable.
       #* Special formatting: /host = hostname | /user = username | /uptime = system uptime
-      clock_format = "%X"
+      clock_format = ""
 
       #* Update main ui in background when menus are showing, set this to false if the menus is flickering too much for comfort.
       background_update = True
@@ -183,7 +186,7 @@
       show_swap = True
 
       #* Show swap as a disk, ignores show_swap value above, inserts itself after first disk.
-      swap_disk = False
+      swap_disk = True
 
       #* If mem box should be split to also show disks info.
       show_disks = True
