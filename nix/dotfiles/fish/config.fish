@@ -2,9 +2,10 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
   set -g fish_greeting # Suppress greeting
   uname -a
+  uptime
 
   # https://fishshell.com/docs/current/cmds/test.html#examples
-  if test -d /var/mail
+  if test -d /var/mail/$USER
     head /var/mail/$USER
   end
 
@@ -94,6 +95,7 @@ if status is-interactive
 
   alias dfh='df -h'
   alias f='fish'
+  alias gg='echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
   alias ggg='echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
   alias gggg='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull'
   alias glll='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull && echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
