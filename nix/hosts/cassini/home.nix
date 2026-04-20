@@ -16,8 +16,7 @@ imports =
   xdg.configFile = {
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
-#    fish.source = "${dotfiles}/fish";
-#    tmux.source = "${dotfiles}/tmux";
+    "bat/config".source = "${dotfiles}/bat/config";
     "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
@@ -46,6 +45,7 @@ imports =
   home.packages = with pkgs; [
 
     pkgsUnstable.kitty
+    pkgsUnstable.en-croissant
 
     bat
     btdu

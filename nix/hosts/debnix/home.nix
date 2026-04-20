@@ -16,9 +16,7 @@ imports =
   xdg.configFile = {
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
-#    fish.source = "${dotfiles}/fish";
-#    tmux.source = "${dotfiles}/tmux";
-#    vim.source = "${dotfiles}/vim";
+    "bat/config".source = "${dotfiles}/bat/config";
   };
 
   targets.genericLinux.enable = true;
