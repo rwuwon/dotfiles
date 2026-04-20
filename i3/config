@@ -59,7 +59,7 @@ tiling_drag modifier titlebar
 
 # Your preferred terminal emulator
 # If nixGL is required, remember to re-run non-nixos-gpu-setup
-set $term kitty --single-instance
+set $term nixGL kitty --single-instance
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec $term
 # For right-handed use on ThinkPad with only one super key
@@ -317,7 +317,7 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym v exec virt-manager, mode "default"
-    bindsym x exec kitty, mode "default"
+    bindsym x exec nixGL kitty, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
