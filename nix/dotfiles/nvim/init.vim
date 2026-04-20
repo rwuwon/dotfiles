@@ -35,6 +35,7 @@ set colorcolumn=+1
 set clipboard=unnamedplus
 set backup      " keep a backup file (restore to previous version)
 set undofile    " keep an undo file (undo changes after closing)
+set backupdir=/tmp
 
 nnoremap <Leader>s :source $HOME/nix/dotfiles/nvim/init.vim<CR>
 
@@ -119,8 +120,10 @@ function! Switch_background()
 endfunction
 map <Leader>c :call Switch_background()<CR>
 
+" See also nvim.nix for plugins
 "call plug#begin()
 "  Plug 'ctrlpvim/ctrlp.vim'
+"  Plug 'will133/vim-dirdiff'
 "  Plug 'ibhagwan/fzf-lua'
 "  Plug 'lukas-reineke/indent-blankline.nvim'
 "  Plug 'nvim-lualine/lualine.nvim'
