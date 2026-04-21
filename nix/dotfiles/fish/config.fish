@@ -1,13 +1,15 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  # https://fishshell.com/docs/current/cmds/test.html#examples
+  if test -d /var/mail/
+    if test /var/mail/$USER
+      head -5 /var/mail/$USER
+    end
+  end
+
   set -g fish_greeting # Suppress greeting
   uname -a
   uptime
-
-  # https://fishshell.com/docs/current/cmds/test.html#examples
-  if test -d /var/mail/$USER
-    head /var/mail/$USER
-  end
 
   function listg
     if ! test -f /run/current-system/sw/bin/nixos-rebuild
