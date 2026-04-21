@@ -123,12 +123,12 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\tsudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ |& nom\n"
+      echo -e "\tsudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ &| nom\n"
       sudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ |& nom
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\tsudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ |& nom\n"
+      echo -e "\tsudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ &| nom\n"
       sudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ |& nom
     '')
   ];
