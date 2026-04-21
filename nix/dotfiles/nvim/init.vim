@@ -62,7 +62,7 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 "Convert to hex:
 nmap <Leader>h :%!xxd<CR>
 "Write back to binary:
-nmap <Leader>H :%!xxd -r
+nmap <Leader>H :%!xxd -r<CR>
 
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
