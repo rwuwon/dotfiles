@@ -46,6 +46,7 @@ nmap <Leader>w :set nowrap!<CR>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
+nmap <Leader>y :set clipboard=unnamedplus<CR>
 nmap <Leader>p :set clipboard=unnamedplus<CR>
 nmap <Leader>P :set clipboard=unnamed<CR>
 

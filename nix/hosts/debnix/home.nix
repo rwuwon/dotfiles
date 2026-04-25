@@ -164,10 +164,11 @@ imports =
   setw -g mode-keys vi
   set -g display-time 0
   set -g history-limit 99999
-  set -g mouse on
+  set -g mouse off
   bind -n S-PPage copy-mode -ue
   bind-key a set mouse
   bind-key j set mouse
+  bind-key -n F10 set mouse
   bind-key ` attach -d
   set -g base-index 1
   setw -g pane-base-index 1

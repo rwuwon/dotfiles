@@ -64,6 +64,7 @@ imports =
     #man
     newsboat
     nix
+    nix-diff
     nix-output-monitor
     trippy
     viu

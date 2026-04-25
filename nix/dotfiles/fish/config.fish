@@ -38,8 +38,9 @@ if status is-interactive
   set -g fish_prompt_pwd_dir_length 0
 
   set TERM tmux-256color
-  set EDITOR vim
-  set VISUAL vim
+  set EDITOR nvim
+  set VISUAL nvim
+  set SYSTEMD_EDITOR nvim
 
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards

@@ -8,7 +8,6 @@ pkgs.mkShellNoCC {
   packages = with pkgs; [
     cowsay
     lolcat
-    kitty
     #curl
   ];
 
