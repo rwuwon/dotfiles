@@ -107,7 +107,7 @@ imports =
     # terminal emulators
     #ghostty
     #kitty
-    #alacritty
+    alacritty
 
     # terminal image viewer
     viu
@@ -117,6 +117,7 @@ imports =
 
     #weechat
     #cyberchef # offline instance of cyberchef
+    flameshot
 
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"

@@ -50,21 +50,26 @@
   #services.xserver.enable = true;
 
   ## Enable the GNOME Desktop Environment.
-  #services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   #services.desktopManager.gnome.enable = true;
 
-  #services.xserver = {
-  #  enable = true;
+  services.xserver = {
+    enable = true;
 
-  #  windowManager.i3 = {
-  #    enable = true;
-  #    extraPackages = with pkgs; [
-  #      dmenu #application launcher most people use
-  #      i3status # gives you the default i3 status bar
-  #      i3blocks #if you are planning on using i3blocks over i3status
-  #      ];
-  #    };
-  #  };
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      };
+
+    #windowManager.i3 = {
+    #  enable = true;
+    #  extraPackages = with pkgs; [
+    #    dmenu #application launcher most people use
+    #    i3status # gives you the default i3 status bar
+    #    i3blocks #if you are planning on using i3blocks over i3status
+    #    ];
+    #  };
+    };
   ### End of section for i3, not sway
 
   # Configure keymap in X11
@@ -143,12 +148,12 @@
 
   programs.firefox.enable = true;
 
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-  programs.sway.extraPackages = with pkgs; [
-    brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust termite rofi light bemenu wl-clipboard clipman ];
+#  programs.sway = {
+#    enable = true;
+#    wrapperFeatures.gtk = true;
+#  };
+#  programs.sway.extraPackages = with pkgs; [
+#    brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust termite rofi light bemenu wl-clipboard clipman ];
 
   programs.fish = {
     enable = true;
@@ -221,16 +226,16 @@
   services.gnome.gnome-keyring.enable = true;
 
   # Autologin:
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "io";
-      };
-      default_session = initial_session;
-    };
-  };
+  #services.greetd = {
+  #  enable = true;
+  #  settings = rec {
+  #    initial_session = {
+  #      command = "${pkgs.sway}/bin/sway";
+  #      user = "io";
+  #    };
+  #    default_session = initial_session;
+  #  };
+  #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
