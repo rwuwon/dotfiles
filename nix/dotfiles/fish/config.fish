@@ -1,10 +1,8 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
   # https://fishshell.com/docs/current/cmds/test.html#examples
-  if test -d /var/mail/
-    if test /var/mail/$USER
-      head -5 /var/mail/$USER
-    end
+  if test -e /var/mail/$USER
+    head -5 /var/mail/$USER
   end
 
   set -g fish_greeting # Suppress greeting

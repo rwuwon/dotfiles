@@ -80,12 +80,12 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\tnix-on-droid switch --flake ~/nix/hosts/droid/ |& nom\n"
+      echo -e "\tnix-on-droid switch --flake ~/nix/hosts/droid/ &| nom\n"
       nix-on-droid switch --flake ~/nix/hosts/droid/ |& nom
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\tnix-on-droid switch -v --flake ~/nix/hosts/droid/ |& nom\n"
+      echo -e "\tnix-on-droid switch -v --flake ~/nix/hosts/droid/ &| nom\n"
       nix-on-droid switch -v --flake ~/nix/hosts/droid/ |& nom
     '')
 
