@@ -400,7 +400,18 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym v exec virt-manager, mode "default"
-    bindsym x exec /home/io/.nix-profile/bin/kitty, mode "default"
+    bindsym x exec $term, mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $mode_launcher2 Launch: [f]oot gnome-[t]erminal [x]kitty
+bindsym $mod+c mode "$mode_launcher2"
+mode "$mode_launcher2" {
+    bindsym f exec foot, mode "default"
+    bindsym t exec gnome-terminal, mode "default"
+    bindsym x exec $term, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -420,9 +431,6 @@ bindsym ctrl+$mod+9 exec nautilus
 bindsym ctrl+$mod+0 exec libreoffice --calc
 # for #i3 troubleshooting:
 # exec_always sleep 10 && gnome-terminal -t "asdf" -- zsh -c 'bc' && sleep 10
-
-#set $mode_launcher2 Launch: [power]
-#bindsym $mod+F1 mode "$mode_launcher2"
 
 #
 # Window assignments: swaymsg -t get_tree | jq -C | less -R

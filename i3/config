@@ -317,7 +317,17 @@ mode "$mode_launcher" {
     bindsym r exec rhythmbox, mode "default"
     bindsym s exec seahorse, mode "default"
     bindsym v exec virt-manager, mode "default"
-    bindsym x exec nixGL kitty, mode "default"
+    bindsym x exec nixGL kitty --single-instance, mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+set $mode_launcher2 Launch: gnome-[t]erminal [x]kitty
+bindsym $mod+c mode "$mode_launcher2"
+mode "$mode_launcher2" {
+    bindsym t exec gnome-terminal, mode "default"
+    bindsym x exec nixGL kitty --single-instance, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
