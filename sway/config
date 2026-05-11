@@ -49,7 +49,9 @@ include /etc/sway/config-vars.d/*
 #
 
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/gnome/geometrics-d.jxl fill
+#output * bg /usr/share/backgrounds/gnome/geometrics-d.jxl fill
+# https://images.nasa.gov/details/art002e000192
+output * bg ~/Pictures/wallpapers/art002e000192~large.jpg fill
 
 #
 # Example configuration:
