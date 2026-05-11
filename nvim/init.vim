@@ -35,6 +35,7 @@ set colorcolumn=+1
 set clipboard=unnamedplus
 set backup      " keep a backup file (restore to previous version)
 set undofile    " keep an undo file (undo changes after closing)
+set backupdir=/tmp
 
 nnoremap <Leader>s :source $HOME/dotfiles/nvim/init.vim<CR>
 
@@ -45,6 +46,7 @@ nmap <Leader>w :set nowrap!<CR>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
+nmap <Leader>y :set clipboard=unnamedplus<CR>
 nmap <Leader>p :set clipboard=unnamedplus<CR>
 nmap <Leader>P :set clipboard=unnamed<CR>
 
@@ -61,7 +63,7 @@ inoremap <F5> <C-R>=strftime("%FT%T%z")<CR>
 "Convert to hex:
 nmap <Leader>h :%!xxd<CR>
 "Write back to binary:
-nmap <Leader>H :%!xxd -r
+nmap <Leader>H :%!xxd -r<CR>
 
 noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
@@ -95,6 +97,8 @@ nmap <S-Left> <C-W><
 nmap <S-Down> <C-W>-
 nmap <S-Up> <C-W>+
 nmap <S-Right> <C-W>>
+
+nmap _ <C-W>_
 
 " Spell Checking - Test: color colour
 nnoremap <F7> :setlocal spell!<CR>:setlocal spelllang=en_au<CR><Esc>
