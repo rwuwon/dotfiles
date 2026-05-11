@@ -1,13 +1,13 @@
 if status is-interactive
   # Commands to run in interactive sessions can go here
+  # https://fishshell.com/docs/current/cmds/test.html#examples
+  if test -e /var/mail/$USER
+    head -5 /var/mail/$USER
+  end
+
   set -g fish_greeting # Suppress greeting
   uname -a
   uptime
-
-  # https://fishshell.com/docs/current/cmds/test.html#examples
-  if test -d /var/mail/$USER
-    head /var/mail/$USER
-  end
 
   function listg
     if ! test -f /run/current-system/sw/bin/nixos-rebuild
@@ -36,8 +36,9 @@ if status is-interactive
   set -g fish_prompt_pwd_dir_length 0
 
   set TERM tmux-256color
-  set EDITOR vim
-  set VISUAL vim
+  set EDITOR nvim
+  set VISUAL nvim
+  set SYSTEMD_EDITOR nvim
 
   # Run this once in fish and it should set.
   abbr --add -- - 'cd -' # Use this one from version 2.5.0 onwards
@@ -54,8 +55,11 @@ if status is-interactive
 
   # Short aliases
   alias a='alias'
+  alias b='btop'
   alias bc='bc -l'
-  alias bt='btop'
+
+  alias ea='eza --icons=auto --time-style=long-iso --group-directories-first --sort=name -lhg'
+  alias icat='kitten icat'
 
   #alias l 'ls -alh --group-directories-first'
   #alias la 'ls -alh --group-directories-first'
@@ -108,6 +112,8 @@ if status is-interactive
   alias vim="vim -p"
   alias vimd="nvim -d"
   alias vimdiff="nvim -d"
+  alias v="nvim -p"
+  alias vd="nvim -d"
 
 # https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 # https://news.ycombinator.com/item?id=11071754
