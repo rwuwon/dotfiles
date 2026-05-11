@@ -98,6 +98,8 @@ nmap <S-Down> <C-W>-
 nmap <S-Up> <C-W>+
 nmap <S-Right> <C-W>>
 
+nmap _ <C-W>_
+
 " Spell Checking - Test: color colour
 nnoremap <F7> :setlocal spell!<CR>:setlocal spelllang=en_au<CR><Esc>
 inoremap <F7> <Esc>:setlocal spell!<CR>:setlocal spelllang=en_au<CR>a
