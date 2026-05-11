@@ -44,6 +44,7 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
+    pkgsUnstable.chawan  #TUI web browser
     pkgsUnstable.kitty
     pkgsUnstable.en-croissant
 

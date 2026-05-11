@@ -73,7 +73,7 @@ bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"; floati
 #
    input type:keyboard {
        xkb_layout "us"
-       #xkb_layout "us-altgr-intl"
+       xkb_variant "altgr-intl"
    }
     input type:keyboard {
       repeat_delay 250
