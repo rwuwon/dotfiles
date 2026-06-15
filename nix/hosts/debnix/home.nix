@@ -41,7 +41,7 @@ imports =
   home.packages = with pkgs; [
     #pkgsUnstable.curl
     # Use unstable fish because 4.2.1 doesn't highlight files upon tab
-    pkgsUnstable.fish
+    #pkgsUnstable.fish
 
     atop
     bat
@@ -50,7 +50,7 @@ imports =
     #deno
     emoji-picker
     fastfetch
-    #fish
+    fish
     fzf
     hello
     gdu

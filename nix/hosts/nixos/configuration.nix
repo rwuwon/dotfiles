@@ -148,7 +148,7 @@
     wrapperFeatures.gtk = true;
   };
   programs.sway.extraPackages = with pkgs; [
-    brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust termite rofi light bemenu wl-clipboard clipman ];
+    brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust rofi bemenu wl-clipboard clipman ];
 
   programs.fish = {
     enable = true;

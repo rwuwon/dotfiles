@@ -42,8 +42,9 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
+    #pkgsUnstable.chawan  #TUI web browser
 
+    chawan
     hello
     nix
     nix-output-monitor

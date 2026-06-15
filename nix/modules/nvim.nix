@@ -8,7 +8,7 @@
     enable = true;
     plugins = with pkgs.vimPlugins; [
       autoclose-nvim
-      ctrlp
+      ctrlp-vim
       fzf-lua
       indent-blankline-nvim
       lualine-nvim
@@ -23,6 +23,9 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    sideloadInitLua = true;
+    withRuby = false;
+    withPython3 = false;
   };
 
   # Use the external dotfiles nvim config for quicker hacking

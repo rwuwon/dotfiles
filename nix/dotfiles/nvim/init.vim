@@ -6,7 +6,7 @@ set backspace=indent,eol,start
 " https://stackoverflow.com/questions/446269/can-i-use-space-as-mapleader-in-vim
 nnoremap <SPACE> <Nop>
 let mapleader = " "
-inoremap jk <esc>
+inoremap jk <esc>:set clipboard=unnamedplus<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -169,9 +169,9 @@ require("autoclose").setup({
     ["]"] = { escape = true, close = false, pair = "[]" },
     ["}"] = { escape = true, close = false, pair = "{}" },
 
-    ['"'] = { escape = true, close = true, pair = '""' },
+    ['"'] = { escape = true, close = false, pair = '""' },
     ["'"] = { escape = true, close = false, pair = "''" },
-    ["`"] = { escape = true, close = true, pair = "``" },
+    ["`"] = { escape = true, close = false, pair = "``" },
   },
   options = {
     disabled_filetypes = { "text" },

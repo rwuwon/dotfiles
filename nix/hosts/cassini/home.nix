@@ -44,12 +44,13 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
-    pkgsUnstable.kitty
-    pkgsUnstable.en-croissant
+    #pkgsUnstable.chawan  #TUI web browser
+    #pkgsUnstable.kitty
+    #pkgsUnstable.en-croissant
 
     bat
     btdu
+    chawan
     cpufetch
     deno
     emoji-picker
@@ -60,7 +61,7 @@ imports =
     #fishPlugins.hydro
     #ghostty
     hello
-    #kitty
+    kitty
     links2
     #man
     newsboat
@@ -69,6 +70,7 @@ imports =
     nix-output-monitor
     trippy
     viu
+    youtube-tui
     yt-dlp
 
     # Previously via Flatpak:

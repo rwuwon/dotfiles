@@ -13,8 +13,8 @@ imports =
   xdg.configFile = {
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
-#    fish.source = "${dotfiles}/fish";
-#    tmux.source = "${dotfiles}/tmux";
+    #fish.source = "${dotfiles}/fish";
+    #tmux.source = "${dotfiles}/tmux";
     "bat/config".source = "${dotfiles}/nix/dotfiles/bat/config";
     #"btop/btop.conf".source = "${dotfiles}/nix/dotfiles/btop/btop.conf";
 
@@ -31,7 +31,7 @@ imports =
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    neofetch
+    fastfetch
     nnn # terminal file manager
 
     # archives

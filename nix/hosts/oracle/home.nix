@@ -2,6 +2,7 @@
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
+  pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -45,9 +46,10 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
+    #pkgsUnstable.chawan  #TUI web browser
 
     bat
+    chawan
     cpufetch
     #deno
     emoji-picker
