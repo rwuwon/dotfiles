@@ -1,0 +1,36 @@
+    # non-NixOS nix on Debian with Home Manager #
+    # ----------------------------------------- #
+
+sudo apt install git
+
+sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
+
+    # Alternative:
+#curl -L https://nixos.org/nix/install | sh -s -- --daemon
+
+    # *Log out and in again*
+
+sudo systemctl enable nix-daemon.service --now
+
+
+nix-channel --list
+nix-channel --add https://nixos.org/channels/nixos-26.05 nixpkgs
+nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
+nix-channel --update
+
+    # *Did you forget to log out/in?*
+
+nix-shell '<home-manager>' -A install
+echo $NIX_PATH && echo $PATH
+echo export PATH=/home/$USER/.nix-profile/bin:\$PATH >> ~/.bashrc
+export PATH=/home/$USER/.nix-profile/bin:$PATH
+
+
+ln -s ~/nix/hosts/newhorizons/home.nix ~/.config/home-manager/home.nix
+home-manager switch
+
+
+    # nixGL:
+nix-channel --add https://github.com/nix-community/nixGL/archive/main.tar.gz nixgl && nix-channel --update
+nix-env -iA nixgl.auto.nixGLDefault
