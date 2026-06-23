@@ -3,10 +3,10 @@
 
 sudo apt install git
 
-curl -L https://nixos.org/nix/install | sh -s -- --daemon
+sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
 
     # Alternative:
-# sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
+#curl -L https://nixos.org/nix/install | sh -s -- --daemon
 
     # *Log out and in again*
 
@@ -16,7 +16,7 @@ sudo systemctl enable nix-daemon.service --now
 nix-channel --list
 nix-channel --add https://nixos.org/channels/nixos-26.05 nixpkgs
 nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
 nix-channel --update
 
     # *Did you forget to log out/in?*
