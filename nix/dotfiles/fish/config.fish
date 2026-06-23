@@ -29,7 +29,7 @@ if status is-interactive
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   export MANROFFOPT="-c"  # Use if formatting is wonky:
 
-  set PATH $HOME/.nix-profile/bin ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
+  set PATH $HOME/.nix-profile/bin ~/nix/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
   #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
 
   # Stop abbreviated paths:

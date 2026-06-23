@@ -29,7 +29,7 @@ if status is-interactive
   #set MANPATH $HOME/.nix-profile/share/man /nix/var/nix/profiles/default/share/man /usr/share/man
   export MANROFFOPT="-c"  # Use if formatting is wonky:
 
-  set PATH $HOME/.nix-profile/bin ~/dotfiles/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
+  set PATH $HOME/.nix-profile/bin ~/nix/vnc ~/nix/scripts ~/scripts /usr/games /usr/sbin $PATH
   #set PATH /home/io/.local/share/flatpak/exports/bin ~/dotfiles/vnc ~/scripts /usr/sbin $PATH
 
   # Stop abbreviated paths:
@@ -59,6 +59,8 @@ if status is-interactive
   alias bc='bc -l'
 
   alias ea='eza --icons=auto --time-style=long-iso --group-directories-first --sort=name -lhg'
+  alias h='history'
+  alias hm='history merge'
   alias icat='kitten icat'
 
   #alias l 'ls -alh --group-directories-first'
