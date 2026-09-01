@@ -112,7 +112,7 @@ bindsym $mod+semicolon split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-bindsym $mod+q split toggle
+bindsym $mod+Ctrl+q split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -252,11 +252,18 @@ bar {
         tray_padding 0
 }
 
-mode "Passthrough Mode - Press mod+Shift+p to exit" {
-    bindsym $mod+Shift+p mode "default"
+mode "Passthrough Mode - Press mod+p to exit" {
+    bindsym $mod+p mode "default"
     set $mod Mod1
 }
-bindsym $mod+Shift+p mode "Passthrough Mode - Press mod+Shift+p to exit"
+bindsym $mod+p mode "Passthrough Mode - Press mod+p to exit"
+
+mode "Passthrough Mode - Press mod+q to exit" {
+    bindsym $mod+q mode "default"
+    #set $mod Mod1
+}
+bindsym $mod+q mode "Passthrough Mode - Press mod+p to exit"
+
 set $mod Mod4
 
 # ------------------
@@ -520,4 +527,4 @@ workspace 10 output HDMI-0
 # clashes with firefox-esr assign [class="firefox"] 1
 assign [class="firefox-esr"] 3
 assign [class="Microsoft-edge"] 3
-assign [class="Joplin"] 4
+assign [class="joplin-app-desktop"] 4
