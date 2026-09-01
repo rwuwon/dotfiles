@@ -43,20 +43,19 @@ imports =
     # Use unstable fish because 4.2.1 doesn't highlight files upon tab
     #pkgsUnstable.fish
 
-    atop
+    #atop
     bat
-    btop
-    cpufetch
+    #cpufetch
     #deno
-    emoji-picker
-    fastfetch
+    #emoji-picker
+    #fastfetch
     fish
     fzf
     hello
     gdu
     gnupg
     grc
-    links2
+    #links2
     #man
     nix
     nix-output-monitor

@@ -50,7 +50,7 @@ imports =
 
     bat
     btdu
-    #chawan
+    chawan
     cpufetch
     #deno
     #emoji-picker

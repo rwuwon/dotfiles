@@ -1,3 +1,3 @@
-# nix
+# dotfiles
 
-new experiment
+dotfiles & nix configs

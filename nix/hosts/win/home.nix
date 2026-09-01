@@ -45,7 +45,7 @@ imports =
 
     #atop
     bat
-    btop
+    #btop
     cpufetch
     #deno
     emoji-picker
@@ -56,8 +56,8 @@ imports =
     gdu
     gnupg
     grc
-    kitty
-    alacritty
+    #kitty
+    #alacritty
     #links2
     #man
     mosh

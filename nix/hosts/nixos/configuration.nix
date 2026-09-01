@@ -45,13 +45,25 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
+  hardware.graphics.enable = true;
+
   ### Start of section for i3, not sway
   ## Enable the X11 windowing system.
   #services.xserver.enable = true;
 
   ## Enable the GNOME Desktop Environment.
-  #services.displayManager.gdm.enable = true;
   #services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+
+  services.displayManager.autoLogin = {
+      enable = true;
+      user = "io";
+    };
+
+  # Graphical session to pre-select 
+  services.displayManager.defaultSession = "sway";
 
   #services.xserver = {
   #  enable = true;
@@ -143,6 +155,10 @@
 
   programs.firefox.enable = true;
 
+  #programs.labwc = {
+  #  enable = true;
+  #};
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -221,16 +237,16 @@
   services.gnome.gnome-keyring.enable = true;
 
   # Autologin:
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "io";
-      };
-      default_session = initial_session;
-    };
-  };
+  #services.greetd = {
+  #  enable = true;
+  #  settings = rec {
+  #    initial_session = {
+  #      command = "${pkgs.sway}/bin/sway";
+  #      user = "io";
+  #    };
+  #    default_session = initial_session;
+  #  };
+  #};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
