@@ -11,10 +11,10 @@
 
 # One-step:
 
-ssh -f -L 5905:localhost:5905 io@nix "export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc localhost 5905" && sleep 2; vncviewer localhost:5905
+ssh -f -L 5905:localhost:5905 io@nix "export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc localhost 5905" && sleep 2; vncviewer localhost:5905 -MenuKey=Home
 echo "\n\n========================"
 echo "Final step if necessary:"
-echo "vncviewer localhost:5905"
+echo "vncviewer localhost:5905 -MenuKey=Home"
 echo "========================\n\n"
 
 

@@ -11,8 +11,8 @@
 
 # One-step:
 
-ssh -f -L 5907:localhost:5907 io@stardust 'export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc localhost 5907' && sleep 2; vncviewer localhost:5907
+ssh -f -L 5907:localhost:5907 io@stardust 'export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc localhost 5907' && sleep 2; vncviewer localhost:5907 -MenuKey=Home
 echo "\n\n========================"
 echo "Final step if necessary:"
-echo "vncviewer localhost:5907"
+echo "vncviewer localhost:5907 -MenuKey=Home"
 echo "========================\n\n"
