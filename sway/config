@@ -443,6 +443,7 @@ bindsym ctrl+$mod+0 exec libreoffice --calc
 #
 # Window assignments: swaymsg -t get_tree | jq -C | less -R
 #
+assign [app_id="firefox"] 1
 assign [app_id="firefox-esr"] 3
 assign [app_id="microsoft-edge"] 3
 # if using --ozone-platform=x11:
