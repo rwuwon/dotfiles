@@ -100,6 +100,7 @@ if status is-interactive
   alias yt-dlp='yt-dlp --no-mtime'
 
   alias dfh='df -h'
+  alias duh='du -hd1|sort -h'
   alias f='fish'
   alias gg='echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
   alias ggg='echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'

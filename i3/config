@@ -524,7 +524,7 @@ workspace 1 output primary
 workspace 10 output HDMI-0
 #workspace 10 output secondary
 
-# clashes with firefox-esr assign [class="firefox"] 1
+assign [class="firefox$"] 1
 assign [class="firefox-esr"] 3
 assign [class="Microsoft-edge"] 3
 assign [class="joplin-app-desktop"] 4
