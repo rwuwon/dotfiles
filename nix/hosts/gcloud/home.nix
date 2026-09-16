@@ -44,10 +44,10 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    #pkgsUnstable.chawan  #TUI web browser
+    pkgsUnstable.chawan  #TUI web browser
 
     bat
-    chawan
+    #chawan
     cpufetch
     #deno
     emoji-picker

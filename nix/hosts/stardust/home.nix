@@ -48,13 +48,13 @@ imports =
     xdg-desktop-portal-wlr # works for browser & obs. symlink to /usr/libexec/xdg-desktop-portal after backing up
     #obs-studio-plugins.wlrobs & obs-studio not required; trixie repo is fine
 
-    #pkgsUnstable.chawan  #TUI web browser
+    pkgsUnstable.chawan  #TUI web browser
     #pkgsUnstable.kitty
     #pkgsUnstable.en-croissant
 
     bat
     btdu
-    chawan
+    #chawan
     cpufetch
     deno
     emoji-picker
