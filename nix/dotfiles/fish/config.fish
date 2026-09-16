@@ -59,8 +59,9 @@ if status is-interactive
   alias bc='bc -l'
 
   alias ea='eza --icons=auto --time-style=long-iso --group-directories-first --sort=name -lhg'
-  alias h='history'
+  alias h='history --show-time="%Y-%m-%d %H:%M:%S "'
   alias hm='history merge'
+  alias i='ip -c a'
   alias icat='kitten icat'
 
   #alias l 'ls -alh --group-directories-first'
