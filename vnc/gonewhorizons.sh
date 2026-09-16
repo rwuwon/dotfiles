@@ -5,6 +5,5 @@
 ssh -f -L 5903:localhost:5903 io@newhorizons 'export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc localhost 5903' && sleep 2; vncviewer localhost:5903 -MenuKey=Home
 echo "\n\n======================================"
 echo "Final step if necessary:"
-echo "vncviewer localhost:5903 -MenuKey=Home"
-echo "vncviewer localhost:5903 -MenuKey=Home -CompressLevel=9 -QualityLevel=0 -LowColorLevel=0 #newhorizons"
+echo "vncviewer localhost:5903 -MenuKey=Home -FullScreen=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 -AutoSelect=0 #newhorizons"
 echo "======================================\n\n"
