@@ -11,7 +11,7 @@
 
 # One-step:
 
-ssh -f -L 5902:localhost:5902 io@cassini 'x11vnc -allow 127.0.0.1,172.16.1. -autoport 5902 -display :0 -forever -noxdamage -repeat -nowf' && sleep 2; vncviewer localhost:5902 -MenuKey=Home
+ssh -f -L 5902:localhost:5902 io@cassini 'x11vnc -allow 127.0.0.1,172.16.1. -autoport 5902 -display :0 -forever -noxdamage -repeat -nowf -nevershared' && sleep 2; vncviewer localhost:5902 -MenuKey=Home
 echo "\n\n======================================"
 echo "Final step if necessary:"
 echo "vncviewer localhost:5902 -MenuKey=Home -FullScreen=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 -AutoSelect=0 #cassini"
