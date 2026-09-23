@@ -63,7 +63,8 @@
     };
 
   # Graphical session to pre-select 
-  services.displayManager.defaultSession = "sway";
+  #services.displayManager.defaultSession = "sway";
+  services.displayManager.defaultSession = "labwc";
 
   #services.xserver = {
   #  enable = true;
@@ -166,6 +167,10 @@
   programs.sway.extraPackages = with pkgs; [
     brightnessctl foot grim pulseaudio swayidle swaylock wmenu i3status i3status-rust rofi bemenu wl-clipboard clipman ];
 
+    programs.labwc = {
+      enable = true;
+    };
+
   programs.fish = {
     enable = true;
   };
@@ -192,6 +197,13 @@
   # so git must be installed first
   #git
   #wget
+  wireguard-tools
+
+  # labwc parts:
+  swaybg
+  waybar
+  wlr-randr
+  wofi
 
   #fishPlugins.done
   #fishPlugins.fzf-fish

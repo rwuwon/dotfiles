@@ -24,6 +24,10 @@ imports =
     "fish/conf.d/grc.fish".source = "${dotfiles}/nix/dotfiles/fish/grc.fish";
 
     "tmux/tmux.conf".source = "${dotfiles}/nix/dotfiles/tmux/tmux.conf";
+
+    "labwc".source = "${dotfiles}/nix/dotfiles/labwc";
+    "waybar".source = "${dotfiles}/nix/dotfiles/waybar";
+    "foot".source = "${dotfiles}/nix/dotfiles/foot";
   };
 
   home.username = "io";
