@@ -91,7 +91,7 @@ if status is-interactive
   alias s='sudo -i'
   alias sd='sudo'
   # Use sv so logs work: /data/data/com.termux/files/usr/var/log/sv/sshd
-  alias sss "sv start sshd"
+  alias sss "sv start sshd && mosh-server"
   alias ppp="sv stop sshd"
   alias cal='ncal -b'
   alias cp='cp -vi'
