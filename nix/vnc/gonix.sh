@@ -24,10 +24,10 @@ sleep 5 && \
 vncviewer localhost:5905 -MenuKey=Home -FullScreen=0"
 
 echo "\n========================================================="
-echo "Troubleshooting:"
+echo "Reconnect with:"
 echo "vncviewer localhost:5905 -MenuKey=Home -FullScreen=0 #nix"
 echo "---------------------------------------------------------"
-echo "Reconnect with:"
+echo "Troubleshooting:"
 echo "ssh -t -L 5905:localhost:5905 io@nix 'pkill wayvnc'"
 echo "=========================================================\n"
 
