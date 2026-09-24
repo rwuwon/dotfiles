@@ -9,6 +9,18 @@ if status is-interactive
   uname -a
   uptime
 
+  #echo -e "\n[Enter] to connect to gcloud.\nAny other input to exit."
+  #while read -l choice
+  #echo -e "[Enter] to connect to gcloud.\nAny other input to exit."
+  #  switch $choice
+  #    case ''
+  #       mosh deb -- tmux a
+  #    case '*'
+  #      echo "Exited to shell."
+  #      break
+  #  end
+  #end
+
   function listg
     if ! test -f /run/current-system/sw/bin/nixos-rebuild
       nix-env --list-generations
