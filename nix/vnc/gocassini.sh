@@ -16,9 +16,11 @@ echo "=========================================================\n"
 
 ssh -f -L 5902:localhost:5902 io@cassini 'x11vnc -allow 127.0.0.1,172.16.2. -autoport 5902 -display :0 -forever -noxdamage -repeat -nowf -nevershared -nopw' && sleep 2; vncviewer localhost:5902 -MenuKey=Home -FullScreen=0
 echo "\n========================================================="
-echo "Final step if necessary:"
+echo "Reconnect using one of:"
 echo "vncviewer localhost:5902 -MenuKey=Home -FullScreen=0 -AutoSelect=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 #cassini"
 echo "vncviewer localhost:5902 -MenuKey=Home -FullScreen=0 #cassini"
 echo "vncviewer 172.16.2.2:5902 -MenuKey=Home -FullScreen=0 -AutoSelect=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 #cassini"
 echo "vncviewer 172.16.2.2:5902 -MenuKey=Home -FullScreen=0 #cassini"
 echo "=========================================================\n"
+
+viewcassini.sh

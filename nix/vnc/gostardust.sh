@@ -16,18 +16,26 @@ export WLR_LIBINPUT_NO_DEVICES=1 && \
 export WAYLAND_DISPLAY=wayland-1 && \
 wayvnc -v 172.16.7.7 5907' && \
 sleep 2 && \
-vncviewer 172.16.7.7:5903 -MenuKey=Home"
+vncviewer 172.16.7.7:5907 -MenuKey=Home"
 
 echo "=========================================================\n\n"
 
-ssh -f -L 5907:localhost:5907 io@stardust 'export WLR_BACKENDS=headless && \
+ssh -f -L 5907:localhost:5907 io@stardust \
+'export WLR_BACKENDS=headless && \
 export WLR_LIBINPUT_NO_DEVICES=1 && \
 export WAYLAND_DISPLAY=wayland-1 && \
 wayvnc -v 172.16.7.7 5907' && \
 sleep 2 && \
 vncviewer 172.16.7.7:5907 -MenuKey=Home
 
-echo "\n\n========================================================="
-echo "Final step if necessary:"
-echo "vncviewer 172.16.7.7:5907 -MenuKey=Home -FullScreen=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 -AutoSelect=0 #stardust"
-echo "=========================================================\n\n"
+echo "\n========================================================="
+echo "Reconnect using one of:"
+echo "vncviewer 172.16.7.7:5907 -MenuKey=Home -FullScreen=0 -AutoSelect=0 -CompressLevel=9 -QualityLevel=2 -LowColorLevel=0 #stardust
+echo "vncviewer 172.16.7.7:5907 -MenuKey=Home -FullScreen=0 #stardust"
+echo "viewstardust.sh"
+echo "---------------------------------------------------------"
+echo "Troubleshooting:"
+echo "ssh -t -L 5907:172.16.7.7:5907 io@stardust 'pkill wayvnc'"
+echo "========================================================="
+
+viewstardust.sh

@@ -12,23 +12,17 @@
 # sway to i3 with Xauthority auth set
 # -auth tip: ps wwwwaux | grep auth
 
+# Wayland, in one-step:
 #ssh -f -L 5905:localhost:5905 io@nix 'x11vnc -localhost -autoport 5905 -display :0 -forever -noxdamage -repeat -nowf -auth /run/user/1000/gdm/Xauthority' && sleep 2; vncviewer localhost:5905
 
-# Wayland, in one-step:
-
-echo "ssh -f -L 5905:localhost:5905 io@nix 'export WLR_BACKENDS=headless && \
+echo "ssh -f -L 5905:localhost:5905 io@nix \
+'export WLR_BACKENDS=headless && \
 export WLR_LIBINPUT_NO_DEVICES=1 && \
 export WAYLAND_DISPLAY=wayland-0 && \
 wayvnc -v localhost 5905' && \
 sleep 5 && \
 vncviewer localhost:5905 -MenuKey=Home -FullScreen=0"
 
-echo "\n========================================================="
-echo "Reconnect with:"
-echo "vncviewer localhost:5905 -MenuKey=Home -FullScreen=0 #nix"
-echo "---------------------------------------------------------"
-echo "Troubleshooting:"
-echo "ssh -t -L 5905:localhost:5905 io@nix 'pkill wayvnc'"
 echo "=========================================================\n"
 
 ssh -f -L 5905:localhost:5905 io@nix 'export WLR_BACKENDS=headless && \
@@ -37,3 +31,14 @@ export WAYLAND_DISPLAY=wayland-0 && \
 wayvnc -v localhost 5905' && \
 sleep 5 && \
 vncviewer localhost:5905 -MenuKey=Home -FullScreen=0
+
+echo "\n========================================================="
+echo "Reconnect with:"
+echo "vncviewer localhost:5905 -MenuKey=Home -FullScreen=0 #nix"
+echo "viewnix.sh"
+echo "---------------------------------------------------------"
+echo "Troubleshooting:"
+echo "ssh -t -L 5905:localhost:5905 io@nix 'pkill wayvnc'"
+echo "========================================================="
+
+viewnix.sh
