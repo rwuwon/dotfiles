@@ -12,7 +12,7 @@ if status is-interactive
   #echo -e "\n[Enter] to connect to gcloud.\nAny other input to exit."
   #while read -l choice
   #  switch $choice
-  #    case ''
+  #    case '' 'm'
   #       mosh deb -- tmux a
   #    case '*'
   #      echo "Exited to shell."
