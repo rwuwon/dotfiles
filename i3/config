@@ -262,7 +262,7 @@ mode "Passthrough Mode - Press mod+q to exit" {
     bindsym $mod+q mode "default"
     #set $mod Mod1
 }
-bindsym $mod+q mode "Passthrough Mode - Press mod+p to exit"
+bindsym $mod+q mode "Passthrough Mode - Press mod+q to exit"
 
 set $mod Mod4
 
@@ -528,3 +528,5 @@ assign [class="firefox$"] 1
 assign [class="firefox-esr"] 3
 assign [class="Microsoft-edge"] 3
 assign [class="joplin-app-desktop"] 4
+
+exec --no-startup-id x11vnc -allow 127.0.0.1,172.16.2. -autoport 5902 -display :0 -forever -noxdamage -repeat -nowf -nevershared -nopw

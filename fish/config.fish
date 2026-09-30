@@ -9,6 +9,18 @@ if status is-interactive
   uname -a
   uptime
 
+  #echo -e "\n[Enter] to connect to gcloud.\nAny other input to exit."
+  #while read -l choice
+  #  switch $choice
+  #    case '' 'm'
+  #       mosh deb -- tmux a
+  #    case '*'
+  #      echo "Exited to shell."
+  #      break
+  #  end
+  #  echo -e "[Enter] to connect to gcloud.\nAny other input to exit."
+  #end
+
   function listg
     if ! test -f /run/current-system/sw/bin/nixos-rebuild
       nix-env --list-generations
@@ -59,8 +71,9 @@ if status is-interactive
   alias bc='bc -l'
 
   alias ea='eza --icons=auto --time-style=long-iso --group-directories-first --sort=name -lhg'
-  alias h='history'
+  alias h='history --show-time="%Y-%m-%d %H:%M:%S "'
   alias hm='history merge'
+  alias i='ip -c a'
   alias icat='kitten icat'
 
   #alias l 'ls -alh --group-directories-first'
@@ -90,7 +103,7 @@ if status is-interactive
   alias s='sudo -i'
   alias sd='sudo'
   # Use sv so logs work: /data/data/com.termux/files/usr/var/log/sv/sshd
-  alias sss "sv start sshd"
+  alias sss "sv start sshd && mosh-server"
   alias ppp="sv stop sshd"
   alias cal='ncal -b'
   alias cp='cp -vi'

@@ -443,7 +443,7 @@ bindsym ctrl+$mod+0 exec libreoffice --calc
 #
 # Window assignments: swaymsg -t get_tree | jq -C | less -R
 #
-assign [app_id="firefox"] 1
+assign [app_id="firefox$"] 1
 assign [app_id="firefox-esr"] 3
 assign [app_id="microsoft-edge"] 3
 # if using --ozone-platform=x11:
@@ -456,6 +456,8 @@ assign [app_id="joplin"] 4
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [app_id="org.gnome.Calculator"] floating enable
 for_window [title="Password Required - Mozilla Firefox"] floating enable
+
+for_window [instance="TigerVNC Viewer"] fullscreen enable
 
 for_window [title="Picture in picture"] \
     floating enable, move position 960 540, resize set 960 540, sticky disable
