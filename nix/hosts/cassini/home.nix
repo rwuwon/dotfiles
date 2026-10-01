@@ -45,6 +45,7 @@ imports =
   home.packages = with pkgs; [
 
     pkgsUnstable.chawan  #TUI web browser
+    pkgsUnstable.joplin-desktop
     #pkgsUnstable.kitty
     #pkgsUnstable.en-croissant
 
@@ -76,7 +77,7 @@ imports =
     # Previously via Flatpak:
     anki
     bitwarden-desktop
-    joplin-desktop
+    #joplin-desktop
     #musescore   # Run with: nixGL mscore
     signal-desktop
     stellarium

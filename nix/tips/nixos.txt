@@ -24,3 +24,11 @@ nix-build '<nixpkgs>' --arg crossSystem '(import <nixpkgs> {}).lib.systems.examp
 
 # Shrink VM images
 virt-sparsify --tmp /home/io/asdf/tmp debian-standard-clone.qcow2 debian-standard.qcow2
+
+####
+
+# Troubleshooting:
+If the following command or similar shows a locale error:
+sudo /nix/store/najw1xlgz5zsbndjinfkv5569hlnbqsk-non-nixos-gpu/bin/non-nixos-gpu-setup
+
+Run locale-gen en_AU.UTF-8 and/or dpkg-reconfigure locales again
