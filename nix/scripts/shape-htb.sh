@@ -5,6 +5,7 @@
 # Failsafe https://stackoverflow.com/questions/9934828/bash-script-how-to-sleep-in-new-process-then-execute-a-command/9934860#9934860
 #bash -c 'sleep 60; sysctl -w net.ipv6.conf.all.disable_ipv6=0' &
 
+# Ugly toggle apparently because: https://lartc.org/lartc.html#AEN1446
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 # The Ultimate Setup For Your Internet Connection At Home
