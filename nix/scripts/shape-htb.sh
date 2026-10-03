@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Based on https://lartc.org/lartc.html#AEN2241
 

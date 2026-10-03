@@ -45,7 +45,7 @@ imports =
     #p7zip
 
     # utils
-    #ripgrep # recursively searches directories for a regex pattern
+    ripgrep # recursively searches directories for a regex pattern
     #jq # A lightweight and flexible command-line JSON processor
     #yq-go # yaml processor https://github.com/mikefarah/yq
     #eza # A modern replacement for ‘ls’
@@ -53,8 +53,8 @@ imports =
     grc
 
     # networking tools
-    #mtr # A network diagnostic tool
-    #iperf3
+    mtr # A network diagnostic tool
+    iperf3
     #dnsutils  # `dig` + `nslookup`
     #ldns # replacement of `dig`, it provide the command `drill`
     #aria2 # A lightweight multi-protocol & multi-source command-line download utility
