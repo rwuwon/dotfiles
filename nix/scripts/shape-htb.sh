@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # Based on https://lartc.org/lartc.html#AEN2241
+
+# Failsafe:
+#bash -c 'sleep 60; sysctl -w net.ipv6.conf.all.disable_ipv6=0' &
+
 sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 # The Ultimate Setup For Your Internet Connection At Home
