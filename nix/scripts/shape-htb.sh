@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Based on https://lartc.org/lartc.html#AEN2241
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 # The Ultimate Setup For Your Internet Connection At Home
 # 
@@ -8,9 +9,9 @@
 # Set the following values to somewhat less than your actual download
 # and uplink speed. In kilobits
 #DOWNLINK=800
-DOWNLINK=800
+DOWNLINK=15000
 #UPLINK=220
-UPLINK=220
+UPLINK=5000
 DEV=wlp0s20f3
 
 # clean existing down- and uplink qdiscs, hide errors
@@ -93,6 +94,7 @@ while true; do
       tc qdisc del dev $DEV root    2> /dev/null > /dev/null
       tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
       tc qdisc show dev $DEV
+      sysctl -w net.ipv6.conf.all.disable_ipv6=0
       echo "Exited."
       break
       ;;
