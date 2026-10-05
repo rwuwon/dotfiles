@@ -6,7 +6,7 @@
 #bash -c 'sleep 60; sysctl -w net.ipv6.conf.all.disable_ipv6=0' &
 
 # Ugly toggle apparently because: https://lartc.org/lartc.html#AEN1446
-sysctl -w net.ipv6.conf.all.disable_ipv6=1
+##sysctl -w net.ipv6.conf.all.disable_ipv6=1
 
 # The Ultimate Setup For Your Internet Connection At Home
 # 
@@ -83,9 +83,14 @@ tc qdisc add dev $DEV handle ffff: ingress
 # filter *everything* to it (0.0.0.0/0), drop everything that's
 # coming in too fast:
 
-tc filter add dev $DEV parent ffff: protocol ip prio 50 u32 match ip src \
-   0.0.0.0/0 police rate ${DOWNLINK}kbit burst 10k drop flowid :1
+##tc filter add dev $DEV parent ffff: protocol ip prio 50 u32 match ip src \
+##   0.0.0.0/0 police rate ${DOWNLINK}kbit burst 10k drop flowid :1
 
+# IPv6 & IPv4:
+# https://www.linux.org/docs/man8/tc-police.html#:~:text=EXAMPLES
+tc filter add dev $DEV parent ffff: protocol all prio 50 u32 \
+   match u32 0 0 \
+   police rate ${DOWNLINK}kbit burst 10k drop flowid :1
 
 # Custom addition:
 while true; do
@@ -99,7 +104,7 @@ while true; do
       tc qdisc del dev $DEV root    2> /dev/null > /dev/null
       tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
       tc qdisc show dev $DEV
-      sysctl -w net.ipv6.conf.all.disable_ipv6=0
+      ##sysctl -w net.ipv6.conf.all.disable_ipv6=0
       echo "Exited."
       break
       ;;
