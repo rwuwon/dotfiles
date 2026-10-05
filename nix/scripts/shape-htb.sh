@@ -88,8 +88,12 @@ tc qdisc add dev $DEV handle ffff: ingress
 
 # IPv6 & IPv4:
 # https://www.linux.org/docs/man8/tc-police.html#:~:text=EXAMPLES
-tc filter add dev $DEV parent ffff: protocol all prio 50 u32 \
-   match u32 0 0 \
+# https://www.mankier.com/8/tc-matchall
+#tc filter add dev $DEV parent ffff: protocol all prio 50 u32 \
+#   match u32 0 0 \
+#   police rate ${DOWNLINK}kbit burst 10k drop flowid :1
+tc filter add dev $DEV parent ffff: protocol all prio 50 \
+   matchall action \
    police rate ${DOWNLINK}kbit burst 10k drop flowid :1
 
 # Custom addition:
