@@ -100,7 +100,7 @@ while true; do
 
   case $choice in
     "")
-      echo -e "tc qdisc del dev wlp0s20f3 root 2> /dev/null > /dev/null && tc qdisc del dev wlp0s20f3 ingress 2> /dev/null > /dev/null"
+      echo -e "tc qdisc del dev $DEV root 2> /dev/null > /dev/null && tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null"
       tc qdisc del dev $DEV root    2> /dev/null > /dev/null
       tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
       tc qdisc show dev $DEV
