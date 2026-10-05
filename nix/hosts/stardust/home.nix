@@ -45,7 +45,7 @@ imports =
   home.packages = with pkgs; [
 
     sway  # sway 1.12 for window sharing. Add new shortcut to /usr/share/wayland-sessions/
-    xdg-desktop-portal-wlr # works for browser & obs. symlink to /usr/libexec/xdg-desktop-portal after backing up
+    xdg-desktop-portal-wlr # works for browser & obs. symlink to /usr/libexec/xdg-desktop-portal-wlr after backing up
     #obs-studio-plugins.wlrobs & obs-studio not required; trixie repo is fine
 
     pkgsUnstable.chawan  #TUI web browser
