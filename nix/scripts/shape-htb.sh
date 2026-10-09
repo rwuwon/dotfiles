@@ -23,6 +23,8 @@ DEV=wlp0s20f3
 tc qdisc del dev $DEV root    2> /dev/null > /dev/null
 tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
 
+echo -e 'Shaping' $DEV 'to' $DOWNLINK 'Kbps down,' $UPLINK 'up...\n'
+
 ###### uplink
 
 # install root HTB, point default traffic to 1:20:
@@ -109,7 +111,7 @@ while true; do
       tc qdisc del dev $DEV ingress 2> /dev/null > /dev/null
       tc qdisc show dev $DEV
       ##sysctl -w net.ipv6.conf.all.disable_ipv6=0
-      echo "Exited."
+      echo -e "\nExited."
       break
       ;;
     *)
