@@ -512,4 +512,9 @@ exec ~/.dropbox-dist/dropboxd
 # https://wiki.gentoo.org/wiki/Sway#Screen_sharing_does_not_work
 exec --no-startup-id dbus-update-activation-environment --all
 
-exec --no-startup-id export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1 && wayvnc -v 172.16.7.7 5907
+exec export WLR_BACKENDS=headless; \
+  export WLR_LIBINPUT_NO_DEVICES=1; \
+  export WAYLAND_DISPLAY=wayland-1
+exec wayvnc -v 172.16.7.7 5907 || \
+  ( echo $(date -Is) 'wayvnc startup failed - retrying in 5s' >> ~/sway.log; \
+  sleep 5; wayvnc -v 172.16.7.7 5907 )
