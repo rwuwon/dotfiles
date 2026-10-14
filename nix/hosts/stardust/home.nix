@@ -21,6 +21,7 @@ imports =
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
+    "foot".source = "${dotfiles}/foot";
   };
 
   targets.genericLinux.enable = true;

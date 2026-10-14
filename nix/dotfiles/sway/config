@@ -510,11 +510,13 @@ bindsym $mod+m bar mode toggle
 exec ~/.dropbox-dist/dropboxd
 # For OBS PipeWire Screen Capture:
 # https://wiki.gentoo.org/wiki/Sway#Screen_sharing_does_not_work
-exec --no-startup-id dbus-update-activation-environment --all
+exec --no-startup-id sleep 1; dbus-update-activation-environment --all
 
-exec export WLR_BACKENDS=headless; \
+exec_always sh -c "(export WLR_BACKENDS=headless; \
   export WLR_LIBINPUT_NO_DEVICES=1; \
-  export WAYLAND_DISPLAY=wayland-1
-exec wayvnc -v 172.16.7.7 5907 || \
-  ( echo $(date -Is) 'wayvnc startup failed - retrying in 5s' >> ~/sway.log; \
-  sleep 5; wayvnc -v 172.16.7.7 5907 )
+  export WAYLAND_DISPLAY=wayland-1; \
+  sleep 0; \
+  echo $(date -Is) 'wayvnc attempt1 completed' >> ~/sway.log; \
+  wayvnc 172.16.7.7 5907) || \
+  (sleep 5 && echo $(date -Is) 'wayvnc attempt2 completed' >> ~/sway.log; \
+  wayvnc 172.16.7.7 5907)"
