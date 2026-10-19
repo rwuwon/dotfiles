@@ -17,7 +17,7 @@ imports =
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
     "bat/config".source = "${dotfiles}/bat/config";
-    "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
+    "tmux/tmux.conf".source = "${dotfiles}/tmux/cassini.conf";
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
@@ -105,13 +105,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch |& nom\n"
-      home-manager switch |& nom
+      echo -e "\thome-manager switch\n"
+      home-manager switch
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch -v |& nom\n"
-      home-manager switch -v |& nom
+      echo -e "\thome-manager switch -v\n"
+      home-manager switch -v
     '')
   ];
 

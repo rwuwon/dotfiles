@@ -19,7 +19,7 @@ imports =
 #    fish.source = "${dotfiles}/fish";
 #    tmux.source = "${dotfiles}/tmux";
     "bat/config".source = "${dotfiles}/bat/config";
-    "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
+    "tmux/tmux.conf".source = "${dotfiles}/tmux/oracle.conf";
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
@@ -75,13 +75,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch --cores 1 --max-jobs 1 |& nom\n"
-      home-manager switch --cores 1 --max-jobs 1 |& nom
+      echo -e "\thome-manager switch --cores 1 --max-jobs 1\n"
+      home-manager switch --cores 1 --max-jobs 1
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch --cores 1 --max-jobs 1 -v |& nom\n"
-      home-manager switch --cores 1 --max-jobs 1 -v |& nom
+      echo -e "\thome-manager switch --cores 1 --max-jobs 1 -v\n"
+      home-manager switch --cores 1 --max-jobs 1 -v
     '')
   ];
 

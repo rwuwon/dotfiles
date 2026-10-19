@@ -128,13 +128,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\tsudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ &| nom\n"
-      sudo nixos-rebuild switch --flake ~/nix/hosts/nixos/ |& nom
+      echo -e "\tsudo nixos-rebuild switch --flake ~/nix/hosts/nixos/\n"
+      sudo nixos-rebuild switch --flake ~/nix/hosts/nixos/
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\tsudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ &| nom\n"
-      sudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/ |& nom
+      echo -e "\tsudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/\n"
+      sudo nixos-rebuild -v switch --flake ~/nix/hosts/nixos/
     '')
   ];
 
@@ -147,7 +147,7 @@ imports =
     };
     settings.user = {
       name  = "io";
-      email = "<io@nixos>";
+      email = "io@nixos";
     };
     settings.init.defaultBranch = "main";
     ignores = [
