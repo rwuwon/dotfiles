@@ -17,7 +17,7 @@ imports =
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
     "bat/config".source = "${dotfiles}/bat/config";
-    "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
+    "tmux/tmux.conf".source = "${dotfiles}/tmux/newhorizons.conf";
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
