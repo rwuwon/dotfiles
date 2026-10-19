@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  pkgsUnstable = import <nixpkgs-unstable> {};
+  #pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -17,7 +17,7 @@ imports =
 # Use only for testing. Beware of "recursion"!
 # Switch between systems by first commenting out BOTH sections
     "bat/config".source = "${dotfiles}/bat/config";
-    "tmux/tmux.conf".source = "${dotfiles}/tmux/tmux.conf";
+    "tmux/tmux.conf".source = "${dotfiles}/tmux/stardust.conf";
     "fish/config.fish".source = "${dotfiles}/fish/config.fish";
     "fish/conf.d/grc.fish".source = "${dotfiles}/fish/grc.fish";
     "fish/functions/fish_prompt.fish".source = "${dotfiles}/fish/fish_prompt.fish";
@@ -49,14 +49,10 @@ imports =
     xdg-desktop-portal-wlr # works for browser & obs. symlink to /usr/libexec/xdg-desktop-portal-wlr after backing up
     #obs-studio-plugins.wlrobs & obs-studio not required; trixie repo is fine
 
-    pkgsUnstable.chawan  #TUI web browser
-    pkgsUnstable.joplin-desktop
-    #pkgsUnstable.kitty
-    #pkgsUnstable.en-croissant
 
     bat
     btdu
-    #chawan
+    pkgs-unstable.chawan  #TUI web browser
     cpufetch
     deno
     emoji-picker
@@ -82,7 +78,7 @@ imports =
     # Previously via Flatpak:
     anki
     bitwarden-desktop
-    #joplin-desktop
+    pkgs-unstable.joplin-desktop
     #musescore   # Run with: nixGL mscore
     signal-desktop
     stellarium
@@ -112,13 +108,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch |& nom\n"
-      home-manager switch |& nom
+      echo -e "\thome-manager switch --flake ~/nix/hosts/stardust\n"
+      home-manager switch --flake ~/nix/hosts/stardust
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch -v |& nom\n"
-      home-manager switch -v |& nom
+      echo -e "\thome-manager switch -v --flake ~/nix/hosts/stardust\n"
+      home-manager switch -v --flake ~/nix/hosts/stardust
     '')
   ];
 
