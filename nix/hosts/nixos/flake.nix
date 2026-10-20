@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -15,7 +16,13 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, ... }@inputs: {
+    { self, nixpkgs, home-manager, nixpkgs-unstable, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+    in
+    {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           # system = "x86_64-linux";
@@ -29,6 +36,7 @@
 
               # Optionally, use home-manager.extraSpecialArgs to pass
               # arguments to home.nix
+              home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
             }
           ];
         };

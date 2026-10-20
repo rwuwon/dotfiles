@@ -63,7 +63,7 @@ imports =
     #fishPlugins.hydro
     #ghostty
     hello
-    kitty
+    pkgs-unstable.kitty
     links2
     #man
     newsboat

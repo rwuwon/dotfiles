@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  pkgsUnstable = import <nixpkgs-unstable> {};
+  #pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -48,13 +48,10 @@ imports =
     xdg-desktop-portal-wlr # works for browser & obs. symlink to /usr/libexec/xdg-desktop-portal-wlr after backing up
     #obs-studio-plugins.wlrobs & obs-studio not required; trixie repo is fine
 
-    #pkgsUnstable.chawan  #TUI web browser
-    #pkgsUnstable.kitty
-    #pkgsUnstable.en-croissant
 
     bat
     btdu
-    chawan
+    pkgs-unstable.chawan  #TUI web browser
     cpufetch
     #deno
     #emoji-picker
@@ -80,7 +77,7 @@ imports =
     # Previously via Flatpak:
     #anki
     #bitwarden-desktop
-    #joplin-desktop
+    #pkgs-unstable.joplin-desktop
     #musescore   # Run with: nixGL mscore
     #signal-desktop
     #stellarium
@@ -108,13 +105,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch\n"
-      home-manager switch
+      echo -e "\thome-manager switch --flake ~/nix/hosts/newhorizons\n"
+      home-manager switch --flake ~/nix/hosts/newhorizons
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch -v\n"
-      home-manager switch -v
+      echo -e "\thome-manager switch -v --flake ~/nix/hosts/newhorizons\n"
+      home-manager switch -v --flake ~/nix/hosts/newhorizons
     '')
   ];
 

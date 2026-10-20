@@ -1,8 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  pkgsUnstable = import <nixpkgs-unstable> {};
+  #pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -44,14 +44,11 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
-    pkgsUnstable.joplin-desktop
-    #pkgsUnstable.kitty
-    #pkgsUnstable.en-croissant
+    #pkgs-unstable.en-croissant
 
     bat
     btdu
-    #chawan
+    pkgs-unstable.chawan  #TUI web browser
     cpufetch
     deno
     emoji-picker
@@ -62,7 +59,7 @@ imports =
     #fishPlugins.hydro
     #ghostty
     hello
-    kitty
+    pkgs-unstable.kitty
     links2
     #man
     newsboat
@@ -77,7 +74,7 @@ imports =
     # Previously via Flatpak:
     anki
     bitwarden-desktop
-    #joplin-desktop
+    pkgs-unstable.joplin-desktop
     #musescore   # Run with: nixGL mscore
     signal-desktop
     stellarium
@@ -105,13 +102,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch\n"
-      home-manager switch
+      echo -e "\thome-manager switch --flake ~/nix/hosts/cassini\n"
+      home-manager switch --flake ~/nix/hosts/cassini
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch -v\n"
-      home-manager switch -v
+      echo -e "\thome-manager switch -v --flake ~/nix/hosts/cassini\n"
+      home-manager switch -v --flake ~/nix/hosts/cassini
     '')
   ];
 

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, pkgs-unstable, ... }:
 let
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}";
 in
@@ -35,6 +35,8 @@ imports =
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    pkgs-unstable.chawan
+    #chawan
     fastfetch
     nnn # terminal file manager
 

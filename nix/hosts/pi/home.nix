@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  pkgsUnstable = import <nixpkgs-unstable> {};
+  #pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -43,9 +43,8 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
 
-    #chawan
+    pkgs-unstable.chawan  #TUI web browser
     hello
     nix
     nix-output-monitor
@@ -64,13 +63,13 @@ imports =
     # '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch --cores 1\n"
-      home-manager switch --cores 1
+      echo -e "\thome-manager switch --cores 1 --flake ~/nix/hosts/pi\n"
+      home-manager switch --cores 1 ~/nix/hosts/pi
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch --cores 1 -v\n"
-      home-manager switch --cores 1 -v
+      echo -e "\thome-manager switch --cores 1 -v --flake ~/nix/hosts/pi\n"
+      home-manager switch --cores 1 -v --flake ~/nix/hosts/pi
     '')
   ];
 
@@ -111,4 +110,5 @@ imports =
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }

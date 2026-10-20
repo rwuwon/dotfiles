@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 # https://nixos-and-flakes.thiscute.world/best-practices/accelerating-dotfiles-debugging
 # https://www.foodogsquared.one/posts/2023-03-24-managing-mutable-files-in-nixos/
 let
-  pkgsUnstable = import <nixpkgs-unstable> {};
+  #pkgsUnstable = import <nixpkgs-unstable> {};
   dotfiles = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles";
 in
 {
@@ -44,10 +44,8 @@ imports =
   # environment.
   home.packages = with pkgs; [
 
-    pkgsUnstable.chawan  #TUI web browser
-
     bat
-    #chawan
+    pkgs-unstable.chawan  #TUI web browser
     cpufetch
     #deno
     emoji-picker
@@ -73,13 +71,13 @@ imports =
     '')
 
     (writeShellScriptBin "ho" ''
-      echo -e "\thome-manager switch --cores 1 --max-jobs 1\n"
-      home-manager switch --cores 1 --max-jobs 1
+      echo -e "\thome-manager switch --cores 1 --max-jobs 1 --flake ~/nix/hosts/gcloud\n"
+      home-manager switch --cores 1 --max-jobs 1 --flake ~/nix/hosts/gcloud
     '')
 
     (writeShellScriptBin "hov" ''
-      echo -e "\thome-manager switch --cores 1 --max-jobs 1 -v\n"
-      home-manager switch --cores 1 --max-jobs 1 -v
+      echo -e "\thome-manager switch --cores 1 --max-jobs 1 -v --flake ~/nix/hosts/gcloud\n"
+      home-manager switch --cores 1 --max-jobs 1 -v --flake ~/nix/hosts/gcloud
     '')
   ];
 

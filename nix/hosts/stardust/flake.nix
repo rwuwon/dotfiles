@@ -21,6 +21,7 @@
     overlays = [ nixgl.overlay ];
   in
   {
+    # homeConfigurations.USERNAME
     homeConfigurations.io = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
