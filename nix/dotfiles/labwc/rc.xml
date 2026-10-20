@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<labwc_config>
+
+  <keyboard>
+    <default />
+    <!-- The W- prefix refers to the Super key -->
+    <!-- ToggleShowDesktop not available until labwc 0.20.0 -->
+    <keybind key="W-space">
+      <action name="Execute" command="wofi --show drun" />
+    </keybind>
+    <keybind key="W-1">
+      <action name="Execute" command="firefox" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="Execute" command="foot" />
+    </keybind>
+
+    <keybind key="W-Up">
+      <action name="ToggleMaximize" direction="both" />
+    </keybind>
+    <keybind key="W-Down">
+      <action name="UnMaximize" direction="both" />
+    </keybind>
+    <keybind key="W-m">
+      <action name="Iconify" />
+    </keybind>
+
+    <repeatRate>
+      45
+    </repeatRate>
+    <repeatDelay>
+      250
+    </repeatDelay>
+  </keyboard>
+
+</labwc_config>

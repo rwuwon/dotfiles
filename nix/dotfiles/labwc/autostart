@@ -1,0 +1,4 @@
+wlr-randr --output Virtual-1 --scale 1.5 --mode 1280x800 &
+waybar &
+swaybg -i ~/Pictures/glass-chip-d.jxl &
+foot &
