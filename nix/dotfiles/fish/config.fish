@@ -116,7 +116,7 @@ if status is-interactive
   alias duh='du -hd1|sort -h'
   alias f='fish'
   alias gg='echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
-  alias ggg='echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
+  alias ggg='echo -e "\tcd ~/pi4/ && git pull:" && cd ~/pi4/ && git pull'
   alias gggg='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull'
   alias glll='echo -e "\tcd ~/codeberg/dotfiles/ && git pull:" && cd ~/codeberg/dotfiles/ && git pull && echo -e "\tcd ~/codeberg/nix/ && git pull:" && cd ~/codeberg/nix/ && git pull && echo -e "\tcd ~/dotfiles/ && git pull:" && cd ~/dotfiles/ && git pull && echo -e "\tcd ~/nix/ && git pull:" && cd ~/nix/ && git pull'
   #alias ho='home-manager switch &| nom'
