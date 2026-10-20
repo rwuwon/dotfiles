@@ -5,7 +5,9 @@ sudo apt install git
 sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
 
 # Alternative:
-#curl -L https://nixos.org/nix/install | sh -s -- --daemon
+```
+#curl -L https://nixos.org/nix/install | sh -s -- --daemon`
+```
 
 # *Log out and in again*
 

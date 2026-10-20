@@ -1,14 +1,15 @@
-    # non-NixOS nix on Windows WSL2 (Debian) with Home Manager #
-    # -------------------------------------------------------- #
+# non-NixOS nix on Windows WSL2 (Debian) with Home Manager
 
 sudo apt install git
 
 curl -L https://nixos.org/nix/install | sh -s -- --daemon
 
-    # Alternative:
+# Alternative:
+```
 # sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
+```
 
-    # *Log out and in again*
+# *Log out and in again*
 
 sudo systemctl enable nix-daemon.service --now
 
@@ -19,7 +20,7 @@ nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
 nix-channel --update
 
-    # *Did you forget to log out/in?*
+# *Did you forget to log out/in?*
 
 nix-shell '<home-manager>' -A install
 echo $NIX_PATH && echo $PATH
@@ -30,6 +31,7 @@ export PATH=/home/$USER/.nix-profile/bin:$PATH
 ln -s ~/nix/hosts/debnix/home.nix ~/.config/home-manager/home.nix
 home-manager switch # Might need to run it twice if starting very minimal?
 
+```
 #.bashrc aliases:
 #alias f='fish'
 #alias s='sudo -i'
@@ -37,3 +39,8 @@ home-manager switch # Might need to run it twice if starting very minimal?
 #export PATH=/home/io/.nix-profile/bin:$PATH
 #So kitty can work with tmux over ssh:
 #TERM=xterm-256color
+```
+
+
+# 2026-10-19 update
+flake added to version control or at least verify when the last update (as opposed to mere rebuild) actually occurred.

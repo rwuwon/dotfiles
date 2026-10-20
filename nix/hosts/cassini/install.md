@@ -1,14 +1,15 @@
-    # non-NixOS nix on Debian with Home Manager #
-    # ----------------------------------------- #
+# non-NixOS nix on Debian with Home Manager
 
 sudo apt install git
 
 sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
 
-    # Alternative:
+# Alternative:
+```
 #curl -L https://nixos.org/nix/install | sh -s -- --daemon
+```
 
-    # *Log out and in again*
+# *Log out and in again*
 
 sudo systemctl enable nix-daemon.service --now
 
@@ -19,7 +20,7 @@ nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
 nix-channel --update
 
-    # *Did you forget to log out/in?*
+# *Did you forget to log out/in?*
 
 nix-shell '<home-manager>' -A install
 echo $NIX_PATH && echo $PATH
@@ -27,10 +28,14 @@ echo export PATH=/home/$USER/.nix-profile/bin:\$PATH >> ~/.bashrc
 export PATH=/home/$USER/.nix-profile/bin:$PATH
 
 
-ln -s ~/nix/hosts/newhorizons/home.nix ~/.config/home-manager/home.nix
+ln -s ~/nix/hosts/cassini/home.nix ~/.config/home-manager/home.nix
 home-manager switch
 
 
-    # nixGL:
+# nixGL:
 nix-channel --add https://github.com/nix-community/nixGL/archive/main.tar.gz nixgl && nix-channel --update
 nix-env -iA nixgl.auto.nixGLDefault
+
+
+# 2026-10-19 update
+flake added to version control or at least verify when the last update (as opposed to mere rebuild) actually occurred.
