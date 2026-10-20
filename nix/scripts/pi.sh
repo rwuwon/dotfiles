@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # https://www.johndcook.com/blog/2019/10/29/computing-pi-with-bc/
 
