@@ -18,10 +18,10 @@
       fsType = "ext4";
     };
 
-  swapDevices = [ {
-    device = "/var/lib/swapfile";
-    size = 2*1024;
-  } ];
+  #swapDevices = [ {
+  #  device = "/var/lib/swapfile";
+  #  size = 2*1024;
+  #} ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

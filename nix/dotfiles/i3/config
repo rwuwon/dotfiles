@@ -424,6 +424,7 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute soun
 bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
 bindsym $mod+Ctrl+F12 exec pactl set-sink-volume @DEFAULT_SINK@ 100% # volume 100% #helps me not go above 100%
+bindsym $mod+Ctrl+F11 exec pactl set-sink-volume @DEFAULT_SINK@ 50% # volume 50%
 bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # Single monitor setup:

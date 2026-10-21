@@ -69,7 +69,7 @@ imports =
     newsboat
     nix
     nix-diff
-    nix-output-monitor
+    #nix-output-monitor # Too buggy
     trippy
     viu
     youtube-tui

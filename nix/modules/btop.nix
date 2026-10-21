@@ -272,6 +272,8 @@
 
       #* Custom gpu5 model name, empty string to disable.
       custom_gpu_name5 = ""
+
+      save_config_on_exit = False
       '';
   };
 }
