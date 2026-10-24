@@ -7,14 +7,14 @@ echo "x11vnc -localhost -autoport 5901 -display :0 -forever -noxdamage -repeat -
 x11vnc -localhost -autoport 5901 -display :0 -forever -noxdamage -repeat -nowf -o ~/.config/tigervnc/x11vnc.log
 
 # It needs to be 5900:localhost:5900 remotehost - NOT REMOTEHOST REMOTEHOST!
-# ssh -L 5900:localhost:5900 io@cassini -N -T -f && vncviewer localhost
+# ssh -L 5900:localhost:5900 io@cassini -N -T -f ; vncviewer localhost
 
 
 
 # cassini (local), stardust (remote)
 #!/bin/sh
-echo "export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1"
-export WLR_BACKENDS=headless && export WLR_LIBINPUT_NO_DEVICES=1 && export WAYLAND_DISPLAY=wayland-1
+echo "export WLR_BACKENDS=headless ; export WLR_LIBINPUT_NO_DEVICES=1 ; export WAYLAND_DISPLAY=wayland-1"
+export WLR_BACKENDS=headless ; export WLR_LIBINPUT_NO_DEVICES=1 ; export WAYLAND_DISPLAY=wayland-1
 
 echo "echo $WLR_BACKENDS $WLR_LIBINPUT_NO_DEVICES $WAYLAND_DISPLAY"
 echo $WLR_BACKENDS $WLR_LIBINPUT_NO_DEVICES $WAYLAND_DISPLAY

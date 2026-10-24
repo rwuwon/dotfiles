@@ -1,8 +1,10 @@
 # non-NixOS nix on Ubuntu with Home Manager
 
+```
 sudo apt install git
 
 sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
+```
 
 # Alternative:
 ```
@@ -11,6 +13,7 @@ sudo apt install -y nix-setup-systemd && sudo usermod -aG nix-users $(whoami)
 
 # *Log out and in again*
 
+```
 sudo systemctl enable nix-daemon.service --now
 
 
@@ -19,9 +22,11 @@ nix-channel --add https://nixos.org/channels/nixos-26.05 nixpkgs
 nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz home-manager
 nix-channel --update
+```
 
 # *Did you forget to log out/in?*
 
+```
 nix-shell '<home-manager>' -A install
 echo $NIX_PATH && echo $PATH
 echo export PATH=/home/$USER/.nix-profile/bin:\$PATH >> ~/.bashrc
@@ -30,6 +35,7 @@ export PATH=/home/$USER/.nix-profile/bin:$PATH
 
 ln -s ~/nix/hosts/oracle/home.nix ~/.config/home-manager/home.nix
 home-manager switch
+```
 
 
 # 2026-10-19 update

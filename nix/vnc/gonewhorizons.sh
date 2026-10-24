@@ -11,21 +11,21 @@
 
 # One-step:
 echo "ssh -f -L 5903:localhost:5903 io@newhorizons 'pkill wayvnc ; \
-export WLR_BACKENDS=headless && \
-export WLR_LIBINPUT_NO_DEVICES=1 && \
-export WAYLAND_DISPLAY=wayland-1 && \
-wayvnc -v 172.16.3.3 5903' && \
-sleep 2 && \
+export WLR_BACKENDS=headless ; \
+export WLR_LIBINPUT_NO_DEVICES=1 ; \
+export WAYLAND_DISPLAY=wayland-1 ; \
+wayvnc -v 172.16.3.3 5903' ; \
+sleep 2 ; \
 vncviewer 172.16.3.3:5903 -MenuKey=Home -FullScreen=0"
 
 echo "=========================================================\n"
 
 ssh -f -L 5903:localhost:5903 io@newhorizons 'pkill wayvnc ; \
-export WLR_BACKENDS=headless && \
-export WLR_LIBINPUT_NO_DEVICES=1 && \
-export WAYLAND_DISPLAY=wayland-1 && \
-wayvnc -v 172.16.3.3 5903' && \
-sleep 2 && \
+export WLR_BACKENDS=headless ; \
+export WLR_LIBINPUT_NO_DEVICES=1 ; \
+export WAYLAND_DISPLAY=wayland-1 ; \
+wayvnc -v 172.16.3.3 5903' ; \
+sleep 2 ; \
 vncviewer 172.16.3.3:5903 -MenuKey=Home -FullScreen=0
 
 echo "\n========================================================="
