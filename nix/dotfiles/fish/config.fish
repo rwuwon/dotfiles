@@ -68,7 +68,7 @@ if status is-interactive
   # Short aliases
   alias a='alias'
   alias b='btop'
-  alias bc='bc -l'
+  alias bc='rlwrap -a bc -l'
 
   alias ea='eza --icons=auto --time-style=long-iso --group-directories-first --sort=name -lhg'
   alias h='history --show-time="%Y-%m-%d %H:%M:%S "'
