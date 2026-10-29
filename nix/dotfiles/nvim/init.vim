@@ -143,7 +143,7 @@ map <Leader>c :call Switch_background()<CR>
 " :w !sudo tee %
 "
 " Ctrl-a/x for increment/decrement
-" Visual select, ctrl-g, numerical list
+" Visual block select, g (not ctrl-g), ctrl-a
 "
 " Reverse order of lines:
 " :g/^/m0
